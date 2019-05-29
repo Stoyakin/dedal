@@ -1,0 +1,13 @@
+mixin productTabs(data)
+  each item in data
+    .swiper-slide(data-tabs-item=item.tabs)
+      +b.product
+        +e('a').item.--vertical
+          +e('span').item-overimg(href="#" style="background-imge: url("+item.img+");")
+            +e('img')(src=item.img).item-img
+          +e('span').item-art #{item.art}
+          +e('span').item-title #{item.title}
+          +e('span').item-descr !{item.descr}
+          +e('span').item-price !{item.price}
+            span.rub
+          +e('button')(type="button").item-buy Добавить

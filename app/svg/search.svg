@@ -1,0 +1,6 @@
+<svg id="search" class="i-search" viewBox="0 0 18 18" width="100%" height="100%">
+    <g fill="none">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.43478 12.8696C9.98861 12.8696 12.8696 9.98861 12.8696 6.43478C12.8696 2.88095 9.98861 0 6.43478 0C2.88095 0 0 2.88095 0 6.43478C0 9.98861 2.88095 12.8696 6.43478 12.8696Z" transform="translate(1.04517 1)" stroke="white" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M4.86957 4.86957L0 0" transform="translate(12.1304 12.1304)" stroke="white" stroke-linecap="round" stroke-linejoin="round"></path>
+    </g>
+</svg>

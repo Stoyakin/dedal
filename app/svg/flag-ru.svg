@@ -1,0 +1,9 @@
+<svg id="flag-ru" class="i-flag-ru" viewBox="0 0 21 14" width="100%" height="100%">
+  <path
+    d="M0 4.65904V0.367833C0 0.164708 0.161819 0 0.36138 0H20.5977C20.7973 0 20.9591 0.164708 20.9591 0.367833L20.9591 4.65904H0Z"
+    transform="translate(0 0.0115013)" fill="#F5F5F5"></path>
+  <path
+    d="M20.5977 4.659H0.36138C0.161819 4.659 0 4.49429 0 4.29117V0H20.9591V4.29117C20.9591 4.49433 20.7972 4.659 20.5977 4.659Z"
+    transform="translate(0 9.32954)" fill="#FF4B55"></path>
+  <path d="M0 0H20.9591V4.65875H0V0Z" transform="translate(0 4.67046)" fill="#41479B"></path>
+</svg>

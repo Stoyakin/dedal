@@ -1,0 +1,18 @@
+mixin ihead(data)
+  +b('section').ihead
+    .swiper-container.js-swiper-iclients
+      .swiper-wrapper
+        each item in data
+          .swiper-slide
+            +e.item-back
+              +e('video')(muted="muted" playsinline="" loop="loop" poster="static/video/"+item.videoPoster).item-video
+                source(src="static/video/"+item.video type="video/mp4")
+            +e.item-content
+              +e.item-title #{item.title}
+              +e.item-subtitle !{item.subtitle}
+              +e('a')(href="#").item-more Подробнее
+      .swiper-buttons
+        .swiper-buttons-area.swiper-buttons-area--left
+          button(type="button" aria-label="Назад").swiper-button-prev
+        .swiper-buttons-area.swiper-buttons-area--right
+          button(type="button" aria-label="Вперед").swiper-button-next

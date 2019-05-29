@@ -1,0 +1,33 @@
++b('header').header
+  .container
+    +e.row.row
+      +b('a')(href="#").logo
+        include ../../../svg/logo.svg
+      
+      +nav([
+        { href: 'Дневная оптика', data: 'day', dopClass: 'js-top-action'}, 
+        { href: 'Ночная оптика', data: 'night', dopClass: 'js-top-action'}, 
+        { href: 'Тепловизоры' data: 'thermal', dopClass: 'js-top-action'}, 
+        { href: 'Поддержка' }, 
+        { href: 'О компании', data: 'about', dopClass: 'js-top-action'}, 
+        { href: 'Где купить' }, 
+        { href: 'Контакты' }
+      ])
+
+      +e.right
+        +e('a')(href="tel:+74955893101").phone +7 495 589-31-01
+
+        +e('ul').action
+          +e('li').action-item
+            +e('a')(href="#").action-href.action-href--basket
+              include ../../../svg/basket.svg
+          +e('li').action-item
+            +e('a')(href="#" data-action="search").action-href.action-href--search.js-top-action
+              include ../../../svg/search.svg
+
+        +e('ul').lang
+          +e('li').lang-item
+            +e('span')(href="#").lang-href
+              include ../../../svg/flag-ru.svg
+            +e('a')(href="#").lang-href
+              include ../../../svg/flag-eng.svg

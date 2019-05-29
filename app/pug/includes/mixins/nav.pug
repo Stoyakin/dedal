@@ -1,0 +1,9 @@
+mixin nav(data)
+  +b('nav').nav
+    +e('ul').list
+      each item in data
+        +e('li').list-item
+          if (item.data)
+            +e('a').list-item-href(href="#" data-action=item.data class=item.dopClass ? item.dopClass: '') #{item.href}
+          else 
+            +e('a').list-item-href(href="#" class=item.dopClass ? item.dopClass: '') #{item.href}
