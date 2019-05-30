@@ -7,7 +7,7 @@
       +nav([
         { href: 'Дневная оптика', data: 'day', dopClass: 'js-top-action'}, 
         { href: 'Ночная оптика', data: 'night', dopClass: 'js-top-action'}, 
-        { href: 'Тепловизоры' data: 'thermal', dopClass: 'js-top-action'}, 
+        { href: 'Тепловизоры', data: 'thermal', dopClass: 'js-top-action'}, 
         { href: 'Поддержка' }, 
         { href: 'О компании', data: 'about', dopClass: 'js-top-action'}, 
         { href: 'Где купить' }, 
@@ -29,5 +29,6 @@
           +e('li').lang-item
             +e('span')(href="#").lang-href
               include ../../../svg/flag-ru.svg
+          +e('li').lang-item
             +e('a')(href="#").lang-href
               include ../../../svg/flag-eng.svg

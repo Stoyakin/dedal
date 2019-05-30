@@ -1,0 +1,13 @@
+mixin igallery(data)
+  .swiper-container.js-swiper-igallery
+    .swiper-wrapper
+      each item in data
+        .swiper-slide
+          +e.slide
+            +e.slide-video
+              +e('video')(muted="muted" playsinline loop="loop" autoplay="autoplay" poster="static/video/"+item.poster).slide-video-item
+                source(src="static/video/"+item.videoSrc type="video/mp4")
+            .container
+              +e.slide-top
+                +e('h3').slide-title #{item.text}
+                +e('p').slide-text !{item.text}

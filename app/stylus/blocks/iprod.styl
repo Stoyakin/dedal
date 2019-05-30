@@ -1,0 +1,28 @@
+.iprod
+  padding 32px 0
+  .swiper
+    &-container
+      &.start-anim
+        .swiper-slide
+          opacity 1
+          transform translateX(0)
+    &-slide
+      width 1008px
+      transition-property transform, opacity
+      transition-duration 3s
+      transition-timing-function cubic-bezier(.215,.61,.355,1)
+      transform translateX(200px)
+      opacity 0
+      &.swiper-slide-active
+        transition-delay .35s
+      &.swiper-slide-next
+        transition-delay .7s
+      .product
+        opacity .3
+      &-active
+        opacity 1
+        transform translateX(0)
+        .product
+          opacity 1
+          &__item-img
+            opacity 1

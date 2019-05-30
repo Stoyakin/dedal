@@ -1,0 +1,79 @@
+.product
+  display block
+  position relative
+  width 100%
+  height 480px
+  line-height 480px
+  background-color #f8f9fc
+  transition opacity .3s ease-in-out, background .3s ease-in-out
+  z-index 1
+  &:hover
+    .product__item-more
+      opacity 1
+      transform translateY(0)
+  &__item
+    &-img
+      position absolute
+      top 0
+      left 0
+      right 0
+      bottom 0
+      display block
+      width 100%
+      height 100%
+      background-repeat no-repeat
+      background-position 100%
+      opacity .3
+      transition opacity .6s ease-in-out
+      z-index -1
+    &-content
+      display inline-block
+      position relative
+      width auto
+      min-height 312px
+      line-height normal
+      vertical-align middle
+      padding-bottom 30px
+      padding-left 72px
+      transition opacity .6s ease-in-out
+      z-index 2
+    &-art
+      display block
+      color #636466
+      font-family Roboto
+      font-size 16px
+      line-height 24px
+      margin-bottom .6em
+      transition color .3s ease-in-out
+    &-title
+      display block
+      color $black
+      font-weight 500
+      font-size 32px
+      line-height 36px
+      letter-spacing -.015em
+      text-transform uppercase
+      margin-bottom 24px
+      max-width 385px
+    &-descr
+      display block
+      color #636466
+      font-family 'Roboto'
+      font-size 16px
+      line-height 24px
+      max-width 280px
+    &-more
+      position absolute
+      left 72px
+      bottom 0
+      display inline-block
+      color $black
+      font-size 12px
+      font-weight 500
+      letter-spacing .025em
+      line-height 24px
+      margin-left 40px
+      text-transform uppercase
+      opacity 0
+      transform translateY(10px)
+      transition opacity .3s ease-in-out, transform .3s ease-in-out

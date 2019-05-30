@@ -1,0 +1,17 @@
+mixin ipubl(data)
+  .swiper-container.s-js-swiper-publ
+    .swiper-wrapper
+      each item in data
+        .swiper-slide
+          +b('a').publ(href="" class=item.last ? '--more' : '')
+            if (item.last)
+              +e('span').more Смотреть все
+            else
+              +e('span')(style="background-image: url('"+tmpsrc+item.cover+"');").cover
+                +e('span').type(class=item.typeColor ? item.typeColor : '') #{item.type}
+              +e('span').info(class=item.classIco ? item.classIco : '')
+                +e('time').date #{item.date}
+                +e('span').title #{item.ttile}
+                +e('span').text !{item.text}
+
+

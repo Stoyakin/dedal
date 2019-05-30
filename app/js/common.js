@@ -231,12 +231,112 @@ document.addEventListener("DOMContentLoaded", function (event) {
       });
     },
 
+    swiperIprod: function () {
+
+      let iprodSwiper = new Swiper('.js-swiper-iprod', {
+        loop: false,
+        spaceBetween: 32,
+        slidesPerView: 'auto',
+        centeredSlides: true,
+        speed: 1500,
+        autoplay: {
+          delay: 7000,
+        },
+        navigation: {
+          nextEl: '.iprod .swiper-button-next',
+          prevEl: '.iprod .swiper-button-prev'
+        },
+        pagination: {
+          el: '.iprod .swiper-pagination',
+          clickable: true,
+        },
+        on: {
+          init: function () {
+            setTimeout(() => {
+              this.params.autoplay.delay = 10000;
+            }, 15100);
+            setTimeout(() => {
+              this.$el[0].classList.add('start-anim');
+            }, 200);
+          },
+        },
+        breakpoints: {
+          767: {
+            spaceBetween: 8,
+          }
+        },
+      });
+
+    },
+
+    swiperIhead: function () {
+
+      let iheadVideos,
+        iheadSliderSpeed = 1500;
+
+      const pauseMainBgSliderVideos = (activeSlide) => {
+        let activeVideo = activeSlide.querySelector('video');
+        if (iheadVideos && iheadVideos.length)
+          iheadVideos.forEach((video) => {
+            if (video.hasAttribute('data-stid')){
+              clearTimeout(video.getAttribute('data-stid'));
+              video.removeAttribute('data-stid');
+            }
+            video.pause();
+            if (!activeVideo.isEqualNode(video)) {
+              let id = setTimeout(() => {
+                if (!isNaN(video.duration))
+                  video.currentTime = 0;
+                  video.removeAttribute('data-stid');
+              }, iheadSliderSpeed);
+              video.setAttribute('data-stid', id);
+            } else {
+              activeVideo.play();
+            }
+          });
+      };
+
+      let iheadSwiper = new Swiper('.js-swiper-ihead', {
+        loop: true,
+        spaceBetween: 0,
+        slidesPerView: 1,
+        effect: 'fade',
+        fadeEffect: {
+          crossFade: true
+        },
+        autoplay: {
+          delay: 10000,
+        },
+        speed: iheadSliderSpeed,
+        navigation: {
+          nextEl: '.ihead .swiper-button-next',
+          prevEl: '.ihead .swiper-button-prev'
+        },
+        on: {
+          init: function () {
+            iheadVideos = [...qsAll('.ihead video')];
+            let activeSlide = this.slides[this.activeIndex];
+            pauseMainBgSliderVideos(activeSlide);
+          },
+          slideChange: function () {
+            let activeSlide = this.slides[this.activeIndex];
+            pauseMainBgSliderVideos(activeSlide);
+          },
+        }
+      });
+
+    },
+
     init: function init() {
 
       let _self = this,
         elemsAnimArr = ['.js-scroll-anim'];
 
       if (elemsAnimArr.length) this.anim();
+
+      if (qs('.js-swiper-ihead')) this.swiperIhead();
+
+      if (qs('.js-swiper-iprod')) this.swiperIprod();
 
       let eventScroll
       try {

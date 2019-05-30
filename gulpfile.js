@@ -1,21 +1,22 @@
-var fs = require('fs'),
-  gulp = require('gulp'),
-  rebaseCSSurls = require('gulp-rebase-css-urls'),
-  pug = require('gulp-pug'),
-  pugInheritance = require('gulp-pug-inheritance'),
-  autoprefixer = require('autoprefixer'),
-  browserSync = require('browser-sync').create(),
-  reload = browserSync.reload,
-  print = require('gulp-print').default,
-  notify = require('gulp-notify'),
-  stylus = require('gulp-stylus'),
-  plumber = require('gulp-plumber'),
-  babel = require('gulp-babel'),
-  del = require("del"),
-  $ = require('gulp-load-plugins')();
+const fs = require('fs');
+const gulp = require('gulp');
+const rebaseCSSurls = require('gulp-rebase-css-urls');
+const pug = require('gulp-pug');
+const pugInheritance = require('gulp-pug-inheritance');
+const autoprefixer = require('autoprefixer');
+const browserSync = require('browser-sync').create();
+const reload = browserSync.reload;
+const print = require('gulp-print').default;
+const notify = require('gulp-notify');
+const stylus = require('gulp-stylus');
+const plumber = require('gulp-plumber');
+const babel = require('gulp-babel');
+const del = require("del");
+const data = require("gulp-data");
+const $ = require('gulp-load-plugins')();
 
 // Пути
-var src = {
+const src = {
   'app': {
     'stylus': 'app/stylus/',
     'css': 'app/css/',
@@ -193,12 +194,12 @@ gulp.task('pug', function buildHTML() {
         this.emit('end');
       }
     }))
-    //Смотрим какой файл компилируется
     .pipe(print(function (filepath) {
       return "Pug start build: " + filepath;
     }))
-    .pipe($.data(function(file) {
-      return require(src.app.pug +'includes/data/data.json');
+    .pipe(data(function(file) {
+      //return require(src.app.pug +'includes/data/data.json');
+      return JSON.parse(fs.readFileSync(src.app.pug +'includes/data/data.json'));
     }))
     .pipe(pug({
       pretty: true
@@ -238,9 +239,6 @@ gulp.task('stylus', function () {
 gulp.task('css', css([
     src.app.css + 'fonts.css',
     src.app.css + 'ext/swiper-cut-svg.css',
-    src.app.css + 'ext/jquery.formstyler.css',
-    src.app.css + 'ext/magnific-popup.css',
-    src.app.css + 'ext/lightgallery.css',
     src.app.css + 'styles.css'
   ],
   src.build.css
@@ -253,14 +251,7 @@ gulp.task('csspack', csspack([src.build.css + 'styles.css'], src.build.css));
 gulp.task('js-own', js([src.app.js + 'common.js'], src.build.js, 'own.js'));
 
 gulp.task('js-vendor', jsVendor([
-    'node_modules/babel-polyfill/dist/polyfill.js',
-    'node_modules/jquery/dist/jquery.js',
-    'node_modules/jquery-migrate/dist/jquery-migrate.min.js',
-    'node_modules/swiper/dist/js/swiper.js',
-    'node_modules/jquery-form-styler/dist/jquery.formstyler.min.js',
-    'node_modules/magnific-popup/dist/jquery.magnific-popup.min.js',
-    'node_modules/lightgallery/dist/js/lightgallery-all.min.js',
-    src.app.js + 'ext/jquery.maskedinput.min.js'
+    'node_modules/swiper/dist/js/swiper.js'
   ],
   src.build.js,
   'vendor.js'
@@ -303,7 +294,7 @@ gulp.task('watch', gulp.series('browserSync', function () {
 
 // Сборка проекта
 gulp.task('js', gulp.series('js-vendor', 'js-own'));
-gulp.task('css-build', gulp.series('stylus', 'css', /*'csspack'*/ ));
+gulp.task('css-build', gulp.series('stylus', 'css', 'csspack' ));
 gulp.task('pug-build', gulp.series('setWatch', 'pug'));
 
 gulp.task('build', gulp.parallel(/*clean,*/ gulp.series('setWatch', 'pug'), gulp.series('stylus', 'css', /*'csspack'*/ ), 'js'));

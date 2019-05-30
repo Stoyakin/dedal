@@ -1,2 +1,88 @@
 .header
-  flex-grow 1
+  position fixed
+  left 0
+  top 0
+  width 100%
+  z-index 10
+  padding 8px 0
+  transition box-shadow .3s ease-in-out, opacity .6s ease-in-out 1s, height .4s ease-in-out, background .4s ease-in-out
+  box-shadow 0 0.6rem 1.6rem rgba(0,0,0,0)
+  &.fixed
+    box-shadow 0 0.6rem 1.6rem rgba(0,0,0,.08)
+  &:hover
+    background-color #fff
+    .logo-text
+      fill $black
+    .nav__list-item-href
+      color $black
+      &:hover
+        color #636466
+    .header__phone
+      color $black
+      &:hover
+        color #636466
+    .i-basket
+      path
+        fill #000
+    .i-search
+      path
+        stroke #000 !important
+  .container
+    max-width 1565px
+  &__row
+    align-items center
+  &__right
+    display flex
+    align-items center
+    margin-left auto
+  &__phone
+    color #FFF
+    font-size 17px
+    line-height 19px
+    font-weight 500
+    text-transform uppercase
+    letter-spacing .01em
+    transition: color .3s ease-in-out
+  &__action
+    display flex
+    align-items center
+    margin-left 22px
+    &:first-child
+      margin-left 0
+    &-item
+      margin-right 22px
+      font-size 0
+      &:last-child
+        margin-right 0
+    &-href
+      display inline-block
+      vertical-align top
+      .i-basket
+        width 21px
+        height 17px
+        path
+          transition fill .3s ease-in-out
+          fill #fff
+      .i-search
+        width 20px
+        height 17px
+        path
+          transition stroke .3s ease-in-out
+  &__lang
+    display flex
+    align-items center
+    margin-left 29px
+    &:first-child
+      margin-left 0
+    &-item
+      margin-right 21px
+      font-size 0
+      &:last-child
+        margin-right 0
+    &-href
+      svg
+        width 21px
+        height 15px
+      .i-flag-eng
+        width 19px
+        height 13px

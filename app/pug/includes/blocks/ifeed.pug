@@ -1,0 +1,23 @@
++b('section').ifeed
+  +b.decor.js-scroll-anim
+    +e.item.--back
+      +e('img')(src=tmpsrc+"decor.jpg" alt="").item-img
+    +e.item.--front
+      +e('img')(src=tmpsrc+"decor2.png" alt="").item-img
+  .container
+    +e.content
+      +e('h3').title.title Остались вопросы?
+      +e('p').text Позвоните по номеру 
+        a(href="tel:+74955893101") +7 495 589-31-01
+        |  или задайте их нашим специалистам через форму обратной связи
+      +b('form').from.--feed
+        +e.field
+          +e('input')(type="text" data-req="req" id="inp_01").field-input
+          +e('label')(for="inp_01").field-label Имя
+        +e.field
+          +e('input')(type="email" data-req="req" data-type="email" id="inp_02").field-input
+          +e('label')(for="inp_02").field-label Адрес электронной почты
+        +e.field
+          +e('textarea')(data-req="req" id="text_01").field-textarea
+          +e('label')(for="text_01").field-label Вопрос
+        +e('input')(type="submit" value="Отправить").submit

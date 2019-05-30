@@ -1,16 +1,18 @@
 mixin ihead(data)
   +b('section').ihead
-    .swiper-container.js-swiper-iclients
+    .swiper-container.js-swiper-ihead
       .swiper-wrapper
         each item in data
-          .swiper-slide
+          +e.item-slide.swiper-slide
             +e.item-back
-              +e('video')(muted="muted" playsinline="" loop="loop" poster="static/video/"+item.videoPoster).item-video
+              +e('video')(muted="muted" playsinline loop="loop" autoplay="autoplay" poster="static/video/"+item.videoPoster).item-video
                 source(src="static/video/"+item.video type="video/mp4")
-            +e.item-content
-              +e.item-title #{item.title}
-              +e.item-subtitle !{item.subtitle}
-              +e('a')(href="#").item-more Подробнее
+            .container
+              +e.item-content
+                +e.item-title #{item.title}
+                +e.item-subtitle !{item.subtitle}
+                +e('a')(href="#").item-more 
+                  span Подробнее
       .swiper-buttons
         .swiper-buttons-area.swiper-buttons-area--left
           button(type="button" aria-label="Назад").swiper-button-prev
