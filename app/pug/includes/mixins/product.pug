@@ -15,6 +15,6 @@ mixin product(data)
         +e('span').item-img(style="background-image: url("+item.img+");")
         +e('span').item-content
           +e('span').item-art #{item.art}
-          +e('span').item-title #{item.title}
+          +e('span').item-title.title #{item.title}
           +e('span').item-descr !{item.descr}
           +e('span').item-more Подробнее

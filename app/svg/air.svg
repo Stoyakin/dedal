@@ -1,0 +1,9 @@
+<svg class="air-ico" viewBox="0 0 22 19" width="100%" height="100%">
+  <g fill="none">
+    <path d="M0 -1.73395e-07V6.63636L3.63636 3.40909" transform="translate(5.54541 10.7271)" stroke="black"
+      stroke-miterlimit="10"></path>
+    <path d="M11.5909 16.3636L20 0L0 5.45455L11.5909 16.3636Z" transform="translate(1 1)" stroke="black"
+      stroke-miterlimit="10"></path>
+    <path d="M15.4545 0L0 9.72727" transform="translate(5.54541 1)" stroke="black" stroke-miterlimit="10"></path>
+  </g>
+</svg>

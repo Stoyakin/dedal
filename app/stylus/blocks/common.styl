@@ -1,0 +1,40 @@
+.href
+  &-wrap
+    display flex
+    justify-content center
+    width 100%
+    margin-top 25px
+  &-item
+    display inline-block
+    vertical-align top
+    position relative
+    color $black
+    font-weight 500
+    font-size 12px
+    letter-spacing .01em
+    line-height 16px
+    text-transform uppercase
+    transition opacity .3s ease-in-out
+    &:hover
+      opacity .7
+    &:before, &:after
+      content ""
+      position absolute
+      top 50%
+      width calc(608px - 50% - 24px)
+      height 1px
+      background-color rgba(0,0,0,.2)
+    &:before
+      left calc(50% - 608px)
+    &:after
+      right calc(50% - 608px)
+
+.title
+  color $black
+  font-weight 500
+  font-size 32px
+  letter-spacing -0.015em
+  line-height 36px
+  text-transform uppercase
+  &--white
+    color #fff

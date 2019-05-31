@@ -5,9 +5,19 @@ mixin igallery(data)
         .swiper-slide
           +e.slide
             +e.slide-video
-              +e('video')(muted="muted" playsinline loop="loop" autoplay="autoplay" poster="static/video/"+item.poster).slide-video-item
+              +e('video')(poster="static/video/"+item.poster).slide-video-item.js-player
                 source(src="static/video/"+item.videoSrc type="video/mp4")
+              +e.slide-content
+                +e.slide-cover(style="background-image: url('static/video/"+item.poster+"');")
+                +e.slide-play
+                  include ../../../svg/play.svg
             .container
               +e.slide-top
-                +e('h3').slide-title #{item.text}
+                +e('h3').slide-title #{item.title}
                 +e('p').slide-text !{item.text}
+    .swiper-buttons
+        .swiper-buttons-area.swiper-buttons-area--left
+          button(type="button" aria-label="Назад").swiper-button-prev
+        .swiper-buttons-area.swiper-buttons-area--right
+          button(type="button" aria-label="Вперед").swiper-button-next
+    .swiper-pagination.swiper-pagination--white

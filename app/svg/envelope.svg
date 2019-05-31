@@ -1,0 +1,8 @@
+<svg class="envelope-ico" viewBox="0 0 22 16" width="100%" height="100%">
+  <g fill="none">
+    <path d="M20 0H0V14H20V0Z" transform="translate(1 1)" stroke="white" stroke-linecap="round" stroke-linejoin="round">
+    </path>
+    <path d="M0 0L10 6L20 0" transform="translate(1 1)" stroke="white" stroke-linecap="round" stroke-linejoin="round">
+    </path>
+  </g>
+</svg>

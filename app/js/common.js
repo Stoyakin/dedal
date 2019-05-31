@@ -269,6 +269,108 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     },
 
+    swiperInews: function () {
+
+      let ipublSwiper = new Swiper('.js-swiper-ipubl', {
+        speed: 1500,
+        spaceBetween: 32,
+        slidesPerView: 3,
+        simulateTouch: true,
+        navigation: {
+          nextEl: '.ipubl .swiper-wall-next',
+          prevEl: '.ipubl .swiper-wall-prev',
+        },
+        // on: {
+        //   slideChange: () => {
+        //     if (this.isNextNews && (this.$refs.newsSlider.swiper.activeIndex > this.$refs.newsSlider.swiper.slides.length - 5 )) {
+        //       this.newsPage++;
+        //       let requestBody = new FormData;
+        //       requestBody.append('PAGEN_1', this.newsPage);
+        //       axios({
+        //         method: 'post',
+        //         url: '/ajax/getIndexNews.php',
+        //         data: requestBody,
+        //       }).then((response) => {
+        //         if (response.status == 200) {
+        //           this.setIsNextNews(response.data.isNextNews);
+        //           this.addIndexNews(response.data.indexNews);
+        //         }
+        //       });
+
+        //     }
+        //   }
+        // },
+        breakpoints: {
+          1280: {
+            spaceBetween: 8,
+          },
+          1024: {
+            slidesPerView: 2,
+            spaceBetween: 32,
+          },
+          767: {
+            slidesPerView: 1,
+            spaceBetween: 8,
+          },
+        }
+      });
+
+    },
+
+    swiperTabsProduct: function () {
+      /*
+      speed: mainSliderSpeed,
+        spaceBetween: 32,
+        slidesPerView: 3,
+        simulateTouch: !isIE,
+        navigation: {
+          nextEl: '.index__main-tabs__content .swiper-wall-next',
+          prevEl: '.index__main-tabs__content .swiper-wall-prev',
+        },
+        breakpoints: {
+          1024: {
+            slidesPerView: 1,
+            pagination: {
+              el: '.index__main-tabs__content .swiper-pagination',
+              clickable: true,
+            },
+            navigation: {
+              nextEl: '.swiper-mobile--right',
+              prevEl: '.swiper-mobile--left',
+            },
+          },
+        },
+      */
+
+      let itabsProductSwiper = new Swiper('.js-swiper-product-vertical', {
+        spaceBetween: 32,
+        slidesPerView: 3,
+        simulateTouch: true,
+        speed: 1500,
+        navigation: {
+          nextEl: '.itabs .swiper-button-next',
+          prevEl: '.itabs .swiper-button-prev'
+        },
+        pagination: {
+          el: '.itabs .swiper-pagination',
+          clickable: true,
+        },
+        on: {
+          init: function () {
+            setTimeout(() => {
+              this.$el[0].classList.add('start-anim');
+            }, 200);
+          },
+        },
+        breakpoints: {
+          767: {
+            spaceBetween: 8,
+          }
+        },
+      });
+
+    },
+
     swiperIhead: function () {
 
       let iheadVideos,
@@ -327,6 +429,77 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     },
 
+    swiperIgallery: function () {
+
+      let igalleryVideos,
+        igallerySliderSpeed = 1500;
+
+      const pauseMainBgSliderVideos = (activeSlide) => {
+        let activeVideo = activeSlide.querySelector('video');
+        if (igalleryVideos && igalleryVideos.length)
+          igalleryVideos.forEach((video) => {
+            if (video.hasAttribute('data-stid')){
+              clearTimeout(video.getAttribute('data-stid'));
+              video.removeAttribute('data-stid');
+            }
+            video.pause();
+            if (!activeVideo.isEqualNode(video)) {
+              let id = setTimeout(() => {
+                if (!isNaN(video.duration))
+                  video.currentTime = 0;
+                  video.removeAttribute('data-stid');
+              }, igallerySliderSpeed);
+              video.setAttribute('data-stid', id);
+            } else {
+              activeVideo.play();
+            }
+          });
+      };
+
+      let igallerySwiper = new Swiper('.js-swiper-igallery', {
+        loop: false,
+        spaceBetween: 0,
+        slidesPerView: 1,
+        simulateTouch: false,
+        speed: igallerySliderSpeed,
+        navigation: {
+          nextEl: '.igallery .swiper-button-next',
+          prevEl: '.igallery .swiper-button-prev'
+        },
+        pagination: {
+          el: '.igallery .swiper-pagination',
+          clickable: true,
+        },
+        breakpoints: {
+          767: {
+            navigation: false,
+          },
+        },
+        on: {
+          init: function () {
+            igalleryVideos = [...qsAll('.igallery video')];
+            let activeSlide = this.slides[this.activeIndex];
+            //pauseMainBgSliderVideos(activeSlide);
+          },
+          slideChange: function () {
+            let activeSlide = this.slides[this.activeIndex];
+            //pauseMainBgSliderVideos(activeSlide);
+          },
+        }
+      });
+
+      if (qsAll('.js-player').length){
+        for (let videoItem of qsAll('.js-player')) {
+          new Plyr(videoItem, {
+            controls: ['play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
+            loadSprite: false,
+          });
+        }
+        const players = Array.from(document.querySelectorAll('.js-player')).map(p => new Plyr(p));
+      }
+
+    },
+
     init: function init() {
 
       let _self = this,
@@ -337,6 +510,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
       if (qs('.js-swiper-ihead')) this.swiperIhead();
 
       if (qs('.js-swiper-iprod')) this.swiperIprod();
+
+      if (qs('.js-swiper-product-vertical')) this.swiperTabsProduct();
+
+      if (qs('.js-swiper-igallery')) this.swiperIgallery();
+
+      if (qs('.js-swiper-igallery')) this.swiperIgallery();
+
+      if (qs('.js-swiper-ipubl')) this.swiperInews();
 
       let eventScroll
       try {

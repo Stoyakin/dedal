@@ -365,6 +365,19 @@ button.swiper-pagination-bullet {
   transition: 200ms transform, 200ms right, 200ms -webkit-transform;
 }
 
+.swiper-pagination--white .swiper-pagination-bullet:after {
+  background-color: #fff;
+}
+
+.swiper-pagination--white .swiper-pagination-bullet:hover {
+  opacity: 1;
+}
+
+.swiper-pagination--white .swiper-pagination-bullet-active:after,
+.swiper-pagination--white .swiper-pagination-bullet:hover:after {
+  transform: scale(1);
+}
+
 /* Progress */
 .swiper-pagination-progressbar {
   background: rgba(0, 0, 0, 0.25);

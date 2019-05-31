@@ -8,4 +8,7 @@ mixin productTabs(data)
         +e('span').item-descr !{item.descr}
         +e('span').item-price !{item.price}
           span.rub
-        +e('button')(type="button").item-buy Добавить
+        +e('span').item-buy 
+          +e('span').item-buy-ico
+            include ../../../svg/basket.svg
+          +e('span').item-buy-text Добавить

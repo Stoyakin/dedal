@@ -1,0 +1,36 @@
+.ipubl
+  padding-top 120px
+  padding-bottom 114px
+  overflow hidden
+  &__top
+    display flex
+    flex-wrap wrap
+    align-items flex-end
+    justify-content space-between
+    margin-bottom 31px
+  &__press-center-href
+    color $black
+    font-weight 500
+    font-size 12px
+    letter-spacing .01em
+    line-height 16px
+    text-transform uppercase
+    transition opacity .3s ease-in-out
+    &:hover
+      opacity .7
+  &__slider
+    position: relative
+  .swiper
+    &-container
+      overflow visible
+    &-slide
+      display flex
+      flex-direction: column
+      height auto
+      transition-property transform, opacity
+      transition-duration 3s
+      transition-timing-function cubic-bezier(.215,.61,.355,1)
+      // opacity 0
+      // transform translateX(100px)
+      &:first-child
+        transition-delay .7s

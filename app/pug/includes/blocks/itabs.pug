@@ -2,35 +2,36 @@
 
 +b('section').itabs
   +e('ul').nav
-    +e('li').nav-item(style="background-image: url('"+tmpsrc+"itabs-cover.jpg')" data-tabs-nav="day")
+    +e('li').nav-item.--active(style="background-image: url('"+tmpsrc+"itabs-cover.jpg')" data-tabs-nav="day")
       +e.nav-item-info
-        +e('a')(href="#").nav-item-title Дневная оптика
+        +e('a')(href="#").nav-item-title.title.--white Дневная оптика
         +e('p').nav-item-text Оптические прицелы
       +e.nav-item-circle
         +e('video')(muted="muted" preload="auto" playsinline="" loop="loop" poster="static/video/tabs-video-poster.jpg").nav-item-video
           source(src="static/video/tabs-video.mp4" type="video/mp4")
       +e('a')(href="#").nav-item-href Вся дневная оптика
-    +e('li').nav-item(style="background-image: url('"+tmpsrc+"itabs-cover.jpg')" data-tabs-nav="night")
+    +e('li').nav-item(style="background-image: url('"+tmpsrc+"itabs-cover2.jpg')" data-tabs-nav="night")
       +e.nav-item-info
-        +e('a')(href="#").nav-item-title Ночная оптика
+        +e('a')(href="#").nav-item-title.title.--white Ночная оптика
         +e('p').nav-item-text Приборы ночного видения, прицелы, предобъективные насадки
       +e.nav-item-circle
         +e('video')(muted="muted" preload="auto" playsinline="" loop="loop" poster="static/video/tabs-video-poster2.jpg").nav-item-video
           source(src="static/video/tabs-video2.mp4" type="video/mp4")
       +e('a')(href="#").nav-item-href Вся ночная оптика
-    +e('li').nav-item(style="background-image: url('"+tmpsrc+"itabs-cover.jpg')" data-tabs-nav="thermal")
+    +e('li').nav-item(style="background-image: url('"+tmpsrc+"itabs-cover3.jpg')" data-tabs-nav="thermal")
       +e.nav-item-info
-        +e('a')(href="#").nav-item-title Тепловизоры
+        +e('a')(href="#").nav-item-title.title.--white Тепловизоры
         +e('p').nav-item-text Тепловизионные прицелы, приборы наблюдения, предобъективные насадки
       +e.nav-item-circle
         +e('video')(muted="muted" preload="auto" playsinline="" loop="loop" poster="static/video/tabs-video-poster3.jpg").nav-item-video
           source(src="static/video/tabs-video3.mp4" type="video/mp4")
       +e('a')(href="#").nav-item-href Все тепловизоры
   
-  .swiper-container.js-swiper-product-vertical
-    .swiper-wrapper
-      +productTabs(productData)
-  
   .container
-    +e('a').all-href.all-href 
+    .swiper-container.js-swiper-product-vertical
+      .swiper-wrapper
+        +productTabs(productData)
+  
+  .href-wrap
+    +e('a')(href="#").all-href.href-item
       span Все тепловизоры

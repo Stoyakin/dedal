@@ -4,5 +4,8 @@
       +e('h3').title.title.--white Подписаться на рассылку
       +e('p').text Новинки, акции, важные изменения
       +b('form').form.--white.--subscr
-        +e('input')(type="text").input
-        +e('input')(type="submit" value="Подписаться").submit
+        +e('fieldset').field
+          +e('input')(type="text").field-input
+          +e('button')(type="submit").field-submit
+            include ../../../svg/envelope.svg
+            | Подписаться

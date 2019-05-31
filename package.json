@@ -46,6 +46,7 @@
     "gulp-uglifyjs": "^0.6.2",
     "imagemin-pngquant": "^7.0.0",
     "perfectionist": "^2.4.0",
+    "plyr": "^3.5.4",
     "postcss-base64": "^0.7.1",
     "pug": "^2.0.3",
     "stylus": "^0.54.5",

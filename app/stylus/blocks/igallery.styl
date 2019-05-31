@@ -1,0 +1,95 @@
+.igallery
+  position relative
+  width 100%
+  height 600px
+  transition-property opacity
+  transition-duration .8s
+  transition-delay .8s
+  transition-timing-function ease-in-out
+  opacity 1
+  &.start-animate
+    opacity 1
+  &__all-href
+    display inline-block
+    width auto
+    position absolute
+    top 91px
+    right calc(50% - 608px)
+    text-align right
+    white-space nowrap
+    color #fff
+    font-weight 500
+    font-size 12px
+    letter-spacing 0.08em
+    line-height 16px
+    text-transform uppercase
+    transition opacity .3s ease-in-out
+    z-index 2
+  &__slider
+    height 100%
+    .swiper
+      &-container
+        height 100%
+  &__slide
+    position relative
+    height 100%
+    padding 80px 0
+    z-index 1
+    &-content
+      display flex
+      align-items center
+      justify-content center
+      width 100%
+      height 100%
+      background no-repeat 50%/cover
+      position absolute
+      top 0
+      left 0
+      z-index 2
+    &-cover
+      position absolute
+      top 0
+      left 0
+      width 100%
+      height 100%
+      background no-repeat 50%/cover
+      z-index 2
+    &-video
+      position absolute
+      left 0
+      top 0
+      bottom 0
+      right 0
+      width 100%
+      height 100%
+      z-index -1
+      &-item
+        width 100%
+    &-play
+      position absolute
+      left 50%
+      top 50%
+      transform translate(-50%, -50%)
+      height 104px
+      width 104px
+      fill transparent
+      transition fill .3s ease-in-out
+      cursor pointer
+      z-index 3
+      .play-ico__colored
+        fill transparent
+        transition fill .3s ease-in-out
+      &:hover
+        .play-ico__colored
+          fill #fff
+    &-title
+      color #fff
+      font-weight 500
+      font-size 32px
+      letter-spacing -.015em
+      line-height 36px
+    &-text
+      color #fff
+      font-family 'Roboto'
+      letter-spacing 0.001em
+      margin-top 3px
