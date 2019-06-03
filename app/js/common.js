@@ -16,6 +16,32 @@ function getParent(el, findParent) {
   return false;
 }
 
+let iheadVideos, igalleryVideos;
+const pauseVideos = (activeSlide, allVideos, sliderSpeed ) => {
+  const speed = sliderSpeed ? sliderSpeed : 0;
+  const arrVideos = allVideos;
+  const activeVideo = activeSlide.querySelector('video');
+  if (arrVideos && arrVideos.length) {
+    arrVideos.forEach((video) => {
+      if (video.hasAttribute('data-stid')){
+        clearTimeout(video.getAttribute('data-stid'));
+        video.removeAttribute('data-stid');
+      }
+      video.pause();
+      if (!activeVideo.isEqualNode(video)) {
+        let id = setTimeout(() => {
+          if (!isNaN(video.duration))
+            video.currentTime = 0;
+            video.removeAttribute('data-stid');
+        }, speed);
+        video.setAttribute('data-stid', id);
+      } else {
+        activeVideo.play();
+      }
+    });
+  }
+};
+
 window.onload = () => qs('body').classList.add('page-loaded');
 
 if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) qs('body').classList.add('ios');
@@ -174,10 +200,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         const rect = el.getBoundingClientRect();
         const wHeight = window.innerHeight || document.documentElement.clientHeight;
         const wWidth = window.innerWidth || document.documentElement.clientWidth;
-        return (
-          rect.bottom - el.offsetHeight * 0.75 <= wHeight &&
-          rect.right <= wWidth
-        );
+        return rect.top <= (wHeight * 0.82);
       }
 
       function elemVisCheck(elArray) {
@@ -201,8 +224,31 @@ document.addEventListener("DOMContentLoaded", function (event) {
       }
     },
 
+    fixedHeader: function () {
+      var header = qs('.header'),
+        headerHeight = header.offsetHeight;
+      window.addEventListener('scroll', ()=> {
+        if (window.pageYOffset > headerHeight) header.classList.add('header--sticky');
+        else header.classList.remove('header--sticky');
+      });
+    },
+
+    animDecor: function () {
+      const elemsScroll = qsAll('.js-anim-decor');
+
+      let animOk = true;
+
+      window.addEventListener('scroll', ()=> {
+        if (animFlag){
+          for (let elemItem of elemsScroll) {}
+        }
+      });
+
+    },
+
     swiperDirections: function () {
-      let directionsSwiper = new Swiper('.js-swiper-directions', {
+
+      const directionsSwiper = new Swiper('.js-swiper-directions', {
         loop: true,
         spaceBetween: 12,
         slidesPerView: 6,
@@ -229,11 +275,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
           },
         }
       });
+
     },
 
     swiperIprod: function () {
 
-      let iprodSwiper = new Swiper('.js-swiper-iprod', {
+      const iprodSwiper = new Swiper('.js-swiper-iprod', {
         loop: false,
         spaceBetween: 32,
         slidesPerView: 'auto',
@@ -271,7 +318,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     swiperInews: function () {
 
-      let ipublSwiper = new Swiper('.js-swiper-ipubl', {
+      const ipublSwiper = new Swiper('.js-swiper-ipubl', {
         speed: 1500,
         spaceBetween: 32,
         slidesPerView: 3,
@@ -280,26 +327,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
           nextEl: '.ipubl .swiper-wall-next',
           prevEl: '.ipubl .swiper-wall-prev',
         },
-        // on: {
-        //   slideChange: () => {
-        //     if (this.isNextNews && (this.$refs.newsSlider.swiper.activeIndex > this.$refs.newsSlider.swiper.slides.length - 5 )) {
-        //       this.newsPage++;
-        //       let requestBody = new FormData;
-        //       requestBody.append('PAGEN_1', this.newsPage);
-        //       axios({
-        //         method: 'post',
-        //         url: '/ajax/getIndexNews.php',
-        //         data: requestBody,
-        //       }).then((response) => {
-        //         if (response.status == 200) {
-        //           this.setIsNextNews(response.data.isNextNews);
-        //           this.addIndexNews(response.data.indexNews);
-        //         }
-        //       });
-
-        //     }
-        //   }
-        // },
         breakpoints: {
           1280: {
             spaceBetween: 8,
@@ -317,88 +344,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     },
 
-    swiperTabsProduct: function () {
-      /*
-      speed: mainSliderSpeed,
-        spaceBetween: 32,
-        slidesPerView: 3,
-        simulateTouch: !isIE,
-        navigation: {
-          nextEl: '.index__main-tabs__content .swiper-wall-next',
-          prevEl: '.index__main-tabs__content .swiper-wall-prev',
-        },
-        breakpoints: {
-          1024: {
-            slidesPerView: 1,
-            pagination: {
-              el: '.index__main-tabs__content .swiper-pagination',
-              clickable: true,
-            },
-            navigation: {
-              nextEl: '.swiper-mobile--right',
-              prevEl: '.swiper-mobile--left',
-            },
-          },
-        },
-      */
-
-      let itabsProductSwiper = new Swiper('.js-swiper-product-vertical', {
-        spaceBetween: 32,
-        slidesPerView: 3,
-        simulateTouch: true,
-        speed: 1500,
-        navigation: {
-          nextEl: '.itabs .swiper-button-next',
-          prevEl: '.itabs .swiper-button-prev'
-        },
-        pagination: {
-          el: '.itabs .swiper-pagination',
-          clickable: true,
-        },
-        on: {
-          init: function () {
-            setTimeout(() => {
-              this.$el[0].classList.add('start-anim');
-            }, 200);
-          },
-        },
-        breakpoints: {
-          767: {
-            spaceBetween: 8,
-          }
-        },
-      });
-
-    },
-
     swiperIhead: function () {
 
-      let iheadVideos,
-        iheadSliderSpeed = 1500;
+      const iheadSliderSpeed = 1500;
 
-      const pauseMainBgSliderVideos = (activeSlide) => {
-        let activeVideo = activeSlide.querySelector('video');
-        if (iheadVideos && iheadVideos.length)
-          iheadVideos.forEach((video) => {
-            if (video.hasAttribute('data-stid')){
-              clearTimeout(video.getAttribute('data-stid'));
-              video.removeAttribute('data-stid');
-            }
-            video.pause();
-            if (!activeVideo.isEqualNode(video)) {
-              let id = setTimeout(() => {
-                if (!isNaN(video.duration))
-                  video.currentTime = 0;
-                  video.removeAttribute('data-stid');
-              }, iheadSliderSpeed);
-              video.setAttribute('data-stid', id);
-            } else {
-              activeVideo.play();
-            }
-          });
-      };
-
-      let iheadSwiper = new Swiper('.js-swiper-ihead', {
+      const iheadSwiper = new Swiper('.js-swiper-ihead', {
         loop: true,
         spaceBetween: 0,
         slidesPerView: 1,
@@ -418,11 +368,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
           init: function () {
             iheadVideos = [...qsAll('.ihead video')];
             let activeSlide = this.slides[this.activeIndex];
-            pauseMainBgSliderVideos(activeSlide);
+            pauseVideos(activeSlide, iheadVideos, iheadSliderSpeed);
           },
           slideChange: function () {
             let activeSlide = this.slides[this.activeIndex];
-            pauseMainBgSliderVideos(activeSlide);
+            pauseVideos(activeSlide, iheadVideos, iheadSliderSpeed);
           },
         }
       });
@@ -431,30 +381,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     swiperIgallery: function () {
 
-      let igalleryVideos,
-        igallerySliderSpeed = 1500;
-
-      const pauseMainBgSliderVideos = (activeSlide) => {
-        let activeVideo = activeSlide.querySelector('video');
-        if (igalleryVideos && igalleryVideos.length)
-          igalleryVideos.forEach((video) => {
-            if (video.hasAttribute('data-stid')){
-              clearTimeout(video.getAttribute('data-stid'));
-              video.removeAttribute('data-stid');
-            }
-            video.pause();
-            if (!activeVideo.isEqualNode(video)) {
-              let id = setTimeout(() => {
-                if (!isNaN(video.duration))
-                  video.currentTime = 0;
-                  video.removeAttribute('data-stid');
-              }, igallerySliderSpeed);
-              video.setAttribute('data-stid', id);
-            } else {
-              activeVideo.play();
-            }
-          });
-      };
+      let igallerySliderSpeed = 1500;
 
       let igallerySwiper = new Swiper('.js-swiper-igallery', {
         loop: false,
@@ -493,31 +420,110 @@ document.addEventListener("DOMContentLoaded", function (event) {
           new Plyr(videoItem, {
             controls: ['play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
             loadSprite: false,
+            playsInline: true
           });
         }
-        const players = Array.from(document.querySelectorAll('.js-player')).map(p => new Plyr(p));
+        const players = Array.from(qsAll('.js-player')).map(p => new Plyr(p));
+      }
+
+      if (qsAll('.igallery__slide-play').length) {
+        const arrPlayBtns = qsAll('.igallery__slide-play');
+        for (let playBtn of arrPlayBtns) {
+          playBtn.addEventListener('click', function (e) {
+            let parents = getParent(this, 'igallery__slide-video');
+            for (let playBtn of arrPlayBtns) {
+              playBtn.classList.add('igallery__slide-video--hide-controls')
+            }
+            qs('.swiper-slide-active .js-player').plyr.play();
+            parents.classList.remove('igallery__slide-video--hide-controls');
+            e.preventDefault();
+          });
+        }
+      }
+    },
+
+    swiperTabsProduct: ()=> {
+
+      for (let swiperItem of qsAll('.js-swiper-product-vertical')) {
+        new Swiper(swiperItem, {
+          spaceBetween: 32,
+          slidesPerView: 3,
+          simulateTouch: true,
+          speed: 1500,
+          navigation: {
+            nextEl: qs('.swiper-button-next', swiperItem),
+            prevEl: qs('.swiper-button-prev', swiperItem)
+          },
+          pagination: {
+            el: qs('.swiper-pagination', swiperItem),
+            clickable: true,
+          },
+          on: {
+            init: function () {
+              setTimeout(() => {
+                this.$el[0].classList.add('start-anim');
+              }, 200);
+            },
+          },
+          breakpoints: {
+            767: {
+              spaceBetween: 8,
+            }
+          },
+        });
       }
 
     },
 
+    tabs: function () {
+      let allowed = true;
+      const tabsOver = qs('.js-tabs'),
+        tabsBtns = qsAll('.itabs__nav-item', tabsOver),
+        tabsItems = qsAll('.itabs__list-item', tabsOver),
+        tabsVideos = qsAll('video', tabsOver);
+      for (let btn of tabsBtns) {
+        btn.addEventListener('click', function (e) {
+          let _t = this,
+            _tData = _t.dataset.tabsNav;
+          if (!_t.classList.contains('itabs__nav-item--active') && allowed) {
+            allowed = false;
+
+            pauseVideos(btn, tabsVideos);
+
+            qs('.itabs__nav-item.itabs__nav-item--active', tabsOver).classList.remove('itabs__nav-item--active');
+            _t.classList.add('itabs__nav-item--active');
+            for (let tabs of tabsItems) {
+              tabs.classList.remove('itabs__list-item--active');
+            }
+            qs('.itabs__list-item[data-tabs-item="'+_tData+'"]').classList.add('itabs__list-item--active');
+            allowed = true;
+          }
+          e.preventDefault();
+        });
+      }
+    },
+
     init: function init() {
 
-      let _self = this,
-        elemsAnimArr = ['.js-scroll-anim'];
+      let elemsAnimArr = ['.js-scroll-anim'];
 
-      if (elemsAnimArr.length) this.anim();
+      //if (elemsAnimArr.length) this.anim();
+
+      if (qs('.header')) this.fixedHeader();
 
       if (qs('.js-swiper-ihead')) this.swiperIhead();
 
       if (qs('.js-swiper-iprod')) this.swiperIprod();
-
-      if (qs('.js-swiper-product-vertical')) this.swiperTabsProduct();
 
       if (qs('.js-swiper-igallery')) this.swiperIgallery();
 
       if (qs('.js-swiper-igallery')) this.swiperIgallery();
 
       if (qs('.js-swiper-ipubl')) this.swiperInews();
+
+      if (qs('.js-swiper-product-vertical')) this.swiperTabsProduct();
+
+      if (qs('.js-tabs')) this.tabs();
 
       let eventScroll
       try {

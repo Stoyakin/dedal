@@ -1,5 +1,46 @@
 .form
-  //&--subscr
+  &--feed
+    .form__field
+      &-submit
+        margin 0 auto
+  &--subscr
+    .form__field
+      position relative
+      &-input
+        height 40px
+      &-submit
+        position absolute
+        right 0
+        top 8px
+        z-index 1
+        padding-right 0
+  &--white
+    .form__field
+      &-input, &-textarea
+        color #fff
+        border-bottom 1px solid rgba(255,255,255,.4)
+        &::-webkit-input-placeholder
+          font-size 14px
+          color #fff
+        &:-ms-input-placeholder
+          font-size 14px
+          color #fff
+        &::-ms-input-placeholder
+          font-size 14px
+          color #fff
+        &::placeholder
+          font-size 14px
+          color #fff
+      &-warning
+        color #fff
+      &-submit
+        color #fff
+        .envelope-ico
+          margin-right 5px
+          margin-top -2px
+          width 22px
+          height 16px
+          stroke #fff
   &__field
     position relative
     margin-bottom 25px
@@ -39,8 +80,44 @@
       font-size 14px
       transition opacity .3s ease-in-out,top .3s ease-in-out,font .3s ease-in-out
       pointer-events none
+    &-warning
+      position absolute
+      width 100%
+      left 0
+      bottom -20px
+      color #000
+      font-family 'Roboto'
+      font-size 11px
+      line-height 16px
+      text-align left
+      padding-top .8px
+      opacity 0
+      visibility hidden
+      //opacity .7
+      transition bottom .3s ease-in-out, opacity .3s ease-in-out, visibility .3s ease-in-out
+      z-index 1
     &-submit
-      .envelope-ico
-        width 15px
-        height 15px
+      display flex
+      align-items center
+      justify-content center
+      color #000
+      font-weight 500
+      line-height 24px
+      font-size 12px
+      letter-spacing .01em
+      text-transform uppercase
+      background transparent
+      border-radius 0
+      border none
+      outline none
+      user-select none
+      transition opacity .3s ease-in-out
+      &:disabled
+        opacity: .7
+      .air-ico
+        margin-right 5px
+        width 22px
+        height 19px
+        stroke #000
+        transition stroke .3s ease-in-out
 

@@ -5,7 +5,7 @@
         +e.col.col.--x2
           +e('ul').list
             +e('li').list-item.--head
-              +e('a')(href="#").list-item-href Каталог
+              +e('a')(href="#").list-item-href.--active Каталог
             +e('li').list-item
               +e('a')(href="#").list-item-href Дневная оптика
             +e('li').list-item
@@ -58,16 +58,20 @@
             +e('li').contacts-item
               address 107076, Москва, ул. Стромынка, д. 18
             +e('li').contacts-item
-              a(href="mailto:mailto:info@dedalnvoptics.com") mailto:info@dedalnvoptics.com
+              a(href="mailto:info@dedalnvoptics.com") info@dedalnvoptics.com
           +b('ul').social
             +e('li').item
               +e('a')(href="#").item-href.--vk
+                include ../../../svg/ico-vk.svg
             +e('li').item
               +e('a')(href="#").item-href.--fb
+                include ../../../svg/ico-fb.svg
             +e('li').item
               +e('a')(href="#").item-href.--inst
+                include ../../../svg/ico-inst.svg
             +e('li').item
               +e('a')(href="#").item-href.--ytb
+                include ../../../svg/ico-ytb.svg
     +e.bottom
       +e('p').coopy &copy; 1991–2019 АО «Дедал-НВ»
       +e('ul').bottom-list

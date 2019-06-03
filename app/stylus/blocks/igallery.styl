@@ -46,6 +46,9 @@
       top 0
       left 0
       z-index 2
+      opacity 0
+      visibility hidden
+      transition opacity .5s ease-in-out, visibility .5s ease-in-out
     &-cover
       position absolute
       top 0
@@ -63,6 +66,10 @@
       width 100%
       height 100%
       z-index -1
+      &--hide-controls
+        .igallery__slide-content
+          opacity 1
+          visibility visible
       &-item
         width 100%
     &-play

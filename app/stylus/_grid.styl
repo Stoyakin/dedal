@@ -7,12 +7,12 @@
 .row
   display flex
   flex-wrap wrap
+  margin 0 -16px
+  width calc(100% + 32px)
 
 .col
   margin 0 16px
-
-col(n)
-	width (100/(12/n))%
-
-col_offset(n)
-	margin-left (100/(12/n))%
+  &--x2
+    width calc(100%/6 - 32px)
+  &--offset-2
+    margin-left calc(100%/6 + 16px)

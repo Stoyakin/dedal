@@ -1,6 +1,8 @@
-- var productData = dataProd;
+- var productDataDay = dataProdDay;
+- var productDataNight = dataProdNight;
+- var productDataThermal = dataProdThermal;
 
-+b('section').itabs
++b('section').itabs.js-tabs
   +e('ul').nav
     +e('li').nav-item.--active(style="background-image: url('"+tmpsrc+"itabs-cover.jpg')" data-tabs-nav="day")
       +e.nav-item-info
@@ -27,10 +29,22 @@
           source(src="static/video/tabs-video3.mp4" type="video/mp4")
       +e('a')(href="#").nav-item-href Все тепловизоры
   
-  .container
-    .swiper-container.js-swiper-product-vertical
-      .swiper-wrapper
-        +productTabs(productData)
+  +e('ul').list.start-animate
+    +e('li')(data-tabs-item="day").list-item.--active
+      .container
+        .swiper-container.js-swiper-product-vertical
+          .swiper-wrapper
+            +productTabs(dataProdDay)
+    +e('li')(data-tabs-item="night").list-item
+      .container
+        .swiper-container.js-swiper-product-vertical
+          .swiper-wrapper
+            +productTabs(dataProdNight)
+    +e('li')(data-tabs-item="thermal").list-item
+      .container
+        .swiper-container.js-swiper-product-vertical
+          .swiper-wrapper
+            +productTabs(dataProdThermal)
   
   .href-wrap
     +e('a')(href="#").all-href.href-item

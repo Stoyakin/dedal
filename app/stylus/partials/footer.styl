@@ -1,2 +1,93 @@
 .footer
-  flex-grow 1
+  position absolute
+  left 0
+  bottom 0
+  width 100%
+  z-index 1
+  &__top
+    padding-bottom 40px
+  &__bottom
+    display flex
+    flex-wrap wrap
+    padding 25px 0
+    border-top 1px solid rgba(#fff, .4)
+    &-list
+      display flex
+      margin-left auto
+      &-item
+        margin-right 25px
+        &:last-child
+          margin-right 0
+      &-href
+        color #fff
+        font 300 12px/20px 'Roboto'
+        letter-spacing: .01em
+        transition opacity .3s ease-in-out
+        &--active, &:hover
+          opacity .7
+  &__list
+    &-item
+      margin-bottom 10px
+      &:last-child
+        margin-bottom 0
+      &--head
+        margin-bottom 16px
+        .footer__list-item-href
+          text-transform uppercase
+          font-weight bold
+          line-height 24px
+          font-size 17px
+      &-href
+        color #fff
+        font 300 14px/16px 'Roboto'
+        letter-spacing .01em
+        transition opacity .3s ease-in-out
+        &:hover, &--active
+          opacity .7
+  &__phone
+    display inline-block
+    vertical-align top
+    margin-bottom 10px
+    color #fff
+    font-size 19px
+    line-height 24px
+    font-weight 500
+    text-transform uppercase
+    transition opacity .3s ease-in-out
+    &:hover
+      opacity .7
+  &__callback-href
+    display inline-block
+    vertical-align top
+    color #fff
+    font-size 12px
+    line-height 16px
+    font-weight 500
+    letter-spacing 0.01em
+    text-transform: uppercase
+    transition opacity .3s ease-in-out
+    &:hover
+      opacity .7
+  &__coopy
+    color #fff
+    font 300 14px/20px 'Roboto'
+    letter-spacing: .01em
+  &__contacts
+    margin-top 25px
+    &:first-child
+      margin-top 0
+    &-item
+      color #fff
+      font 300 14px/16px 'Roboto'
+      margin-bottom 11px
+      letter-spacing: .01em
+      &:last-child
+        margin-bottom 0
+      address
+        color #fff
+      a[href^="mailto"]
+        color #fff
+        transition opacity .3s ease-in-out
+        &:hover
+          opacity .7
+

@@ -1,0 +1,36 @@
+.social
+  display flex
+  flex-wrap wrap
+  align-items center
+  margin-top 30px
+  &:first-child
+    margin-top 0
+  &__item
+    margin-right 20px
+    margin-bottom 10px
+    &:last-child
+      margin-right 0
+    &-href
+      font-size 0
+      transition opacity .3s ease-in-out
+      &:hover
+        opacity .7
+      .ico-fb, .ico-inst, .ico-ytb, .ico-vk
+        path
+          fill #d8dade !important
+      .ico-vk
+        width 22px
+        height 19px
+      .ico-fb
+        width 22px
+        height 19px
+      .ico-inst
+        width 22px
+        height 19px
+      .ico-ytb
+        width 22px
+        height 16px
+      // &--vk
+      // &--fb
+      // &--inst
+      // &--ytb

@@ -1,0 +1,59 @@
+.ifeed
+  position relative
+  width 100%
+  padding-top 160px
+  padding-bottom 566px
+  background-color rgb(248, 249, 252)
+  overflow hidden
+  z-index 1
+  &__decor
+    position absolute
+    height 1266px
+    top 0
+    left 0
+    width 100%
+    height 100%
+    z-index -1
+    &-item
+      position absolute
+      top 0
+      left 0
+      right 0
+      bottom 0
+      width 100%
+      height 1266px
+      display flex
+      align-items flex-end
+      justify-content center
+      transition-property transform,opacity
+      transition-duration 1s
+      transition-timing-function cubic-bezier(.215,.61,.355,1)
+      &--front
+        transform translateY(0)
+        transform-origin 50% 0
+      &--back
+        transform translateY(-30px)
+      &-img
+        min-width 100%
+        min-height 100%
+  &__content
+    text-align center
+    min-height 480px
+    max-width 344px
+    margin-left auto
+    margin-right 190px
+  &__title
+    text-transform none
+    margin-bottom 25px
+  &__text
+    color #636466
+    font-family 'Roboto'
+    line-height 24px
+    font-size 16px
+    margin-bottom 35px
+    a
+      color #000
+      transition color .3s ease-in-out
+      &:hover
+        color rgba(#000, .7)
+

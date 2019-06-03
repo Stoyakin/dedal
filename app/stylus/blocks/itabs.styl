@@ -34,7 +34,7 @@
         visibility hidden
         transform translateY(-25px)
         transition opacity .2s ease-in-out, visibility .2s ease-in-out, transform .2s ease-in-out
-        z-index 1
+        z-index -1
       &:hover
         .itabs__nav
           &-item
@@ -116,10 +116,46 @@
         z-index 3
         &:hover
           opacity .7
+  &__list
+    position relative
+    overflow hidden
+    &.start-animate
+      .itabs__list-item--active
+        .swiper-slide
+          opacity 1
+          transform translateX(0)
+    &-item
+      position absolute
+      width 100%
+      left 0
+      top 0
+      opacity 0
+      z-index -1
+      transition opacity .3s ease-in-out
+      &--active
+        position relative
+        opacity 1
+        z-index 1
+        .swiper-slide
+          transition-duration 3s
+          transition-timing-function cubic-bezier(.215,.61,.355,1)
   .swiper
     &-container
       overflow visible
     &-slide
+      opacity 0
+      transform translateX(200px)
+      transition-property transform, opacity
+      &:first-child
+        transition-delay 0s
+      &:nth-child(2)
+        transition-delay .25s
+      &:nth-child(3)
+        transition-delay .5s
+      &:nth-child(4)
+        transition-delay .75s
+      &:nth-child(5)
+        transition-delay 1s
       .product
         opacity .3
       &-active, &-next, &-next + .swiper-slide
