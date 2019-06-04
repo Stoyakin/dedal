@@ -3,6 +3,8 @@
     display flex
     &-item
       margin-right 18px
+      @media (max-width: 1620px)
+        margin-right 16px
       &:last-child
         margin-right 0
       &-href
@@ -13,4 +15,8 @@
         letter-spacing .017em
         text-transform uppercase
         transition color .3s ease-in-out
+        @media (max-width: 1620px)
+          font-size 14px
+        @media (max-width: 1365px)
+          font-size 13px
 
