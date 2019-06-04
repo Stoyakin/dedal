@@ -6,8 +6,8 @@ mixin productTabs(data)
           +e('img')(src=tmpsrc+item.img).item-img
         +e('span').item-art #{item.art}
         +e('span').item-descr !{item.descr}
-        +e('span').item-price !{item.price}
-          span.rub
+        +e('span').item-price !{item.price} 
+          span.rub a
         +e('span').item-buy 
           +e('span').item-buy-ico
             include ../../../svg/basket.svg

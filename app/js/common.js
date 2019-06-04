@@ -475,6 +475,67 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     },
 
+    headerTabs: function () {
+      const body = qs('body'),
+        header = qs('.header'),
+        closeTabs = qs('.js-close-header-tabs') || false;
+
+      function closeHeaderTabs() {
+        body.classList.remove('blocked');
+        header.classList.add('header--hide-tabs');
+        setTimeout(()=>{
+          header.classList.remove('header--show-tabs', 'header--hide-tabs');
+          qs('.js-top-action.nav__list-item-href--active').classList.remove('nav__list-item-href--active');
+          qs('.header__tabs-item.header__tabs-item--active').classList.remove('header__tabs-item--active');
+        }, 600);
+      }
+
+      for(let actionBtn of qsAll('.js-top-action')) {
+        actionBtn.addEventListener('click', function(e) {
+          let _t = this,
+            _data = _t.dataset.action,
+            btnActive = qs('.js-top-action.nav__list-item-href--active') || false,
+            tabsActive = qs('.header__tabs-item.header__tabs-item--active') || false;
+          body.classList.add('blocked');
+          header.classList.add('header--show-tabs');
+          if (!_t.classList.contains('nav__list-item-href--active')) {
+            if (btnActive) btnActive.classList.remove('nav__list-item-href--active');
+            _t.classList.add('nav__list-item-href--active');
+            if (tabsActive) tabsActive.classList.remove('header__tabs-item--active');
+            qs('.header__tabs-item[data-tabs-item="'+_data+'"]').classList.add('header__tabs-item--active');
+          } else {
+            closeHeaderTabs();
+          }
+
+          e.preventDefault();
+        });
+      }
+
+      if (window.innerWidth > 1023) {
+        for(let scrollitem of qsAll('.js-submenu-scroll')) {
+          if (!scrollitem.classList.contains('ps')) {
+            new PerfectScrollbar(scrollitem, {
+              wheelSpeed: 2,
+              wheelPropagation: true,
+              minScrollbarLength: 20
+            });
+          }
+        }
+      } else {
+        for(let scrollitem of qsAll('.js-submenu-scroll')) {
+          scrollitem.perfectScrollbar.destroy();
+        }
+      }
+
+      if (closeTabs) {
+        closeTabs.addEventListener('click', function(e) {
+          closeHeaderTabs();
+          e.preventDefault;
+        });
+      }
+
+    },
+
     tabs: function () {
       let allowed = true;
       const tabsOver = qs('.js-tabs'),
@@ -524,6 +585,17 @@ document.addEventListener("DOMContentLoaded", function (event) {
       if (qs('.js-swiper-product-vertical')) this.swiperTabsProduct();
 
       if (qs('.js-tabs')) this.tabs();
+
+      if (qs('.header__tabs')) this.headerTabs();
+
+      let eventResize
+      try {
+        eventResize = new Event('resize')
+      } catch (e) {
+        eventResize = document.createEvent('Event');
+        eventResize.initEvent('resize', false, false);
+      }
+      window.dispatchEvent(eventResize)
 
       let eventScroll
       try {

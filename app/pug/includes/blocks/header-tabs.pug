@@ -1,0 +1,214 @@
++e.tabs
+  +e('button')(type="button").tabs-close.js-close-header-tabs
+    include ../../../svg/close.svg
+    |  Закрыть
+  +e('ul').tabs-list
+    +e('li')(data-tabs-item="day").tabs-item
+      .container
+        +e.tabs-item-content
+          +e.tabs-item-row
+            +header-submenu([
+              {
+                img: tmpsrc+'header-prod.png', 
+                title: '1-я фокальная плоскость',
+                listHref: [
+                  {href: 'DHF 1-7×24'},
+                  {href: 'DHF 3-12×50'},
+                  {href: 'DHF 5-20×56'}
+                ]
+              },
+              {
+                img: tmpsrc+'header-prod2.png', 
+                title: '2-я фокальная плоскость',
+                listHref: [
+                  {href: 'DH 1-7×24'},
+                  {href: 'DH 3-12×50'},
+                  {href: 'DH 5-20×56'},
+                  {href: 'DH 7-28×56'}
+                ]
+              },
+              {
+                img: tmpsrc+'header-prod3.png', 
+                title: 'Коллиматорные прицелы',
+                listHref: [
+                  {href: 'DK-9'},
+                  {href: 'DK-10'}
+                ]
+              },
+              {
+                img: tmpsrc+'header-prod4.png', 
+                title: 'Аксессуары',
+                listHref: [
+                  {href: 'Кофры'},
+                  {href: 'Сменные объективы'},
+                  {href: 'Адаптеры'},
+                  {href: 'ИК-осветители'},
+                  {href: 'Кронштейны'},
+                  {href: 'Дополнительное оборудование'},
+                  {href: 'Питание. Аккумуляторы'},
+                  {href: 'Разное'},
+                  {href: 'ЗИП'}
+                ]
+              },
+              {
+                img: tmpsrc+'header-prod5.png', 
+                title: 'Крепления',
+                listHref: [
+                  {href: 'Дедал-НВ'},
+                  {href: 'EAW (APEL)'},
+                  {href: 'Blaser'},
+                  {href: 'Kilic Feintechnik GmbH (MAK)'}
+                ]
+              },
+            ])
+          .href-wrap
+            a(href="#").href-item
+              span Вся дневная оптика
+    +e('li')(data-tabs-item="night").tabs-item
+      .container
+        +e.tabs-item-content
+          +e.tabs-item-row
+            +header-submenu([
+              {
+                img: tmpsrc+'header-prod6.png', 
+                title: 'Приборы ночного видения',
+                listHref: [
+                  {href: 'Dedal-370-DK3'},
+                  {href: 'Dedal-370-DK3/bw'},
+                  {href: 'DVS-8-A/bw'},
+                  {href: 'DVS-8-C'},
+                  {href: 'DVS-8-DK3'},
+                  {href: 'DVS-8-DK3/f/bw'}
+                ]
+              },
+              {
+                img: tmpsrc+'header-prod7.png', 
+                title: 'Ночные прицелы',
+                listHref: [
+                  {href: 'Dedal-490-DK3(165)'},
+                  {href: 'Dedal-490-DK3(165)/bw'},
+                  {href: 'Dedal-490-DK3(100)'},
+                  {href: 'Dedal-490-DK3(100)/bw'},
+                  {href: 'Dedal-460-DK3'},
+                  {href: 'Dedal-460-DK3/bw'},
+                  {href: 'Dedal-450-C'},
+                  {href: 'Dedal-445-A/bw'},
+                  {href: 'Dedal-180HR(100)'}
+                ]
+              },
+              {
+                img: tmpsrc+'header-prod8.png', 
+                title: 'Ночные насадки',
+                listHref: [
+                  {href: 'Dedal-552-DK3'},
+                  {href: 'Dedal-552-DK3/bw'}
+                ]
+              },
+              {
+                img: tmpsrc+'header-prod4.png', 
+                title: 'Аксессуары',
+                listHref: [
+                  {href: 'Кофры'},
+                  {href: 'Сменные объективы'},
+                  {href: 'Адаптеры'},
+                  {href: 'ИК-осветители'},
+                  {href: 'Кронштейны'},
+                  {href: 'Дополнительное оборудование'},
+                  {href: 'Питание. Аккумуляторы'},
+                  {href: 'Разное'},
+                  {href: 'ЗИП'}
+                ]
+              },
+              {
+                img: tmpsrc+'header-prod5.png', 
+                title: 'Крепления',
+                listHref: [
+                  {href: 'Дедал-НВ'},
+                  {href: 'EAW (APEL)'},
+                  {href: 'Blaser'},
+                  {href: 'Kilic Feintechnik GmbH (MAK)'}
+                ]
+              },
+            ])
+          .href-wrap
+            a(href="#").href-item
+              span Вся ночная оптика
+    +e('li')(data-tabs-item="thermal").tabs-item
+      .container
+        +e.tabs-item-content
+          +e.tabs-item-row
+            +header-submenu([
+              {
+                img: tmpsrc+'header-prod9.png', 
+                title: 'Тепловизионные прицелы',
+                listHref: [
+                  {href: 'Dedal-T4.642 Pro'},
+                  {href: 'Dedal-T4.642 Hunter'},
+                  {href: 'Dedal-T2.380 Hunter LRF'},
+                  {href: 'Dedal-T2.380 Hunter'},
+                  {href: 'Venator'},
+                ]
+              },
+              {
+                img: tmpsrc+'header-prod10.png', 
+                title: 'Тепловизионные приборы наблюдения',
+                listHref: [
+                  {href: 'Tracker-T4.642'},
+                  {href: 'Tracker-T2.380'}
+                ]
+              },
+              {
+                img: tmpsrc+'header-prod11.png', 
+                title: 'Тепловизионные насадки',
+                listHref: [
+                  {href: 'Dedal-TA2.642 Hunter'},
+                  {href: 'Dedal-TA2.380 Quest'}
+                ]
+              },
+              {
+                img: tmpsrc+'header-prod4.png', 
+                title: 'Аксессуары',
+                listHref: [
+                  {href: 'Кофры'},
+                  {href: 'Сменные объективы'},
+                  {href: 'Адаптеры'},
+                  {href: 'ИК-осветители'},
+                  {href: 'Кронштейны'},
+                  {href: 'Дополнительное оборудование'},
+                  {href: 'Питание. Аккумуляторы'},
+                  {href: 'Разное'},
+                  {href: 'ЗИП'}
+                ]
+              },
+              {
+                img: tmpsrc+'header-prod5.png', 
+                title: 'Крепления',
+                listHref: [
+                  {href: 'Дедал-НВ'},
+                  {href: 'EAW (APEL)'},
+                  {href: 'Blaser'},
+                  {href: 'Kilic Feintechnik GmbH (MAK)'}
+                ]
+              },
+            ])
+          .href-wrap
+            a(href="#").href-item
+              span Все тепловизоры
+    +e('li')(data-tabs-item="about").tabs-item
+      .container
+        +e.tabs-item-content
+          +e.tabs-item-row
+            +header-submenu([
+              { title: 'О предприятии' },
+              { title: 'Пресс-центр' },
+              { title: 'Фото и видео' }
+            ])
+    +e('li')(data-tabs-item="search").tabs-item.--search
+      .container
+        +e.tabs-item-content
+          +b('form').form.--search
+            +e.field
+              +e('input')(type="text" placeholder="Введите название прицела или артикул").field-input
+              +e('button')(type="submit" disabled="disabled").field-submit
+                include ../../../svg/search.svg
+                |  Найти

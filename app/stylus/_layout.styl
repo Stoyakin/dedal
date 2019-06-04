@@ -36,9 +36,19 @@ body
     .wrapper, .header, .main, .footer
       opacity 1
 
+  &.blocked
+    .header
+      padding-right 17px
+    .main, .footer
+      opacity .2
+      pointer-events none
+
 .wrapper, .header, .main, .footer
   opacity 0
   transition opacity .5s ease-in
+
+.main, .footer
+  transition: opacity .3s ease-in-out
 
 .wrapper
   overflow-x hidden

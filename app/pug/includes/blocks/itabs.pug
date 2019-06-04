@@ -28,24 +28,35 @@
         +e('video')(muted="muted" preload="auto" playsinline="" loop="loop" poster="static/video/tabs-video-poster3.jpg").nav-item-video
           source(src="static/video/tabs-video3.mp4" type="video/mp4")
       +e('a')(href="#").nav-item-href Все тепловизоры
-  
+
   +e('ul').list.start-animate
     +e('li')(data-tabs-item="day").list-item.--active
       .container
         .swiper-container.js-swiper-product-vertical
           .swiper-wrapper
             +productTabs(dataProdDay)
+
+        .href-wrap
+          +e('a')(href="#").all-href.href-item
+            span Вся дневная оптика
+
     +e('li')(data-tabs-item="night").list-item
       .container
         .swiper-container.js-swiper-product-vertical
           .swiper-wrapper
             +productTabs(dataProdNight)
+
+        .href-wrap
+          +e('a')(href="#").all-href.href-item
+            span Вся ночная оптика
+
     +e('li')(data-tabs-item="thermal").list-item
       .container
         .swiper-container.js-swiper-product-vertical
           .swiper-wrapper
             +productTabs(dataProdThermal)
-  
-  .href-wrap
-    +e('a')(href="#").all-href.href-item
-      span Все тепловизоры
+
+        .href-wrap
+          +e('a')(href="#").all-href.href-item
+            span Все тепловизоры
+

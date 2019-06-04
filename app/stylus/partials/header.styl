@@ -4,21 +4,32 @@
   top 0
   width 100%
   z-index 10
-  padding 8px 0
+  padding 9px 0 7px
   box-shadow 0 0.6rem 1.6rem rgba(0,0,0,0)
   transition box-shadow .3s ease-in-out, opacity .6s ease-in-out 1s, height .4s ease-in-out, background .4s ease-in-out
+  &--show-tabs
+    .header__tabs
+      max-height calc(100vh - 100%)
+      &-close
+        opacity 1
+        transform translateY(0)
+  &--hide-tabs
+    .header__tabs
+      max-height 0
   &--sticky
     box-shadow 0 0.6rem 1.6rem rgba(0,0,0,.08)
     .logo
       .i-logo
         height 42px
-  &:hover, &--sticky
+    .header__submenu-list
+      max-height calc(100vh - 470px)
+  &:hover, &--sticky, &--show-tabs
     background-color #fff
     .logo-text
       fill $black
     .nav__list-item-href
       color $black
-      &:hover
+      &:hover, &--active
         color #636466
     .header__phone
       color $black
@@ -36,7 +47,7 @@
         stroke #000 !important
       &:hover
         opacity .7
-  .container
+  > .container
     max-width 1565px
   &__row
     align-items center
@@ -45,13 +56,13 @@
     display flex
     align-items center
     margin-left auto
+    margin-right 31px
   &__phone
     color #FFF
     font-size 17px
     line-height 19px
     font-weight 500
     text-transform uppercase
-    letter-spacing .01em
     transition: color .3s ease-in-out
   &__action
     display flex
@@ -96,3 +107,131 @@
       .i-flag-eng
         width 19px
         height 13px
+  &__tabs
+    position absolute
+    left 0
+    top 100%
+    width 100%
+    max-height 0
+    background-color #f8f9fc
+    box-shadow 0 6px 6px rgba(0,0,0,.08)
+    transition height .6s cubic-bezier(.215,.61,.355,1), max-height .6s cubic-bezier(.215,.61,.355,1)
+    overflow hidden
+    padding-right 17px
+    z-index 3
+    &-close
+      position absolute
+      right 59px
+      top 31px
+      display flex
+      justify-content flex-end
+      align-items center
+      color #000
+      font-weight 500
+      font-size 12px
+      line-height 24px
+      text-transform uppercase
+      letter-spacing 0.01em
+      background none
+      border none
+      outline none
+      user-select none
+      cursor pointer
+      opacity 0
+      transform translateY(100px)
+      transition opacity .3s ease-in-out, transform .3s ease-in-out
+      transition-delay .6s
+      z-index 3
+      .close-ico
+        display block
+        width 14px
+        height 14px
+        margin-right 11px
+        margin-top -4px
+    &-list
+      position relative
+    &-item
+      position absolute
+      left 0
+      top 0
+      width 100%
+      opacity 0
+      visibility hidden
+      z-index 1
+      &--search
+        .header__tabs-item-content
+          padding-top 104px
+          padding-bottom 120px
+      &--active
+        position relative
+        opacity 1
+        visibility visible
+        transition opacity .3s ease-in-out, visibility .3s ease-in-out
+        transition-delay .5s
+        .header__tabs-item-content
+          .href-wrap
+            transform translateY(0)
+            opacity 1
+            transition-delay .6s
+        .form--search
+          opacity 1
+          transform translateY(0)
+          transition opacity .5s ease-in-out, transform .5s ease-in-out
+          transition-delay .6s
+      &-content
+        padding-top 40px
+        padding-bottom 80px
+        .href-wrap
+          margin-top 80px
+          transform translateY(100px)
+          opacity 0
+          transition transform .5s ease-in-out, opacity .5s ease-in-out
+      &-row
+        display flex
+        align-items flex-start
+        justify-content center
+        flex-wrap wrap
+        margin 0 -12px
+        width calc(100% + 24px)
+  &__submenu
+    width calc(20% - 24px)
+    margin 0 12px
+    &-href
+      display block
+      margin-bottom 32px
+      &:last-child
+        margin-bottom 0
+      &-overimg
+        display flex
+        align-items center
+        width 100%
+        height 120px
+        margin-left -8px
+        margin-bottom 24px
+        transition opacity .3s ease-in-out
+      &-img
+        max-width 100%
+        max-height 100%
+        width auto
+        height auto
+      &-text
+        display block
+        color #000
+        font 500 20px/24px 'Roboto'
+        transition opacity .3s ease-in-out
+    &-list
+      display block
+      position relative
+      padding-bottom 20px
+      padding-right 20px
+      max-height calc(100vh - 508px)
+      transition max-height .3s ease-in-out
+      &-item
+        margin-bottom 17px
+        &:last-child
+          margin-bottom 0
+      &-href
+        color #636363
+        font 400 16px/24px 'Roboto'
+        text-align left
+        transition opacity .3s ease-in-out

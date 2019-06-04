@@ -239,6 +239,7 @@ gulp.task('stylus', function () {
 gulp.task('css', css([
     src.app.css + 'fonts.css',
     src.app.css + 'ext/swiper-cut-svg.css',
+    src.app.css + 'ext/perfect-scrollbar.css',
     'node_modules/plyr/dist/plyr.css',
     src.app.css + 'styles.css'
   ],
@@ -255,6 +256,7 @@ gulp.task('js-vendor', jsVendor([
     'node_modules/plyr/dist/plyr.js',
     'node_modules/plyr/dist/plyr.polyfilled.js',
     'node_modules/swiper/dist/js/swiper.js',
+    'node_modules/perfect-scrollbar/dist/perfect-scrollbar.js',
   ],
   src.build.js,
   'vendor.js'

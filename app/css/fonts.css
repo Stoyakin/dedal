@@ -67,3 +67,13 @@
   font-weight: bold;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'CustomRouble';
+  src: url("../../../../static/fonts/custom-rouble.woff2") format("woff2"),
+  url("../../../../static/fonts/custom-rouble.woff") format("woff"),
+  url("../../../../static/fonts/custom-rouble.ttf") format("truetype"),
+  url("../../../../static/fonts/custom-rouble.svg#Custom-Rouble") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}

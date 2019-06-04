@@ -1,20 +1,9 @@
 mixin product(data)
   each item in data
-    if (item.vertical)
-      +b('a')(href="#").product.--vertical
-        +e('span').item-overimg
-          +e('img')(src=item.img).item-img
+    +b('a')(href="#").product
+      +e('span').item-img(style="background-image: url("+item.img+");")
+      +e('span').item-content
         +e('span').item-art #{item.art}
-        +e('span').item-title #{item.title}
+        +e('span').item-title.title #{item.title}
         +e('span').item-descr !{item.descr}
-        +e('span').item-price !{item.price}
-          span.rub
-        +e('button')(type="button").item-buy Добавить
-    else
-      +b('a')(href="#").product
-        +e('span').item-img(style="background-image: url("+item.img+");")
-        +e('span').item-content
-          +e('span').item-art #{item.art}
-          +e('span').item-title.title #{item.title}
-          +e('span').item-descr !{item.descr}
-          +e('span').item-more Подробнее
+        +e('span').item-more Подробнее
