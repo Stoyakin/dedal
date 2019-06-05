@@ -1,0 +1,80 @@
+.popup
+  position fixed
+  top 0
+  left 0
+  width 100vw
+  height 100vh
+  display flex
+  align-items center
+  justify-content center
+  background #fff
+  opacity 0
+  visibility hidden
+  transition opacity .35s ease-in-out, visibility .35s ease-in-out
+  z-index -1
+  &--feedback
+    .popup__container
+      max-width 386px
+  &__container
+    display flex
+    flex-direction column
+    position relative
+    max-width 460px
+    max-height 98vh
+    width 100%
+    opacity 0
+    transition opacity .3s ease-in-out
+    transition-delay 0s
+  &__close-btn
+    position absolute
+    right 42px
+    top 30px
+    display flex
+    justify-content flex-end
+    align-items center
+    color #000
+    font-weight 500
+    font-size 12px
+    line-height 24px
+    text-transform uppercase
+    letter-spacing 0.01em
+    background none
+    border none
+    outline none
+    user-select none
+    cursor pointer
+    transition opacity .3s ease-in-out
+    z-index 3
+    &:hover
+      opacity .7
+    .close-ico
+      display block
+      width 14px
+      height 14px
+      margin-right 10px
+  .logo
+    top 0
+    margin 0 auto 43px
+    svg
+      width 141px
+      height 120px
+    @media (max-width: 1620px)
+      margin-right 0
+    @media (max-width: 1365px)
+      margin-right 0
+  &__title
+    text-align center
+    margin-bottom 18px
+  &__text
+    text-align center
+    font-family 'Roboto'
+    font-size 18px
+    line-height 24px
+
+  .validate-row
+    display flex
+    flex-direction column
+    &--answer-server
+      left 50%
+      transform translateX(-50%)
+      width 100%

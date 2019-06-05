@@ -10,11 +10,14 @@
       padding 0 0 30px
       overflow-y hidden
       overflow-x auto
+    &.start-animate
+      .itabs__nav-item
+        opacity 1
+        transform translateY(0)
     &-item
       display block
       position relative
       max-width 592px
-      /*width calc(100%/3 - 42.66px)*/
       width calc(100vw/3 - 42.66px)
       height calc(100vw/3 - 42.66px)
       max-height 480px
@@ -23,11 +26,15 @@
       background-repeat no-repeat
       background-position 50% 50%
       background-size cover
-      //opacity 0
-      //transform translateY(100px)
-      transition opacity 1s ease-in-out .4s, filter 1s ease-in-out .4s,transform 1s ease-in-out .3s, box-shadow .3s ease-in-out
+      opacity 0
+      transform translateY(100px)
       white-space normal
-      //overflow hidden
+      &:first-child
+        transition: opacity 1s ease-in-out .4s,transform 1s ease-in-out
+      &:nth-child(2)
+        transition: opacity 1s ease-in-out .4s,transform 1s ease-in-out .3s
+      &:nth-child(3)
+        transition: opacity 1s ease-in-out .4s,transform 1s ease-in-out .6s
       @media (max-width: 1023px)
         flex-shrink 0
         width 298px

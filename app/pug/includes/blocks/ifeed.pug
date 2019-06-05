@@ -1,22 +1,22 @@
-+b('section').ifeed.js-scroll-anim
-  +e.decor
-    +e.decor-item.--back
++b('section').ifeed.js-paralax
+  +e.decor.js-decor-async
+    +e.decor-item.--back(data-ratio="2.5" data-dir="up")
       +e('img')(src=tmpsrc+"decor.jpg" alt="").decor-item-img
-    +e.decor-item.--front
+    +e.decor-item.--front(data-ratio="0.85" data-dir="down")
       +e('img')(src=tmpsrc+"decor2.png" alt="").decor-item-img
-  .container
-    +e.content
+  .container.validate-wrap
+    +e.content.validate-row
       +e('h3').title.title Остались вопросы?
       +e('p').text Позвоните по номеру 
         a(href="tel:+74955893101") +7 495 589-31-01
         |  или&nbsp;задайте их нашим специалистам через форму обратной связи
-      +b('form').form.--feed
+      +b('form').form.--feed(data-answer="question")
         +e('fieldset').field
           +e('input')(type="text" data-req="req" id="inp_01").field-input
           +e('label')(for="inp_01").field-label Имя
           +e('p').field-warning Поле обязательно для заполнения
         +e('fieldset').field
-          +e('input')(type="email" data-req="req" data-type="email" id="inp_02").field-input
+          +e('input')(type="text" data-req="req" data-type="email" id="inp_02").field-input
           +e('label')(for="inp_02").field-label Адрес электронной почты
           +e('p').field-warning Поле обязательно для заполнения
         +e('fieldset').field
@@ -27,3 +27,7 @@
           +e('button')(type="submit" disabled).field-submit 
             include ../../../svg/air.svg
             |  Отправить
+    +e.content.validate-row.--answer-server.--hidden
+      +e('h3').title.title.js-title
+      +e('p').text.js-text
+      +e('button')(type="button").btn.btn.js-btn-ok Ок

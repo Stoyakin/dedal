@@ -50,77 +50,185 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   window.site = {};
 
-  window.site.form = {
+  window.site.formData = {
+    question: {
+      'title': 'Спасибо!',
+      'text': 'Ваш вопрос отправлен, и в ближайшее время с Вами свяжутся наши специалисты.'
+    },
+    feedback: {
+      'title': 'Спасибо!',
+      'text': 'Мы получили Ваш запрос, и в ближайшее время наши специалисты свяжутся с Вами.'
+    },
+    subsribe: {
+      'title': 'Спасибо!',
+      'text': 'Ваша подписка оформлена!'
+    }
+  }
 
-    init: function init() {
-      let _th = this,
+  window.site.form = ({
+
+    init: function () {
+
+      const _th = this,
+        inputs = qsAll('.form__field-input, .form__field-textarea'),
         forms = qsAll('form'),
-        fieldPhones = qsAll('.js-phone'),
-        formElems = qsAll('.form__field-input, .form__field-textarea');
-      for (let phoneItem of fieldPhones) {
-        $(phoneItem).mask('+7(999) 999-9999')
-      }
-      for (let formElem of formElems) {
-        if (formElem.value != '') {
-          formElem.classList.add('no-empty')
-        } else {
-          formElem.classList.remove('no-empty')
+        digitsInput = qsAll('.js-digits'),
+        btnsOk = qsAll('.js-btn-ok');
+
+      function emptyCheck(event) {
+        let parents = getParent(event.target, 'form'),
+          validateField = qsAll('[data-req]', parents),
+          erorFeilds = qsAll('.error', parents),
+          submitBtn = qs('[type="submit"]', parents),
+          checkValidate = false;
+
+        function checkValidateFiled() {
+          let countCheck = 0;
+          if (erorFeilds.length){
+            for (let erorFeild of erorFeilds) {
+              erorFeild.classList.remove('error');
+            }
+          }
+          for (let itemField of validateField) {
+            if (itemField.value.trim() === '') countCheck++;
+          }
+          if (countCheck === 0) checkValidate = true
         }
-        formElem.addEventListener('keyup', function () {
-          if (formElem.value != '') {
-            formElem.classList.add('no-empty')
-          } else {
-            formElem.classList.remove('no-empty')
+
+        checkValidateFiled();
+
+        if (event.target.value.trim() === ''){
+          event.target.classList.remove('no-empty')
+        } else {
+          event.target.classList.add('no-empty');
+        }
+
+        if (!erorFeilds.length && checkValidate) {
+          submitBtn.disabled = false
+        } else {
+          submitBtn.disabled = true;
+        }
+      }
+
+      for (let item of inputs) {
+        item.addEventListener('keyup', emptyCheck)
+        item.addEventListener('blur', emptyCheck)
+      }
+
+      for (let form of forms) {
+        form.addEventListener('submit', (e) => {
+          if (_th.checkForm(form)) {
+            let blockMsgParent = getParent(form, 'validate-wrap'),
+              blockMsg = qs('.validate-row--answer-server', blockMsgParent) || false,
+              blockMsgTitle = qs('.js-title', blockMsg) || false,
+              blockMsgText = qs('.js-text', blockMsg) || false;
+
+            if (window.site.formData) {
+              for (let itemElem in window.site.formData) {
+                if (itemElem === form.dataset.answer) {
+
+                  if (window.site.formData[itemElem].title && window.site.formData[itemElem].title != '' && blockMsgTitle)
+                    blockMsgTitle.innerText = window.site.formData[itemElem].title;
+                  if (window.site.formData[itemElem].text && window.site.formData[itemElem].text != '' && blockMsgText)
+                    blockMsgText.innerText = window.site.formData[itemElem].text;
+
+                  blockMsgParent.classList.add('validate-wrap--show-answer');
+                  blockMsg.previousElementSibling.classList.add('validate-row--hidden');
+                  setTimeout(()=> {
+                    blockMsg.classList.remove('validate-row--hidden');
+                    form.reset();
+                  },350)
+                }
+              }
+            }
+          }
+          e.preventDefault();
+        });
+      }
+
+      for (let digitInput of digitsInput) {
+        digitInput.addEventListener('keydown', (e) => {
+          let validArr = [46, 8, 9, 27, 13, 110, 190]
+          if (validArr.indexOf(e.keyCode) !== -1 ||
+            (e.keyCode == 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+            (e.keyCode == 67 && (e.ctrlKey === true || e.metaKey === true)) ||
+            (e.keyCode == 88 && (e.ctrlKey === true || e.metaKey === true)) ||
+            (e.keyCode >= 35 && e.keyCode <= 39)) {
+            return;
+          }
+          if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault()
           }
         });
       }
-      for (let formItem of forms) {
-        formItem.addEventListener('submit', function (event) {
-          if (!_th.checkForm($(this))) event.preventDefault()
-        });
+
+      if (btnsOk.length) {
+        for (let btnOkItem of btnsOk) {
+          btnOkItem.addEventListener('click', function (e) {
+            let parentBtn = getParent(e.target, 'validate-wrap'),
+              msgOk = qs('.validate-row--answer-server', parentBtn);
+            if (parentBtn && msgOk) {
+              parentBtn.classList.remove('validate-wrap--show-answer');
+              msgOk.classList.add('validate-row--hidden');
+              setTimeout(()=> {
+                msgOk.previousElementSibling.classList.remove('validate-row--hidden');
+              },350)
+            }
+            e.preventDefault();
+          });
+        }
       }
-      return this;
+
+      return this
     },
 
-    checkForm: function checkForm(form) {
+    checkForm: function (form) {
       let checkResult = true;
-      form.find('.warning').removeClass('warning');
-      form.find('input, textarea, select').each(function () {
-        if ($(this).data('req')) {
-          switch ($(this).data('type')) {
+      const warningElems = form.querySelectorAll('.error');
+
+      if (warningElems.length) {
+        for (let warningElem of warningElems) {
+          warningElem.classList.remove('error')
+        }
+      }
+
+      for (let elem of form.querySelectorAll('input, textarea, select')) {
+        if (elem.getAttribute('data-req')) {
+          switch (elem.getAttribute('data-type')) {
             case 'tel':
               var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
-              if (!re.test($(this).val())) {
-                $(this).addClass('warning');
-                checkResult = false;
+              if (!re.test(elem.value)) {
+                elem.classList.add('error')
+                checkResult = false
               }
               break;
             case 'email':
               var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-              if (!re.test($(this).val())) {
-                $(this).addClass('warning');
-                checkResult = false;
+              if (!re.test(elem.value)) {
+                elem.classList.add('error')
+                checkResult = false
               }
               break;
-            case 'checkbox_personal':
-              if (!$(this).is(':checked')) {
-                $(this).parents('.checkbox').addClass('warning');
-                checkResult = false;
+            case 'file':
+              if (elem.value.trim() === '') {
+                elem.parentNode.classList.add('error')
+                checkResult = false
               }
               break;
             default:
-              if ($.trim($(this).val()) === '') {
-                $(this).addClass('warning');
-                checkResult = false;
+              if (elem.value.trim() === '') {
+                elem.classList.add('error')
+                checkResult = false
               }
               break;
           }
         }
-      });
-      return checkResult;
+      }
+
+      return checkResult
     }
 
-  }.init();
+  }).init();
 
   window.site.obj = {
 
@@ -200,7 +308,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         const rect = el.getBoundingClientRect();
         const wHeight = window.innerHeight || document.documentElement.clientHeight;
         const wWidth = window.innerWidth || document.documentElement.clientWidth;
-        return rect.top <= (wHeight * 0.82);
+        return rect.top <= (wHeight * 0.75);
       }
 
       function elemVisCheck(elArray) {
@@ -225,7 +333,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     },
 
     fixedHeader: function () {
-      var header = qs('.header'),
+      const header = qs('.header'),
         headerHeight = header.offsetHeight;
       window.addEventListener('scroll', ()=> {
         if (window.pageYOffset > headerHeight) header.classList.add('header--sticky');
@@ -233,14 +341,31 @@ document.addEventListener("DOMContentLoaded", function (event) {
       });
     },
 
-    animDecor: function () {
-      const elemsScroll = qsAll('.js-anim-decor');
+    paralaxDecor: function () {
 
-      let animOk = true;
+      const overDecor = qs('.js-paralax'),
+        decorElems = qsAll('.ifeed__decor-item', overDecor);
 
-      window.addEventListener('scroll', ()=> {
-        if (animFlag){
-          for (let elemItem of elemsScroll) {}
+      function visChecker(el) {
+        const rect = el.getBoundingClientRect();
+        const wHeight = window.innerHeight || document.documentElement.clientHeight;
+        return rect.top <= wHeight;
+      }
+
+      window.addEventListener('scroll', () => {
+        if (overDecor && decorElems.length) {
+          for(let decorItem of decorElems) {
+            if (visChecker(overDecor)) {
+              let calc = (((overDecor.offsetTop + overDecor.offsetHeight) - (window.pageYOffset + window.innerHeight))/100);
+              if (calc <= 0) calc = 0.1;
+              if(decorItem.dataset.dir === 'up')
+                decorItem.style.transform = "translateY(-"+(parseFloat(decorItem.dataset.ratio)*calc)+"px)";
+              if(decorItem.dataset.dir === 'down')
+                decorItem.style.transform = "translateY("+((parseFloat(decorItem.dataset.ratio)*calc)-10)+"px)";
+            } else {
+              decorItem.removeAttribute('style');
+            }
+          }
         }
       });
 
@@ -416,12 +541,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
       });
 
       if (qsAll('.js-player').length){
+        let plyrsArray = [];
         for (let videoItem of qsAll('.js-player')) {
+          //plyrsArray.push(new Plyr(videoItem, {
           new Plyr(videoItem, {
             controls: ['play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
             loadSprite: false,
             playsInline: true
           });
+          //}));
         }
         const players = Array.from(qsAll('.js-player')).map(p => new Plyr(p));
       }
@@ -648,11 +776,85 @@ document.addEventListener("DOMContentLoaded", function (event) {
       }
     },
 
+    popUp: function () {
+
+      let body = qs('body'),
+        popups = qsAll('.popup'),
+        closePopup = qsAll('.js-close-popup'),
+        showPopup = qsAll('.js-show-popup[data-action]');
+
+      function togglePopup(element) {
+        let popItem = element ? element : false;
+        if (popItem) {
+          if (body.classList.contains('popup-open') === true) {
+            popItem.classList.remove('popup--active');
+            body.classList.remove('popup-open');
+            body.style.overflow = ''
+          } else {
+            body.classList.add('popup-open');
+            body.style.overflow = 'hidden';
+            popItem.classList.add('popup--active');
+          }
+        }
+      }
+
+      if (popups.length) {
+
+        if (closePopup.length) {
+          for (let itemBtnClose of closePopup) {
+            itemBtnClose.addEventListener('click', (event) => {
+              for (let popup of popups) {
+                if (popup.classList.contains('popup--active')) {
+                  togglePopup(popup);
+                }
+              }
+              event.preventDefault()
+            });
+          }
+        }
+
+        if (showPopup.length) {
+          for (let itemBtn of showPopup) {
+            let btnData = itemBtn.dataset.action;
+            itemBtn.addEventListener('click', (event) => {
+              for (let popup of popups) {
+                let popupData = popup.dataset.popup;
+                if (btnData == popupData) {
+                  togglePopup(popup);
+                }
+              }
+              event.preventDefault();
+            })
+          }
+        }
+
+      }
+
+    },
+
+    addBasket: function () {
+      const basket = qs('.header__action-href--basket'),
+        btnsAddBasket = qsAll('.js-add-basket');
+      if (basket) {
+        for (let btnItem of btnsAddBasket) {
+          btnItem.addEventListener('click', function (e) {
+            if (!this.classList.contains('added-to-basket')) {
+              this.classList.add('added-to-basket');
+              qs('.product__item-buy-text', this).innerText = 'Добавлено';
+              basket.dataset.count = parseInt(basket.dataset.count)+1;
+              basket.classList.add('active');
+              e.preventDefault();
+            }
+          });
+        }
+      }
+    },
+
     init: function init() {
 
       let elemsAnimArr = ['.js-scroll-anim'];
 
-      //if (elemsAnimArr.length) this.anim();
+      if (elemsAnimArr.length) this.anim();
 
       if (qs('.header')) this.fixedHeader();
 
@@ -671,6 +873,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
       if (qs('.js-tabs')) this.tabs();
 
       if (qs('.header__tabs')) this.headerTabs();
+
+      if (qsAll('.js-show-popup[data-action]').length) this.popUp();
+
+      if (qs('.js-paralax')) this.paralaxDecor();
+
+      if (qsAll('.js-add-basket').length) this.addBasket();
 
       let eventResize
       try {

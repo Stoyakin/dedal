@@ -50,7 +50,7 @@
           background-color #000
           &:before, &:after
             background-color #000
-    .i-basket
+    .i-basket, .i-basket-color
       transition opacity .3s ease-in-out
       path
         fill #000 !important
@@ -151,12 +151,43 @@
     &-href
       display inline-block
       vertical-align top
+      &--basket
+        position relative
+        &:after
+          content attr(data-count)
+          display block
+          position absolute
+          top 0
+          left calc(100% + 6px)
+          color $black
+          font-weight 500
+          font-size 12px
+          line-height 16px
+          opacity 0
+          transform translateY(5px)
+          transition opacity .3s ease-in-out,transform .3s ease-in-out,color .3s ease-in-out
+          z-index 1
+        &.active
+          .i-basket
+            display none
+            &-color
+              display block
+          &:after
+            opacity 1
+            transform translateY(0)
       .i-basket
         width 21px
         height 17px
         path
           transition fill .3s ease-in-out
           fill #fff
+        &-color
+          width 21px
+          height 17px
+          display none
+          path
+            transition fill .3s ease-in-out
+            fill #fff
       .i-search
         width 20px
         height 17px

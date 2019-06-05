@@ -22,10 +22,11 @@
 
         +e('ul').action
           +e('li').action-item
-            +e('a')(href="#").action-href.action-href--basket
+            +e('a')(href="#" data-count="0").action-href.--basket
               include ../../../svg/basket.svg
+              include ../../../svg/basket-color.svg
           +e('li').action-item
-            +e('a')(href="#" data-action="search").action-href.action-href--search.js-top-action
+            +e('a')(href="#" data-action="search").action-href.--search.js-top-action
               include ../../../svg/search.svg
 
         +e('ul').lang

@@ -44,6 +44,23 @@ body
       opacity .2
       pointer-events none
 
+  &.popup-open
+    overflow hidden
+    @media (min-width: 1161px)
+      padding-right 17px
+      .header
+        padding-right 17px
+    .popup
+      z-index 15
+      &--active
+        left 0
+        opacity 1
+        visibility visible
+        transition-delay 0s
+      &__container
+        opacity 1
+        transition-delay .6s
+
 .wrapper, .header, .main, .footer
   opacity 0
   transition opacity .5s ease-in

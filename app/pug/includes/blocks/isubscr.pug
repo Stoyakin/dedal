@@ -1,12 +1,17 @@
-+b('section').isubscr(style="background-image: url('"+tmpsrc+"subscr-cover.jpg')")
-  .container
-    +e.content
++b('section')(style="background-image: url('"+tmpsrc+"subscr-cover.jpg')").isubscr.js-scroll-anim
+  .container.validate-wrap
+    +e.content.validate-row
       +e('h3').title.title.--white Подписаться на рассылку
       +e('p').text Новинки, акции, важные изменения
-      +b('form').form.--white.--subscr
+      +b('form').form.--white.--subscr(data-answer="subsribe")
         +e('fieldset').field
           +e('input')(type="text" placeholder="Адрес электронной почты").field-input
-          +e('button')(type="submit" disabled).field-submit
+          +e('button')(type="submit" disabled='disabled').field-submit
             include ../../../svg/envelope.svg
             | Подписаться
           +e('p').field-warning Поле обязательно для заполнения
+    +e.content.validate-row.--answer-server.--hidden
+      +e('h3').title.title.--white.js-title
+      +e('p').text.js-text
+      +e('button')(type="button").btn.btn.js-btn-ok Ок
+

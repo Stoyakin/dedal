@@ -1,0 +1,33 @@
++b.popup.--feedback(data-popup="feedback")
+  +e('button')(type="button").close-btn.js-close-popup
+    include ../../../svg/close.svg
+    | Закрыть
+  +e.container.validate-wrap
+    .validate-row
+      +b.logo.--black
+        include ../../../svg/logo.svg
+      +e('h2').title.title Заказать звонок
+      +b('form').form.--feed.--popup(data-answer="question")
+        +e('fieldset').field
+          +e('input')(type="text" data-req="req" id="inpP_01").field-input
+          +e('label')(for="inpP_01").field-label Имя
+          +e('p').field-warning Поле обязательно для заполнения
+        +e('fieldset').field
+          +e('input')(type="text" data-req="req" data-type="tel" id="inpP_02").field-input.js-digits
+          +e('label')(for="inpP_02").field-label Телефон
+          +e('p').field-warning Поле обязательно для заполнения
+        +e('fieldset').field
+          +e('textarea')(id="textP_01").field-textarea
+          +e('label')(for="textP_01").field-label Комментарий
+            span необязательно
+        +e('fieldset').field
+          +e('button')(type="submit" disabled).field-submit 
+            include ../../../svg/air.svg
+            |  Отправить
+        +e('p').agreement Нажимая кнопку Отправить, Вы соглашаетесь с&nbsp;
+          a(href="") «Условиями сбора и&nbsp;обработки персональных данных»
+    .validate-row.validate-row.validate-row--answer-server.validate-row--hidden
+      +b.logo.--black
+        include ../../../svg/logo.svg
+      +e('h2').title.title.js-title
+      +e('p').text.js-text

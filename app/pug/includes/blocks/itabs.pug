@@ -3,7 +3,7 @@
 - var productDataThermal = dataProdThermal;
 
 +b('section').itabs.js-tabs
-  +e('ul').nav
+  +e('ul').nav.js-scroll-anim
     +e('li').nav-item.--active(style="background-image: url('"+tmpsrc+"itabs-cover.jpg')" data-tabs-nav="day")
       +e.nav-item-info
         +e('a')(href="#").nav-item-title.title.--white Дневная оптика
@@ -29,7 +29,7 @@
           source(src="static/video/tabs-video3.mp4" type="video/mp4")
       +e('a')(href="#").nav-item-href Все тепловизоры
 
-  +e('ul').list.start-animate
+  +e('ul').list.js-scroll-anim
     +e('li')(data-tabs-item="day").list-item.--active
       .container
         .swiper-container.js-swiper-product-vertical

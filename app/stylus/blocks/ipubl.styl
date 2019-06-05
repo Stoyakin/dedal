@@ -7,6 +7,10 @@
     padding-right 30px
   @media  (max-width: 767px)
     padding 64px 0 32px
+  &.start-animate
+    .swiper-slide
+      opacity 1
+      transform translateX(0)
   &__top
     display flex
     flex-wrap wrap
@@ -41,7 +45,13 @@
       transition-property transform, opacity
       transition-duration 3s
       transition-timing-function cubic-bezier(.215,.61,.355,1)
-      // opacity 0
-      // transform translateX(100px)
+      opacity 0
+      transform translateX(100px)
       &:first-child
         transition-delay .7s
+      &:nth-child(2)
+        transition-delay .75s
+      &:nth-child(3)
+        transition-delay .80s
+      &:nth-child(4)
+        transition-delay .85s
