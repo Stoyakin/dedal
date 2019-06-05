@@ -6,6 +6,8 @@ mixin header-submenu(data)
           +e('span').submenu-href-overimg
             +e('img')(src=item.img alt="").submenu-href-img
         +e('span').submenu-href-text #{item.title}
+        if (item.listHref)
+          +e('span').submenu-btn-mobile.js-open-sublist
       if (item.listHref)
         +e('ul').submenu-list.js-submenu-scroll
           each item2 in item.listHref

@@ -23,6 +23,14 @@
         opacity 1
         transform translateX(0)
         .product
-          opacity 1
+          opacity 1 !important
           &__item-img
-            opacity 1
+            opacity 1 !important
+      @media (max-width: 1160px)
+        width 800px
+      @media (max-width: 940px)
+        height auto
+        width calc(100% - 120px)
+        background-color #f8f9fc
+      @media (max-width: 767px)
+        width 288px

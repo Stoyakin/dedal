@@ -5,12 +5,17 @@
   @media (max-width: 1365px)
     padding-left 30px
     padding-right 30px
+  @media  (max-width: 767px)
+    padding 64px 0 32px
   &__top
     display flex
     flex-wrap wrap
     align-items flex-end
     justify-content space-between
     margin-bottom 30px
+    @media (max-width: 767px)
+      flex-direction column
+      align-items flex-start
   &__press-center-href
     color $black
     font-weight 500
@@ -19,6 +24,9 @@
     line-height 16px
     text-transform uppercase
     transition opacity .3s ease-in-out
+    @media (max-width: 767px)
+      align-self flex-start
+      margin-top 20px
     &:hover
       opacity .7
   &__slider

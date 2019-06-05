@@ -9,6 +9,11 @@
     background-color #f8f9fc
     transition opacity .3s ease-in-out, background .3s ease-in-out
     z-index 1
+    @media (max-width: 940px)
+      height auto
+      line-height normal
+    @media (max-width: 767px)
+      min-height 532px
     &:hover
       .product__item-more
         opacity 1
@@ -29,6 +34,12 @@
           opacity .3
           transition opacity .6s ease-in-out
           z-index -1
+          @media screen and (max-width: 1160px)
+            background-position right 80%
+            background-size 62% auto
+          @media screen and (max-width: 940px)
+            background-size 100% auto
+            background-position bottom
         &-content
           display inline-block
           position relative
@@ -40,6 +51,16 @@
           padding-left 72px
           transition opacity .6s ease-in-out
           z-index 2
+          @media (max-width: 1160px)
+            padding-left 30px
+            vertical-align top
+            padding-top 30px
+          @media (max-width: 940px)
+            box-sizing border-box
+            width 100%
+            padding-bottom 73%
+          @media (max-width: 767px)
+            padding 32px 12px 0 16px
         &-art
           display block
           color #636466
@@ -53,6 +74,10 @@
           display block
           margin-bottom 24px
           max-width 385px
+          @media (max-width: 767px)
+            font-size 24px
+            line-height 30px
+            letter-spacing -.025em
         &-descr
           display block
           color #636466
@@ -75,6 +100,13 @@
           opacity 0
           transform translateY(10px)
           transition opacity .3s ease-in-out, transform .3s ease-in-out
+          @media (max-width: 940px)
+            position relative
+            left 0
+            margin-top 25px
+            opacity 1
+            margin-left 0
+            transform translateY(0)
   &--vertical
     display block
     position relative
@@ -139,6 +171,9 @@
         opacity 0
         transform translateY(10px)
         transition opacity .3s ease-in-out,transform .3s ease-in-out
+        @media (max-width: 1160px)
+          opacity 1
+          transform translateY(0)
         &-ico
           margin-right 5px
           margin-top -.02em

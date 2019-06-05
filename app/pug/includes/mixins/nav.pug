@@ -1,5 +1,10 @@
 mixin nav(data)
   +b('nav').nav
+    +e.top-mobile
+      +e('button')(type="button").top-back.js-back-nav
+      +e('a')(href="#").top-href.js-back-nav Дневная оптика
+      +e('button')(type="button").top-close.js-close-nav
+        include ../../../svg/nav-close.svg
     +e('ul').list
       each item in data
         +e('li').list-item
@@ -7,3 +12,20 @@ mixin nav(data)
             +e('a').list-item-href(href="#" data-action=item.data class=item.dopClass ? item.dopClass: '') #{item.href}
           else 
             +e('a').list-item-href(href="#" class=item.dopClass ? item.dopClass: '') #{item.href}
+    +e.bottom-mobile
+      +e('a')(href="tel:+74955893101").phone +7 495 589-31-01
+
+      +b('form').form.--search.--search-mobile
+        +e.field
+          +e('input')(type="text" placeholder="Введите название прицела или артикул").field-input
+          +e('button')(type="submit" disabled="disabled").field-submit
+            include ../../../svg/search.svg
+            |  Найти
+
+      +e('ul').lang
+        +e('li').lang-item
+          +e('span')(href="#").lang-href
+            include ../../../svg/flag-ru.svg
+        +e('li').lang-item
+          +e('a')(href="#").lang-href
+            include ../../../svg/flag-eng.svg

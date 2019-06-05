@@ -1,12 +1,127 @@
 .nav
+  @media (max-width: 1160px)
+    position fixed
+    left 0
+    top -100%
+    width 100%
+    height 100%
+    background-color #fff
+    padding-top 57px
+    padding-bottom 32px
+    overflow-x hidden
+    overflow-y auto
+    visibility hidden
+    transition top .6s ease-in-out, visibility .6s ease-in-out
+    z-index 2
+    &.show
+      top 0
+      visibility visible
+      .nav__top-mobile
+        opacity 1
+        top 0
+        transition opacity .3s ease-in-out, top .3s ease-in-out
+        transition-delay .6s
+        z-index 2
+  &__top
+    &-mobile
+      display none
+      align-items center
+      justify-content space-between
+      background-color #fff
+      position fixed
+      top 50px
+      left 0
+      width 100%
+      padding 16px 32px 17px
+      border-bottom 1px solid rgba(99,100,102,.2)
+      opacity 0
+      z-index -1
+      &.show-btns
+        .nav__top-href, .nav__top-back
+          opacity 1
+          transition opacity .3s ease-in-out
+          transition-delay .3s
+      @media (max-width: 1160px)
+        display flex
+    &-close
+      width 23px
+      height 23px
+      margin-left auto
+      background none
+      border none
+      outline none
+      padding 0
+      .close-ico
+        width 23px
+        height 23px
+        fill #000
+    &-back
+      display inline-block
+      vertical-align middle
+      width 32px
+      height 23px
+      background url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAxMCAxOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBvcGFjaXR5PSIwLjc4IiBkPSJNOSAxTDEgOUw5IDE3IiBzdHJva2U9ImJsYWNrIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=') no-repeat left center
+      border none
+      outline none
+      padding 0
+      opacity 0
+    &-href
+      display block
+      width fit-content
+      color #000
+      font-weight 500
+      font-size 18px
+      line-height 24px
+      text-align left
+      text-transform uppercase
+      margin-right auto
+      max-width calc(100% - 65px)
+      overflow hidden
+      text-overflow ellipsis
+      white-space nowrap
+      opacity 0
+  &__bottom-mobile
+    display none
+    padding 32px 32px 0
+    @media (max-width: 1160px)
+      display block
+  &__phone
+    display block
+    color #000
+    font-weight 500
+    font-size 24px
+    line-height 24px
+  &__lang
+    display flex
+    align-items center
+    margin-top 32px
+    &-item
+      margin-right 21px
+      font-size 0
+      &:last-child
+        margin-right 0
+    &-href
+      svg
+        width 32px
+        height 21px
+      .i-flag-eng
+        width 29px
+        height 19px
   &__list
     display flex
+    @media (max-width: 1160px)
+      flex-direction column
+      padding 24px 32px 0
     &-item
       margin-right 18px
       @media (max-width: 1620px)
         margin-right 16px
+      @media (max-width: 1160px)
+        margin-right 0
+        margin-bottom 32px
       &:last-child
         margin-right 0
+        margin-bottom 0
       &-href
         color #fff
         font-size 15px
@@ -15,8 +130,23 @@
         letter-spacing .017em
         text-transform uppercase
         transition color .3s ease-in-out
+        user-select none
         @media (max-width: 1620px)
           font-size 14px
         @media (max-width: 1365px)
           font-size 13px
-
+        @media (max-width: 1160px)
+          display block
+          position relative
+          font-size 17px
+          color #000
+          padding-right 32px
+          letter-spacing normal
+          &[data-action]:after
+            content ''
+            position absolute
+            top 0
+            right 0
+            height 100%
+            width 32px
+            background url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAxMCAxOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBvcGFjaXR5PSIwLjc4IiBkPSJNMSAxN0w5IDlMMSAxIiBzdHJva2U9ImJsYWNrIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=') no-repeat center

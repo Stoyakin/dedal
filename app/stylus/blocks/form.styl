@@ -8,7 +8,8 @@
     transform translateY(100px)
     .form__field
       display flex
-      //&-input
+      &-input
+        padding-right 80px
       &-submit
         .i-search
           position relative
@@ -18,6 +19,11 @@
           height 17px
           path
             transition stroke .3s ease-in-out
+    &-mobile
+      opacity 1
+      max-width none
+      margin 32px 0 0
+      transform none
   &--feed
     .form__field
       &-submit
@@ -35,6 +41,16 @@
         top 7px
         z-index 1
         padding-right 0
+  &--subscr
+    .form__field
+      &-input
+        padding-right 140px
+        @media (max-width: 767px)
+          padding-right 40px
+      &-submit
+        @media (max-width: 767px)
+          font-size 0
+          top 6px
   &--white
     .form__field
       &-input, &-textarea
@@ -62,6 +78,8 @@
           width 22px
           height 16px
           stroke #fff
+          @media (max-width: 767px)
+            margin-right 0
   &__field
     position relative
     margin-bottom 27px

@@ -1,5 +1,7 @@
 .ihead
   height 680px
+  @media (max-width: 767px)
+    height 482px
   .swiper
     &-container
       height 100%
@@ -9,6 +11,9 @@
           &-title, &-subtitle, &-more
             opacity 1
             transform translateY(0)
+    &-buttons-area
+      @media (max-width: 1160px)
+        display none
   &__item
     &-slide
       display flex
@@ -16,6 +21,10 @@
       position relative
       padding-top 205px
       z-index 1
+      @media (max-width: 1160px)
+        padding-top 135px
+      @media (max-width: 767px)
+        padding-top 80px
     &-back
       position absolute
       left 0
@@ -24,8 +33,13 @@
       height 100%
       z-index -1
     &-content
-      margin-left 103px
-      max-width 800px
+      /*margin-left 103px*/
+      /*max-width 800px*/
+      max-width 65.75%
+      margin-left 8.471%
+      @media (max-width: 767px)
+        max-width 100%
+        margin-left 0
     &-title
       color #fff
       font-size 60px
@@ -36,6 +50,9 @@
       transition-delay .8s
       opacity 0
       transform translateY(70px)
+      @media (max-width: 767px)
+        font-size 40px
+        line-height 40px
     &-subtitle
       color #fff
       font-size 32px
@@ -46,6 +63,11 @@
       transition-delay 1.2s
       opacity 0
       transform translateY(70px)
+      @media (max-width: 767px)
+        margin-top 20px
+        font-size 22px
+        line-height 24px
+        letter-spacing -.05em
     &-more
       display inline-block
       vertical-align top
@@ -61,6 +83,8 @@
       text-transform uppercase
       opacity 0
       transform translateY(70px)
+      @media (max-width: 767px)
+        margin-left 0
       span
         opacity 1
         transition opacity .3s ease-in-out

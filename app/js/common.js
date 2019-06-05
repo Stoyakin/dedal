@@ -466,9 +466,16 @@ document.addEventListener("DOMContentLoaded", function (event) {
             },
           },
           breakpoints: {
+            600: {
+              slidesPerView: 1,
+              spaceBetween: 8,
+            },
             767: {
               spaceBetween: 8,
-            }
+            },
+            1160: {
+              slidesPerView: 2,
+            },
           },
         });
       }
@@ -478,15 +485,33 @@ document.addEventListener("DOMContentLoaded", function (event) {
     headerTabs: function () {
       const body = qs('body'),
         header = qs('.header'),
-        closeTabs = qs('.js-close-header-tabs') || false;
+        closeTabs = qs('.js-close-header-tabs') || false,
+        closeNav = qs('.js-close-nav') || false;
 
       function closeHeaderTabs() {
+        let topActionActive = qs('.js-top-action.nav__list-item-href--active') || false,
+          tabsActive = qs('.header__tabs-item.header__tabs-item--active') || false,
+          submenuBtnMobileActive = qs('.header__submenu-btn-mobile.active') || false,
+          submenuShow = qs('.header__submenu-list.show') || false,
+          nav = qs('.nav') || false,
+          navTopMobile = qs('.nav__top-mobile') || false,
+          navTopHref = qs('.nav__top-href') || false;
+
         body.classList.remove('blocked');
         header.classList.add('header--hide-tabs');
+
         setTimeout(()=>{
+
           header.classList.remove('header--show-tabs', 'header--hide-tabs');
-          qs('.js-top-action.nav__list-item-href--active').classList.remove('nav__list-item-href--active');
-          qs('.header__tabs-item.header__tabs-item--active').classList.remove('header__tabs-item--active');
+          if (topActionActive) topActionActive.classList.remove('nav__list-item-href--active');
+          if (tabsActive) tabsActive.classList.remove('header__tabs-item--active');
+
+          if (nav) nav.classList.remove('show');
+          if (submenuBtnMobileActive) submenuBtnMobileActive.classList.remove('active');
+          if (submenuShow) submenuShow.classList.remove('show');
+          if (navTopHref) navTopHref.innerText = '';
+          if (navTopMobile) navTopMobile.classList.remove('show-btns');
+
         }, 600);
       }
 
@@ -503,15 +528,16 @@ document.addEventListener("DOMContentLoaded", function (event) {
             _t.classList.add('nav__list-item-href--active');
             if (tabsActive) tabsActive.classList.remove('header__tabs-item--active');
             qs('.header__tabs-item[data-tabs-item="'+_data+'"]').classList.add('header__tabs-item--active');
+            if (qs('.nav__top-href')) qs('.nav__top-href').innerText = _t.innerText;
+            if (qs('.nav__top-mobile')) qs('.nav__top-mobile').classList.add('show-btns');
           } else {
             closeHeaderTabs();
           }
-
           e.preventDefault();
         });
       }
 
-      if (window.innerWidth > 1023) {
+      if (window.innerWidth > 1160) {
         for(let scrollitem of qsAll('.js-submenu-scroll')) {
           if (!scrollitem.classList.contains('ps')) {
             new PerfectScrollbar(scrollitem, {
@@ -523,7 +549,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }
       } else {
         for(let scrollitem of qsAll('.js-submenu-scroll')) {
-          scrollitem.perfectScrollbar.destroy();
+          if (scrollitem.classList.contains('ps')) {
+            scrollitem.perfectScrollbar.destroy();
+          }
         }
       }
 
@@ -531,6 +559,62 @@ document.addEventListener("DOMContentLoaded", function (event) {
         closeTabs.addEventListener('click', function(e) {
           closeHeaderTabs();
           e.preventDefault;
+        });
+      }
+
+      if (closeNav) {
+        closeNav.addEventListener('click', function(e) {
+          closeHeaderTabs();
+          e.preventDefault;
+        });
+      }
+
+      if (qsAll('.js-open-sublist')) {
+        for (let itemBtn of qsAll('.js-open-sublist')) {
+          itemBtn.addEventListener('click', function(e) {
+            let parents = getParent(this, 'header__submenu'),
+              hiddenSublist = qs('.header__submenu-list', parents);
+            if (!this.classList.contains('active')) {
+              if (qs('.header__submenu-btn-mobile.active')) qs('.header__submenu-btn-mobile.active').classList.remove('active');
+              if (qs('.header__submenu-list.show')) qs('.header__submenu-list.show').classList.remove('show');
+              this.classList.add('active');
+              hiddenSublist.classList.add('show');
+            } else {
+              this.classList.remove('active');
+              hiddenSublist.classList.remove('show');
+            }
+            e.preventDefault();
+          });
+        }
+      }
+
+      if (qs('.js-burger')) {
+        qs('.js-burger').addEventListener('click', (e)=> {
+          body.classList.add('blocked');
+          qs('.nav').classList.add('show');
+          e.preventDefault();
+        });
+      }
+
+      if (qs('.js-back-nav')) {
+        qs('.js-back-nav').addEventListener('click', function(e) {
+          let topActionActive = qs('.js-top-action.nav__list-item-href--active') || false,
+            tabsActive = qs('.header__tabs-item.header__tabs-item--active') || false,
+            submenuBtnMobileActive = qs('.header__submenu-btn-mobile.active') || false,
+            submenuShow = qs('.header__submenu-list.show') || false,
+            navTopMobile = qs('.nav__top-mobile') || false,
+            navTopHref = qs('.nav__top-href') || false;
+          header.classList.add('header--hide-tabs');
+          setTimeout(()=>{
+            header.classList.remove('header--show-tabs', 'header--hide-tabs');
+            if (topActionActive) topActionActive.classList.remove('nav__list-item-href--active');
+            if (tabsActive) tabsActive.classList.remove('header__tabs-item--active');
+            if (submenuBtnMobileActive) submenuBtnMobileActive.classList.remove('active');
+            if (submenuShow) submenuShow.classList.remove('show');
+            if (navTopHref) navTopHref.innerText = '';
+            if (navTopMobile) navTopMobile.classList.remove('show-btns');
+          }, 600);
+          e.preventDefault();
         });
       }
 

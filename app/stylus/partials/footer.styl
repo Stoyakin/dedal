@@ -7,13 +7,37 @@
   @media (max-width: 1365px)
     padding-left 30px
     padding-right 30px
+  @media (max-width: 767px)
+    padding-left 0
+    padding-right 0
   &__top
     padding-bottom 41px
+  &__row
+    @media (max-width: 960px)
+      flex-direction column
+      margin 0
+      width 100%
+      height 200px
+    @media (max-width: 500px)
+      height auto
   &__col
+    @media (max-width: 960px)
+      width 200px
+      margin 0 0 20px
+      &:last-child
+        margin-bottom 0
+    @media (max-width: 500px)
+      width 100%
     &.col--offset-2
       padding-left 21px
       @media (max-width: 1365px)
         padding-left 0
+      @media (max-width: 960px)
+        display flex
+        margin-left 0
+        flex-direction column
+        align-items flex-start
+        margin-left auto
   &__bottom
     display flex
     flex-wrap wrap
@@ -22,8 +46,19 @@
     &-list
       display flex
       margin-left auto
+      @media (max-width: 960px)
+        flex-direction column
+      @media (max-width: 500px)
+        margin-left 0
+        margin-top 20px
+        width 100%
       &-item
         margin-right 25px
+        @media (max-width: 960px)
+          text-align right
+          margin-right 0
+        @media (max-width: 500px)
+          text-align left
         &:last-child
           margin-right 0
       &-href
@@ -37,10 +72,15 @@
     margin-top -1px
     &-item
       margin-bottom 12px
+      &:not(.footer__list-item--head)
+        @media (max-width: 960px)
+          display none
       &:last-child
         margin-bottom 0
       &--head
         margin-bottom 13px
+        @media (max-width: 960px)
+          margin-bottom 0
         .footer__list-item-href
           text-transform uppercase
           font-weight bold
