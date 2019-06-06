@@ -129,9 +129,10 @@
       margin-left 0
   &__phone
     color #FFF
+    font-family DIN W10 Medium,sans-serif
+    font-weight 600
     font-size 17px
     line-height 19px
-    font-weight 500
     text-transform uppercase
     transition: color .3s ease-in-out
     @media (max-width: 1365px)
@@ -249,7 +250,8 @@
       justify-content flex-end
       align-items center
       color #000
-      font-weight 500
+      font-family DIN W10 Medium,sans-serif
+      font-weight 600
       font-size 12px
       line-height 24px
       text-transform uppercase
@@ -271,7 +273,6 @@
         width 14px
         height 14px
         margin-right 11px
-        margin-top -2px
       &:hover
         opacity .7
     &-list
@@ -401,8 +402,7 @@
           transform rotate(-180deg)
       @media (max-width: 1160px)
         display block
-    &-list
-      display block
+    &-scroll-wrap
       position relative
       padding-bottom 20px
       padding-right 20px
@@ -414,6 +414,7 @@
         overflow hidden
         &.show
           max-height 500px !important
+    &-list
       &-item
         margin-bottom 17px
         @media (max-width: 1160px)

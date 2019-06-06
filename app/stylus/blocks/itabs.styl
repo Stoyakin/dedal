@@ -171,7 +171,8 @@
         bottom 50px
         left 60px
         color #fff
-        font-weight 500
+        font-family DIN W10 Medium,sans-serif
+        font-weight 600
         font-size 12px
         letter-spacing .03em
         line-height 16px
@@ -219,7 +220,6 @@
       position absolute
       width 100%
       left 0
-      top 0
       opacity 0
       z-index -1
       transition opacity .3s ease-in-out
@@ -266,5 +266,9 @@
       &-active, &-next, &-next + .swiper-slide
         .product
           opacity 1
+          &:hover
+            .product__item-buy
+              opacity 1
+              transform translateY(0)
   .href-wrap
     margin-top 47px

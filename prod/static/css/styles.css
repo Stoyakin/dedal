@@ -80,22 +80,22 @@
 
 @font-face {
   font-family: "DIN W10 Regular";
-  src: url("../../static/fonts/DINW10Regular.eot?#iefix");
-  src: url("../../static/fonts/DINW10Regular.eot?#iefix") format("eot"),
-  url("../../static/fonts/DINW10Regular.woff2") format("woff2"),
-  url("../../static/fonts/DINW10Regular.woff") format("woff"),
-  url("../../static/fonts/DINW10Regular.ttf") format("truetype");
+  src: url("../../static/fonts/DINW10Regular/DINW10Regular.eot?#iefix");
+  src: url("../../static/fonts/DINW10Regular/DINW10Regular.eot?#iefix") format("eot"),
+  url("../../static/fonts/DINW10Regular/DINW10Regular.woff2") format("woff2"),
+  url("../../static/fonts/DINW10Regular/DINW10Regular.woff") format("woff"),
+  url("../../static/fonts/DINW10Regular/DINW10Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "DIN W10 Medium";
-  src: url("../../static/fonts/DINW10Medium.eot?#iefix");
-  src: url("../../static/fonts/DINW10Medium.eot?#iefix") format("eot"),
-  url("../../static/fonts/DINW10Medium.woff2") format("woff2"),
-  url("../../static/fonts/DINW10Medium.woff") format("woff"),
-  url("../../static/fonts/DINW10Medium.ttf") format("truetype");
+  src: url("../../static/fonts/DINW10Medium/DINW10Medium.eot?#iefix");
+  src: url("../../static/fonts/DINW10Medium/DINW10Medium.eot?#iefix") format("eot"),
+  url("../../static/fonts/DINW10Medium/DINW10Medium.woff2") format("woff2"),
+  url("../../static/fonts/DINW10Medium/DINW10Medium.woff") format("woff"),
+  url("../../static/fonts/DINW10Medium/DINW10Medium.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
 }
@@ -3395,9 +3395,10 @@ body.popup-open .popup__container {
 
 .header__phone {
   color: #fff;
+  font-family: DIN W10 Medium, sans-serif;
+  font-weight: 600;
   font-size: 17px;
   line-height: 19px;
-  font-weight: 500;
   text-transform: uppercase;
   -webkit-transition: color 0.3s ease-in-out;
   transition: color 0.3s ease-in-out;
@@ -3618,7 +3619,8 @@ body.popup-open .popup__container {
       -ms-flex-align: center;
           align-items: center;
   color: #000;
-  font-weight: 500;
+  font-family: DIN W10 Medium, sans-serif;
+  font-weight: 600;
   font-size: 12px;
   line-height: 24px;
   text-transform: uppercase;
@@ -3655,7 +3657,6 @@ body.popup-open .popup__container {
   width: 14px;
   height: 14px;
   margin-right: 11px;
-  margin-top: -2px;
 }
 
 .header__tabs-close:hover {
@@ -3913,8 +3914,7 @@ body.popup-open .popup__container {
   }
 }
 
-.header__submenu-list {
-  display: block;
+.header__submenu-scroll-wrap {
   position: relative;
   padding-bottom: 20px;
   padding-right: 20px;
@@ -3924,13 +3924,13 @@ body.popup-open .popup__container {
 }
 
 @media (max-width: 1160px) {
-  .header__submenu-list {
+  .header__submenu-scroll-wrap {
     max-height: 0 !important;
     padding: 0;
     overflow: hidden;
   }
 
-  .header__submenu-list.show {
+  .header__submenu-scroll-wrap.show {
     max-height: 500px !important;
   }
 }
@@ -4147,7 +4147,8 @@ body.popup-open .popup__container {
 
 .footer__list-item--head .footer__list-item-href {
   text-transform: uppercase;
-  font-weight: bold;
+  font-family: DIN W10 Medium, sans-serif;
+  font-weight: 600;
   line-height: 24px;
   font-size: 17px;
   letter-spacing: -0.02em;
@@ -4173,7 +4174,8 @@ body.popup-open .popup__container {
   color: #fff;
   font-size: 19px;
   line-height: 24px;
-  font-weight: 500;
+  font-family: DIN W10 Medium, sans-serif;
+  font-weight: 600;
   text-transform: uppercase;
   -webkit-transition: opacity 0.3s ease-in-out;
   transition: opacity 0.3s ease-in-out;
@@ -4189,7 +4191,8 @@ body.popup-open .popup__container {
   color: #fff;
   font-size: 12px;
   line-height: 16px;
-  font-weight: 500;
+  font-family: DIN W10 Medium, sans-serif;
+  font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   -webkit-transition: opacity 0.3s ease-in-out;
@@ -4265,7 +4268,8 @@ body.popup-open .popup__container {
   vertical-align: top;
   position: relative;
   color: #000;
-  font-weight: 500;
+  font-family: DIN W10 Medium, sans-serif;
+  font-weight: 600;
   font-size: 12px;
   letter-spacing: 0.08em;
   line-height: 16px;
@@ -4299,7 +4303,8 @@ body.popup-open .popup__container {
 
 .title {
   color: #000;
-  font-weight: 500;
+  font-family: DIN W10 Medium, sans-serif;
+  font-weight: 600;
   font-size: 32px;
   letter-spacing: -0.015em;
   line-height: 36px;
@@ -4615,7 +4620,6 @@ body.popup-open .popup__container {
   left: 0;
   bottom: -20px;
   color: #000;
-  font-family: 'Roboto';
   font-size: 11px;
   line-height: 16px;
   text-align: left;
@@ -4638,7 +4642,8 @@ body.popup-open .popup__container {
       -ms-flex-pack: center;
           justify-content: center;
   color: #000;
-  font-weight: 500;
+  font-family: DIN W10 Medium, sans-serif;
+  font-weight: 600;
   line-height: 24px;
   font-size: 12px;
   letter-spacing: 0.08em;
@@ -4953,7 +4958,8 @@ body.popup-open .popup__container {
   color: #fff;
   font-size: 15px;
   line-height: 24px;
-  font-weight: 500;
+  font-family: DIN W10 Medium, sans-serif;
+  font-weight: 600;
   letter-spacing: 0.017em;
   text-transform: uppercase;
   -webkit-transition: color 0.3s ease-in-out;
@@ -5060,8 +5066,6 @@ body.popup-open .popup__container {
 }
 
 .ihead__item-content {
-  /*margin-left 103px*/
-  /*max-width 800px*/
   max-width: 65.75%;
   margin-left: 8.471%;
 }
@@ -5077,7 +5081,8 @@ body.popup-open .popup__container {
   color: #fff;
   font-size: 60px;
   line-height: 60px;
-  font-weight: 500;
+  font-family: DIN W10 Medium, sans-serif;
+  font-weight: 600;
   letter-spacing: -0.037em;
   -webkit-transition: opacity 1s ease-in-out, -webkit-transform 1s ease-in-out;
   transition: opacity 1s ease-in-out, -webkit-transform 1s ease-in-out;
@@ -5100,6 +5105,8 @@ body.popup-open .popup__container {
 
 .ihead__item-subtitle {
   color: #fff;
+  font-family: DIN W10 Regular, sans-serif;
+  font-weight: 400;
   font-size: 32px;
   line-height: 40px;
   letter-spacing: -0.012em;
@@ -5129,6 +5136,7 @@ body.popup-open .popup__container {
   display: inline-block;
   vertical-align: top;
   color: #fff;
+  font-family: DIN W10 Regular, sans-serif;
   font-weight: 400;
   font-size: 12px;
   line-height: 24px;
@@ -5350,7 +5358,6 @@ body.popup-open .popup__container {
 .product:not(.product--vertical) .product__item-art {
   display: block;
   color: #636466;
-  font-family: 'Roboto';
   font-size: 16px;
   line-height: 24px;
   margin-top: 2px;
@@ -5376,7 +5383,6 @@ body.popup-open .popup__container {
 .product:not(.product--vertical) .product__item-descr {
   display: block;
   color: #636466;
-  font-family: 'Roboto';
   font-size: 16px;
   line-height: 24px;
   max-width: 280px;
@@ -5388,10 +5394,11 @@ body.popup-open .popup__container {
   bottom: 0;
   display: inline-block;
   color: #000;
+  font-family: DIN W10 Medium, sans-serif;
+  font-weight: 600;
   font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.025em;
   line-height: 24px;
+  letter-spacing: 0.025em;
   margin-left: 40px;
   text-transform: uppercase;
   opacity: 0;
@@ -5428,13 +5435,6 @@ body.popup-open .popup__container {
   z-index: 1;
 }
 
-.product--vertical:hover .product__item-buy {
-  opacity: 1;
-  -webkit-transform: translateY(0);
-      -ms-transform: translateY(0);
-          transform: translateY(0);
-}
-
 .product--vertical .product__item-overimg {
   display: block;
   position: relative;
@@ -5459,7 +5459,6 @@ body.popup-open .popup__container {
 .product--vertical .product__item-art {
   display: block;
   color: #000;
-  font-family: Roboto;
   font-weight: 500;
   font-size: 26px;
   line-height: 30px;
@@ -5471,7 +5470,6 @@ body.popup-open .popup__container {
   display: block;
   min-height: 50px;
   color: #636466;
-  font-family: Roboto;
   font-size: 16px;
   line-height: 25px;
   margin-bottom: 30px;
@@ -5480,7 +5478,8 @@ body.popup-open .popup__container {
 .product--vertical .product__item-price {
   display: block;
   color: #000;
-  font-weight: 500;
+  font-family: DIN W10 Medium, sans-serif;
+  font-weight: 600;
   font-size: 20px;
   line-height: 32px;
   margin-bottom: 16px;
@@ -5502,6 +5501,11 @@ body.popup-open .popup__container {
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0 auto;
   -webkit-transition: opacity 0.3s ease-in-out;
   transition: opacity 0.3s ease-in-out;
   opacity: 0;
@@ -5828,7 +5832,8 @@ body.popup-open .popup__container {
   bottom: 50px;
   left: 60px;
   color: #fff;
-  font-weight: 500;
+  font-family: DIN W10 Medium, sans-serif;
+  font-weight: 600;
   font-size: 12px;
   letter-spacing: 0.03em;
   line-height: 16px;
@@ -5902,7 +5907,6 @@ body.popup-open .popup__container {
   position: absolute;
   width: 100%;
   left: 0;
-  top: 0;
   opacity: 0;
   z-index: -1;
   -webkit-transition: opacity 0.3s ease-in-out;
@@ -6006,6 +6010,15 @@ body.popup-open .popup__container {
   opacity: 1;
 }
 
+.itabs .swiper-slide-active .product:hover .product__item-buy,
+.itabs .swiper-slide-next .product:hover .product__item-buy,
+.itabs .swiper-slide-next + .swiper-slide .product:hover .product__item-buy {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+          transform: translateY(0);
+}
+
 .itabs .href-wrap {
   margin-top: 47px;
 }
@@ -6041,7 +6054,8 @@ body.popup-open .popup__container {
   text-align: right;
   white-space: nowrap;
   color: #fff;
-  font-weight: 500;
+  font-family: DIN W10 Medium, sans-serif;
+  font-weight: 600;
   font-size: 12px;
   letter-spacing: 0.08em;
   line-height: 16px;
@@ -6191,7 +6205,8 @@ body.popup-open .popup__container {
 
 .igallery__slide-title {
   color: #fff;
-  font-weight: 500;
+  font-family: DIN W10 Medium, sans-serif;
+  font-weight: 600;
   font-size: 32px;
   letter-spacing: -0.015em;
   line-height: 36px;
@@ -6206,7 +6221,6 @@ body.popup-open .popup__container {
 
 .igallery__slide-text {
   color: #fff;
-  font-family: 'Roboto';
   letter-spacing: 0.001em;
   margin-top: 26px;
 }
@@ -6646,7 +6660,8 @@ body.popup-open .popup__container {
 
 .ipubl__press-center-href {
   color: #000;
-  font-weight: 500;
+  font-family: DIN W10 Medium, sans-serif;
+  font-weight: 600;
   font-size: 12px;
   letter-spacing: 0.08em;
   line-height: 16px;
@@ -6788,11 +6803,16 @@ body.popup-open .popup__container {
 .publ__type {
   opacity: 0.8;
   color: #000;
-  font-weight: 500;
+  font-family: DIN W10 Medium, sans-serif;
+  font-weight: 600;
   font-size: 12px;
   letter-spacing: 0.1em;
   line-height: 24px;
   text-transform: uppercase;
+}
+
+.publ__type.white {
+  color: #fff;
 }
 
 .publ__info {
@@ -6821,7 +6841,6 @@ body.popup-open .popup__container {
 
 .publ__date,
 .publ__title {
-  font-family: 'Roboto';
   line-height: 24px;
 }
 
@@ -6846,7 +6865,6 @@ body.popup-open .popup__container {
 .publ__text {
   display: block;
   color: #636466;
-  font-family: 'Roboto';
   font-size: 16px;
   line-height: 24px;
 }
@@ -6869,7 +6887,6 @@ body.popup-open .popup__container {
 }
 
 .isubscr__content {
-  /*margin-left 104px*/
   max-width: 487px;
   -webkit-transition: opacity 1s ease-in-out, visibility 1s ease-in-out, -webkit-transform 1s ease-in-out;
   transition: opacity 1s ease-in-out, visibility 1s ease-in-out, -webkit-transform 1s ease-in-out;
@@ -6901,7 +6918,6 @@ body.popup-open .popup__container {
 }
 
 .isubscr__text {
-  font-family: 'Roboto';
   font-size: 16px;
   line-height: 24px;
   margin-bottom: 38px;
@@ -7047,7 +7063,6 @@ body.popup-open .popup__container {
 
 .ifeed__text {
   color: #636466;
-  font-family: 'Roboto';
   line-height: 24px;
   font-size: 16px;
   margin-bottom: 38px;

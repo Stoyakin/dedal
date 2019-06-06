@@ -1,6 +1,6 @@
 mixin header-submenu(data)
   each item in data
-    +e.submenu
+    +e('li').submenu
       +e('a')(href="#").submenu-href
         if (item.img)
           +e('span').submenu-href-overimg
@@ -9,8 +9,9 @@ mixin header-submenu(data)
         if (item.listHref)
           +e('span').submenu-btn-mobile.js-open-sublist
       if (item.listHref)
-        +e('ul').submenu-list.js-submenu-scroll
-          each item2 in item.listHref
-            +e('li').submenu-list-item
-              +e('a')(href="#").submenu-list-href #{item2.href}
+        +e.submenu-scroll-wrap.js-submenu-scroll
+          +e('ul').submenu-list
+            each item2 in item.listHref
+              +e('li').submenu-list-item
+                +e('a')(href="#").submenu-list-href #{item2.href}
 

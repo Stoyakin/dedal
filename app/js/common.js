@@ -633,7 +633,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         let topActionActive = qs('.js-top-action.nav__list-item-href--active') || false,
           tabsActive = qs('.header__tabs-item.header__tabs-item--active') || false,
           submenuBtnMobileActive = qs('.header__submenu-btn-mobile.active') || false,
-          submenuShow = qs('.header__submenu-list.show') || false,
+          submenuShow = qs('.header__submenu-scroll-wrap.show') || false,
           nav = qs('.nav') || false,
           navTopMobile = qs('.nav__top-mobile') || false,
           navTopHref = qs('.nav__top-href') || false;
@@ -725,10 +725,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
         for (let itemBtn of qsAll('.js-open-sublist')) {
           itemBtn.addEventListener('click', function (e) {
             let parents = getParent(this, 'header__submenu'),
-              hiddenSublist = qs('.header__submenu-list', parents);
+              hiddenSublist = qs('.header__submenu-scroll-wrap', parents);
             if (!this.classList.contains('active')) {
               if (qs('.header__submenu-btn-mobile.active')) qs('.header__submenu-btn-mobile.active').classList.remove('active');
-              if (qs('.header__submenu-list.show')) qs('.header__submenu-list.show').classList.remove('show');
+              if (qs('.header__submenu-scroll-wrap.show')) qs('.header__submenu-scroll-wrap.show').classList.remove('show');
               this.classList.add('active');
               hiddenSublist.classList.add('show');
             } else {
@@ -753,7 +753,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
           let topActionActive = qs('.js-top-action.nav__list-item-href--active') || false,
             tabsActive = qs('.header__tabs-item.header__tabs-item--active') || false,
             submenuBtnMobileActive = qs('.header__submenu-btn-mobile.active') || false,
-            submenuShow = qs('.header__submenu-list.show') || false,
+            submenuShow = qs('.header__submenu-scroll-wrap.show') || false,
             navTopMobile = qs('.nav__top-mobile') || false,
             navTopHref = qs('.nav__top-href') || false;
           header.classList.add('header--hide-tabs');

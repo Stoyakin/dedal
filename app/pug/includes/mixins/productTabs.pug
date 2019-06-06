@@ -2,13 +2,13 @@ mixin productTabs(data)
   each item in data
     .swiper-slide(data-tabs-item=item.tabs)
       +b('a')(href="#").product.--vertical
-        +e('span').item-overimg
+        +e('div').item-overimg
           +e('img')(src=tmpsrc+item.img).item-img
-        +e('span').item-art #{item.art}
-        +e('span').item-descr !{item.descr}
-        +e('span').item-price !{item.price} 
+        +e('p').item-art #{item.art}
+        +e('p').item-descr !{item.descr}
+        +e('p').item-price !{item.price} 
           span.rub a
-        +e('span').item-buy.js-add-basket
+        +e('button').item-buy.js-add-basket
           +e('span').item-buy-ico
             include ../../../svg/basket.svg
           +e('span').item-buy-text Добавить
