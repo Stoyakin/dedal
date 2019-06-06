@@ -106,7 +106,7 @@ function js(src, dst, fileName) {
       .pipe($.sourcemaps.init())
       .pipe(babel({
         presets: ["@babel/preset-env"],
-        minified: false
+        minified: true
       }))
       .pipe($.plumber({
         errorHandler: $.notify.onError({
@@ -253,8 +253,8 @@ gulp.task('csspack', csspack([src.build.css + 'styles.css'], src.build.css));
 gulp.task('js-own', js([src.app.js + 'common.js'], src.build.js, 'own.js'));
 
 gulp.task('js-vendor', jsVendor([
-    'node_modules/plyr/dist/plyr.js',
     'node_modules/plyr/dist/plyr.polyfilled.js',
+    'node_modules/plyr/dist/plyr.js',
     'node_modules/swiper/dist/js/swiper.js',
     'node_modules/perfect-scrollbar/dist/perfect-scrollbar.js',
   ],
@@ -293,7 +293,7 @@ gulp.task('watch', gulp.series('browserSync', function () {
   gulp.watch(src.app.pug + '*.pug', gulp.series('setWatch', 'pug'));
   gulp.watch(src.app.stylus + '**/*.styl', gulp.series('stylus'));
   gulp.watch(src.app.css + 'styles.css', gulp.series('css'));
-  //gulp.watch(src.build.css + 'styles.css', gulp.series('csspack'));
+  gulp.watch(src.build.css + 'styles.css', gulp.series('csspack'));
   gulp.watch(src.app.js + '**/*.js', gulp.series('js-own'));
 }));
 
@@ -302,7 +302,7 @@ gulp.task('js', gulp.series('js-vendor', 'js-own'));
 gulp.task('css-build', gulp.series('stylus', 'css', 'csspack' ));
 gulp.task('pug-build', gulp.series('setWatch', 'pug'));
 
-gulp.task('build', gulp.parallel(/*clean,*/ gulp.series('setWatch', 'pug'), gulp.series('stylus', 'css', /*'csspack'*/ ), 'js'));
+gulp.task('build', gulp.parallel(/*clean,*/ gulp.series('setWatch', 'pug'), gulp.series('stylus', 'css', 'csspack' ), 'js'));
 
 // Дефолтный таск
 gulp.task('default', gulp.series('build', 'browserSync'));

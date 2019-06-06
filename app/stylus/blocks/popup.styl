@@ -8,10 +8,15 @@
   align-items center
   justify-content center
   background #fff
+  padding 45px 20px
   opacity 0
   visibility hidden
   transition opacity .35s ease-in-out, visibility .35s ease-in-out
+  overflow-y auto
+  overflow-x hidden
   z-index -1
+  @media (max-width: 480px)
+    align-items flex-start
   &--feedback
     .popup__container
       max-width 386px
@@ -20,7 +25,6 @@
     flex-direction column
     position relative
     max-width 460px
-    max-height 98vh
     width 100%
     opacity 0
     transition opacity .3s ease-in-out
@@ -45,6 +49,10 @@
     cursor pointer
     transition opacity .3s ease-in-out
     z-index 3
+    @media (max-width: 1023px)
+      font-size 0
+      right 10px
+      top 10px
     &:hover
       opacity .7
     .close-ico
@@ -52,16 +60,19 @@
       width 14px
       height 14px
       margin-right 10px
+      @media (max-width: 1023px)
+        margin-right 0
   .logo
     top 0
     margin 0 auto 43px
+    @media (max-width: 1365px)
+      margin-right auto
     svg
       width 141px
       height 120px
-    @media (max-width: 1620px)
-      margin-right 0
-    @media (max-width: 1365px)
-      margin-right 0
+      @media (max-width: 767px)
+        width 80px
+        height 70px
   &__title
     text-align center
     margin-bottom 18px
@@ -70,7 +81,6 @@
     font-family 'Roboto'
     font-size 18px
     line-height 24px
-
   .validate-row
     display flex
     flex-direction column

@@ -1,4 +1,5 @@
 .itabs
+  overflow hidden
   &__nav
     display flex
     flex-wrap wrap
@@ -6,10 +7,11 @@
     margin-bottom 30px
     @media (max-width: 1023px)
       flex-wrap nowrap
-      justify-content flex-start
       padding 0 0 30px
       overflow-y hidden
       overflow-x auto
+    @media (max-width: 934px)
+      justify-content flex-start
     &.start-animate
       .itabs__nav-item
         opacity 1
@@ -23,23 +25,22 @@
       max-height 480px
       margin 0 16px
       padding 65px 60px 63px
-      background-repeat no-repeat
-      background-position 50% 50%
-      background-size cover
+      white-space normal
       opacity 0
       transform translateY(100px)
-      white-space normal
+      z-index 1
       &:first-child
         transition: opacity 1s ease-in-out .4s,transform 1s ease-in-out
       &:nth-child(2)
         transition: opacity 1s ease-in-out .4s,transform 1s ease-in-out .3s
       &:nth-child(3)
         transition: opacity 1s ease-in-out .4s,transform 1s ease-in-out .6s
+      @media (max-width: 1160px)
+        padding 30px
       @media (max-width: 1023px)
         flex-shrink 0
         width 298px
         height 298px
-        padding 30px
         margin 0 20px 0 0
         &:last-child
           margin-right 0
@@ -57,7 +58,7 @@
         visibility hidden
         transform translateY(-25px)
         transition opacity .2s ease-in-out, visibility .2s ease-in-out, transform .2s ease-in-out
-        z-index -1
+        z-index -2
       &:hover
         .itabs__nav
           &-item
@@ -80,6 +81,17 @@
               opacity 1
               transform translateY(0)
               pointer-events auto
+      &-cover
+        display block
+        position absolute
+        left 0
+        top 0
+        width 100%
+        height 100%
+        background-repeat no-repeat
+        background-position 50% 50%
+        background-size cover
+        z-index -1
       &-info
         max-width 290px
         position relative
@@ -169,6 +181,8 @@
         transform translateY(1rem)
         transition opacity .3s ease-in-out,transform .3s ease-in-out
         z-index 3
+        @media (max-width: 1160px)
+          left 30px
         @media (max-width: 1023px)
           display inline-block
           vertical-align top
@@ -180,12 +194,22 @@
           opacity .7
   &__list
     position relative
-    overflow hidden
+    //overflow hidden
     padding-top 84px
     padding-bottom 81px
     @media (max-width: 1023px)
       padding-top 15px
       padding-bottom 60px
+      &:before
+        content ''
+        display block
+        position absolute
+        top -20px
+        right 32px
+        width 42px
+        height 10px
+        background url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAKCAMAAAD1sTxfAAAAM1BMVEUAAAAAcyIAcyIAcyIAcyIAcyIAcyIAcyIAcyIAcyIAcyIAcyIAcyIAcyIAcyIAcyIAcyLsYydVAAAAEHRSTlMAaZHt+PJjUUE07lSJdnVVpmv5yQAAAFxJREFUGNONkTkOwDAIBPF9xc7+/7WBRCmQLItpWIkpOEhog46M9qea3Fl1qX6hRGjVh+61ilikZkCrHsylVSATLSi4EaQGDlAsmlZ12gfYr9X3a9mPZXrB/b7gAcEDBuAycS5rAAAAAElFTkSuQmCC') no-repeat center
+        z-index 1
     &.start-animate
       .itabs__list-item--active
         .swiper-slide

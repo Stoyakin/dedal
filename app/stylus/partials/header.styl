@@ -50,12 +50,15 @@
           background-color #000
           &:before, &:after
             background-color #000
+      &__action-href--basket.active::after
+        color #000
     .i-basket, .i-basket-color
       transition opacity .3s ease-in-out
       path
         fill #000 !important
       &:hover
         opacity .7
+
     .i-search
       transition opacity .3s ease-in-out
       path
@@ -159,7 +162,7 @@
           position absolute
           top 0
           left calc(100% + 6px)
-          color $black
+          color #fff
           font-weight 500
           font-size 12px
           line-height 16px
@@ -209,6 +212,9 @@
       &:last-child
         margin-right 0
     &-href
+      transition opacity .3s ease-in-out
+      &[href]:hover
+        opacity .7
       svg
         width 21px
         height 15px
@@ -220,6 +226,7 @@
     left 0
     top 100%
     width 100%
+    height 0
     max-height 0
     background-color #f8f9fc
     box-shadow 0 6px 6px rgba(0,0,0,.08)
@@ -264,7 +271,9 @@
         width 14px
         height 14px
         margin-right 11px
-        margin-top -4px
+        margin-top -2px
+      &:hover
+        opacity .7
     &-list
       position relative
       @media (max-width: 1160px)
@@ -303,6 +312,8 @@
         padding-bottom 80px
         @media (max-width: 1160px)
           padding 24px 32px 0
+        @media (max-width: 480px)
+          padding 16px 16px 0
         .href-wrap
           margin-top 80px
           transform translateY(100px)
@@ -320,6 +331,9 @@
         @media (max-width: 1160px)
           margin 0
           width 100%
+      @media (max-width: 480px)
+        .container
+          max-width 100%
   &__submenu
     width calc(20% - 24px)
     margin 0 12px
@@ -336,6 +350,10 @@
         align-items flex-start
         position relative
         margin-bottom 10px
+      &:hover
+        .header__submenu-href
+          &-overimg, &-text
+            opacity .7
       &:last-child
         margin-bottom 0
       &-overimg
@@ -406,4 +424,6 @@
         color #636363
         font 400 16px/24px 'Roboto'
         text-align left
-        transition opacity .3s ease-in-out
+        transition color .3s ease-in-out
+        &:hover
+          color #000

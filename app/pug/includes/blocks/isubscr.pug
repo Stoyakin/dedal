@@ -5,7 +5,7 @@
       +e('p').text Новинки, акции, важные изменения
       +b('form').form.--white.--subscr(data-answer="subsribe")
         +e('fieldset').field
-          +e('input')(type="text" placeholder="Адрес электронной почты").field-input
+          +e('input')(type="text" placeholder="Адрес электронной почты" data-req="req").field-input
           +e('button')(type="submit" disabled='disabled').field-submit
             include ../../../svg/envelope.svg
             | Подписаться

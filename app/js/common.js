@@ -17,13 +17,13 @@ function getParent(el, findParent) {
 }
 
 let iheadVideos, igalleryVideos;
-const pauseVideos = (activeSlide, allVideos, sliderSpeed ) => {
+const pauseVideos = (activeSlide, allVideos, sliderSpeed) => {
   const speed = sliderSpeed ? sliderSpeed : 0;
   const arrVideos = allVideos;
   const activeVideo = activeSlide.querySelector('video');
   if (arrVideos && arrVideos.length) {
     arrVideos.forEach((video) => {
-      if (video.hasAttribute('data-stid')){
+      if (video.hasAttribute('data-stid')) {
         clearTimeout(video.getAttribute('data-stid'));
         video.removeAttribute('data-stid');
       }
@@ -32,7 +32,7 @@ const pauseVideos = (activeSlide, allVideos, sliderSpeed ) => {
         let id = setTimeout(() => {
           if (!isNaN(video.duration))
             video.currentTime = 0;
-            video.removeAttribute('data-stid');
+          video.removeAttribute('data-stid');
         }, speed);
         video.setAttribute('data-stid', id);
       } else {
@@ -40,6 +40,11 @@ const pauseVideos = (activeSlide, allVideos, sliderSpeed ) => {
       }
     });
   }
+};
+
+const resetForm = (itemForm) => {
+  ['error', 'no-empty'].forEach(item => qsAll(`.${item}`, itemForm).forEach(elem => elem.classList.remove(item)));
+  itemForm.reset();
 };
 
 window.onload = () => qs('body').classList.add('page-loaded');
@@ -84,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
         function checkValidateFiled() {
           let countCheck = 0;
-          if (erorFeilds.length){
+          if (erorFeilds.length) {
             for (let erorFeild of erorFeilds) {
               erorFeild.classList.remove('error');
             }
@@ -97,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
         checkValidateFiled();
 
-        if (event.target.value.trim() === ''){
+        if (event.target.value.trim() === '') {
           event.target.classList.remove('no-empty')
         } else {
           event.target.classList.add('no-empty');
@@ -134,10 +139,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
                   blockMsgParent.classList.add('validate-wrap--show-answer');
                   blockMsg.previousElementSibling.classList.add('validate-row--hidden');
-                  setTimeout(()=> {
+                  setTimeout(() => {
                     blockMsg.classList.remove('validate-row--hidden');
-                    form.reset();
-                  },350)
+                    resetForm(form);
+                  }, 350)
                 }
               }
             }
@@ -170,9 +175,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
             if (parentBtn && msgOk) {
               parentBtn.classList.remove('validate-wrap--show-answer');
               msgOk.classList.add('validate-row--hidden');
-              setTimeout(()=> {
+              setTimeout(() => {
                 msgOk.previousElementSibling.classList.remove('validate-row--hidden');
-              },350)
+              }, 350)
             }
             e.preventDefault();
           });
@@ -294,7 +299,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }
         return false;
       });
-      qs('.js-close-nav').addEventListener('click', (e)=> {
+      qs('.js-close-nav').addEventListener('click', (e) => {
         qs('.header__burger').classList.remove('header__burger--active');
         _th.fadeOut('.nav', 300);
         e.preventDefault();
@@ -335,7 +340,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     fixedHeader: function () {
       const header = qs('.header'),
         headerHeight = header.offsetHeight;
-      window.addEventListener('scroll', ()=> {
+      window.addEventListener('scroll', () => {
         if (window.pageYOffset > headerHeight) header.classList.add('header--sticky');
         else header.classList.remove('header--sticky');
       });
@@ -354,14 +359,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
       window.addEventListener('scroll', () => {
         if (overDecor && decorElems.length) {
-          for(let decorItem of decorElems) {
+          for (let decorItem of decorElems) {
             if (visChecker(overDecor)) {
-              let calc = (((overDecor.offsetTop + overDecor.offsetHeight) - (window.pageYOffset + window.innerHeight))/100);
+              let calc = (((overDecor.offsetTop + overDecor.offsetHeight) - (window.pageYOffset + window.innerHeight)) / 100);
               if (calc <= 0) calc = 0.1;
-              if(decorItem.dataset.dir === 'up')
-                decorItem.style.transform = "translateY(-"+(parseFloat(decorItem.dataset.ratio)*calc)+"px)";
-              if(decorItem.dataset.dir === 'down')
-                decorItem.style.transform = "translateY("+((parseFloat(decorItem.dataset.ratio)*calc)-10)+"px)";
+              if (decorItem.dataset.dir === 'up')
+                decorItem.style.transform = "translateY(-" + (parseFloat(decorItem.dataset.ratio) * calc) + "px)";
+              if (decorItem.dataset.dir === 'down')
+                decorItem.style.transform = "translateY(" + ((parseFloat(decorItem.dataset.ratio) * calc) - 10) + "px)";
             } else {
               decorItem.removeAttribute('style');
             }
@@ -507,6 +512,39 @@ document.addEventListener("DOMContentLoaded", function (event) {
     swiperIgallery: function () {
 
       let igallerySliderSpeed = 1500;
+      let plyrsArray = [];
+
+      if (qsAll('.js-player').length) {
+        for (let videoItem of qsAll('.js-player')) {
+          plyrsArray.push(new Plyr(videoItem, {
+            controls: ['play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
+            loadSprite: false,
+            playsInline: true
+          }));
+        }
+        for (let plyrItem of plyrsArray) {
+          plyrItem.on('ended', (event) => {
+            let parents = getParent(event.target, 'igallery__slide-video');
+            parents.classList.add('igallery__slide-video--hide-controls');
+            qs('.igallery__slide-play', parents).classList.remove('igallery__slide-video--hide-controls');
+          });
+        }
+      }
+
+      if (qsAll('.igallery__slide-play').length) {
+        const arrPlayBtns = qsAll('.igallery__slide-play');
+        for (let playBtn of arrPlayBtns) {
+          playBtn.addEventListener('click', function (e) {
+            let parents = getParent(this, 'igallery__slide-video');
+            for (let playBtn of arrPlayBtns) {
+              playBtn.classList.add('igallery__slide-video--hide-controls')
+            }
+            qs('.swiper-slide-active .js-player').plyr.play();
+            parents.classList.remove('igallery__slide-video--hide-controls');
+            e.preventDefault();
+          });
+        }
+      }
 
       let igallerySwiper = new Swiper('.js-swiper-igallery', {
         loop: false,
@@ -528,49 +566,19 @@ document.addEventListener("DOMContentLoaded", function (event) {
           },
         },
         on: {
-          init: function () {
-            igalleryVideos = [...qsAll('.igallery video')];
-            let activeSlide = this.slides[this.activeIndex];
-            //pauseMainBgSliderVideos(activeSlide);
-          },
           slideChange: function () {
-            let activeSlide = this.slides[this.activeIndex];
-            //pauseMainBgSliderVideos(activeSlide);
+            for (let [index, plyrItem] of plyrsArray.entries()) {
+              if (index !== this.activeIndex) {
+                plyrItem.pause();
+              }
+            }
           },
         }
       });
 
-      if (qsAll('.js-player').length){
-        let plyrsArray = [];
-        for (let videoItem of qsAll('.js-player')) {
-          //plyrsArray.push(new Plyr(videoItem, {
-          new Plyr(videoItem, {
-            controls: ['play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
-            loadSprite: false,
-            playsInline: true
-          });
-          //}));
-        }
-        const players = Array.from(qsAll('.js-player')).map(p => new Plyr(p));
-      }
-
-      if (qsAll('.igallery__slide-play').length) {
-        const arrPlayBtns = qsAll('.igallery__slide-play');
-        for (let playBtn of arrPlayBtns) {
-          playBtn.addEventListener('click', function (e) {
-            let parents = getParent(this, 'igallery__slide-video');
-            for (let playBtn of arrPlayBtns) {
-              playBtn.classList.add('igallery__slide-video--hide-controls')
-            }
-            qs('.swiper-slide-active .js-player').plyr.play();
-            parents.classList.remove('igallery__slide-video--hide-controls');
-            e.preventDefault();
-          });
-        }
-      }
     },
 
-    swiperTabsProduct: ()=> {
+    swiperTabsProduct: () => {
 
       for (let swiperItem of qsAll('.js-swiper-product-vertical')) {
         new Swiper(swiperItem, {
@@ -611,10 +619,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
     },
 
     headerTabs: function () {
+
       const body = qs('body'),
         header = qs('.header'),
+        headerTabs = qs('.header__tabs', header),
         closeTabs = qs('.js-close-header-tabs') || false,
-        closeNav = qs('.js-close-nav') || false;
+        closeNav = qs('.js-close-nav') || false,
+        btnBackNav = qs('.js-back-nav') || false,
+        btnBurger = qs('.js-burger') || false,
+        wHeight = window.innerHeight || document.documentElement.clientHeight;
 
       function closeHeaderTabs() {
         let topActionActive = qs('.js-top-action.nav__list-item-href--active') || false,
@@ -628,9 +641,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
         body.classList.remove('blocked');
         header.classList.add('header--hide-tabs');
 
-        setTimeout(()=>{
+        setTimeout(() => {
 
           header.classList.remove('header--show-tabs', 'header--hide-tabs');
+          headerTabs.removeAttribute('style');
           if (topActionActive) topActionActive.classList.remove('nav__list-item-href--active');
           if (tabsActive) tabsActive.classList.remove('header__tabs-item--active');
 
@@ -643,19 +657,29 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }, 600);
       }
 
-      for(let actionBtn of qsAll('.js-top-action')) {
-        actionBtn.addEventListener('click', function(e) {
+      for (let actionBtn of qsAll('.js-top-action')) {
+        actionBtn.addEventListener('click', function (e) {
           let _t = this,
             _data = _t.dataset.action,
             btnActive = qs('.js-top-action.nav__list-item-href--active') || false,
             tabsActive = qs('.header__tabs-item.header__tabs-item--active') || false;
-          body.classList.add('blocked');
-          header.classList.add('header--show-tabs');
+
           if (!_t.classList.contains('nav__list-item-href--active')) {
+
+            body.classList.add('blocked');
+            header.classList.add('header--show-tabs');
+
+            let findItemTab = qs('.header__tabs-item[data-tabs-item="' + _data + '"]'),
+              headerTabsMaxheight = wHeight - header.clientHeight,
+              findItemTabHeight = findItemTab.clientHeight;
+
+            if (headerTabsMaxheight < findItemTabHeight) findItemTabHeight = headerTabsMaxheight;
+            headerTabs.style.height = findItemTabHeight + 'px';
+
             if (btnActive) btnActive.classList.remove('nav__list-item-href--active');
             _t.classList.add('nav__list-item-href--active');
             if (tabsActive) tabsActive.classList.remove('header__tabs-item--active');
-            qs('.header__tabs-item[data-tabs-item="'+_data+'"]').classList.add('header__tabs-item--active');
+            findItemTab.classList.add('header__tabs-item--active');
             if (qs('.nav__top-href')) qs('.nav__top-href').innerText = _t.innerText;
             if (qs('.nav__top-mobile')) qs('.nav__top-mobile').classList.add('show-btns');
           } else {
@@ -666,7 +690,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       }
 
       if (window.innerWidth > 1160) {
-        for(let scrollitem of qsAll('.js-submenu-scroll')) {
+        for (let scrollitem of qsAll('.js-submenu-scroll')) {
           if (!scrollitem.classList.contains('ps')) {
             new PerfectScrollbar(scrollitem, {
               wheelSpeed: 2,
@@ -676,7 +700,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
           }
         }
       } else {
-        for(let scrollitem of qsAll('.js-submenu-scroll')) {
+        for (let scrollitem of qsAll('.js-submenu-scroll')) {
           if (scrollitem.classList.contains('ps')) {
             scrollitem.perfectScrollbar.destroy();
           }
@@ -684,22 +708,22 @@ document.addEventListener("DOMContentLoaded", function (event) {
       }
 
       if (closeTabs) {
-        closeTabs.addEventListener('click', function(e) {
+        closeTabs.addEventListener('click', function (e) {
           closeHeaderTabs();
           e.preventDefault;
         });
       }
 
       if (closeNav) {
-        closeNav.addEventListener('click', function(e) {
+        closeNav.addEventListener('click', function (e) {
           closeHeaderTabs();
           e.preventDefault;
         });
       }
 
-      if (qsAll('.js-open-sublist')) {
+      if (qsAll('.js-open-sublist').length) {
         for (let itemBtn of qsAll('.js-open-sublist')) {
-          itemBtn.addEventListener('click', function(e) {
+          itemBtn.addEventListener('click', function (e) {
             let parents = getParent(this, 'header__submenu'),
               hiddenSublist = qs('.header__submenu-list', parents);
             if (!this.classList.contains('active')) {
@@ -716,16 +740,16 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }
       }
 
-      if (qs('.js-burger')) {
-        qs('.js-burger').addEventListener('click', (e)=> {
+      if (btnBurger) {
+        btnBurger.addEventListener('click', (e) => {
           body.classList.add('blocked');
           qs('.nav').classList.add('show');
           e.preventDefault();
         });
       }
 
-      if (qs('.js-back-nav')) {
-        qs('.js-back-nav').addEventListener('click', function(e) {
+      if (btnBackNav) {
+        btnBackNav.addEventListener('click', function (e) {
           let topActionActive = qs('.js-top-action.nav__list-item-href--active') || false,
             tabsActive = qs('.header__tabs-item.header__tabs-item--active') || false,
             submenuBtnMobileActive = qs('.header__submenu-btn-mobile.active') || false,
@@ -733,8 +757,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
             navTopMobile = qs('.nav__top-mobile') || false,
             navTopHref = qs('.nav__top-href') || false;
           header.classList.add('header--hide-tabs');
-          setTimeout(()=>{
+          setTimeout(() => {
             header.classList.remove('header--show-tabs', 'header--hide-tabs');
+            headerTabs.removeAttribute('style');
             if (topActionActive) topActionActive.classList.remove('nav__list-item-href--active');
             if (tabsActive) tabsActive.classList.remove('header__tabs-item--active');
             if (submenuBtnMobileActive) submenuBtnMobileActive.classList.remove('active');
@@ -754,26 +779,37 @@ document.addEventListener("DOMContentLoaded", function (event) {
         tabsBtns = qsAll('.itabs__nav-item', tabsOver),
         tabsItems = qsAll('.itabs__list-item', tabsOver),
         tabsVideos = qsAll('video', tabsOver);
+
+      if (tabsVideos.length) tabsVideos[0].play();
+
+      const pauseTabsVideos = (allVideos) => {
+        if (allVideos && allVideos.length) {
+          for (let video of allVideos) {
+            video.pause();
+          }
+        }
+      };
+
       for (let btn of tabsBtns) {
         btn.addEventListener('click', function (e) {
           let _t = this,
             _tData = _t.dataset.tabsNav;
           if (!_t.classList.contains('itabs__nav-item--active') && allowed) {
             allowed = false;
-
-            pauseVideos(btn, tabsVideos);
-
+            pauseTabsVideos(tabsVideos);
+            qs('video', btn).play();
             qs('.itabs__nav-item.itabs__nav-item--active', tabsOver).classList.remove('itabs__nav-item--active');
             _t.classList.add('itabs__nav-item--active');
             for (let tabs of tabsItems) {
               tabs.classList.remove('itabs__list-item--active');
             }
-            qs('.itabs__list-item[data-tabs-item="'+_tData+'"]').classList.add('itabs__list-item--active');
+            qs('.itabs__list-item[data-tabs-item="' + _tData + '"]').classList.add('itabs__list-item--active');
             allowed = true;
           }
           e.preventDefault();
         });
       }
+
     },
 
     popUp: function () {
@@ -799,16 +835,16 @@ document.addEventListener("DOMContentLoaded", function (event) {
       }
 
       if (popups.length) {
-
         if (closePopup.length) {
           for (let itemBtnClose of closePopup) {
-            itemBtnClose.addEventListener('click', (event) => {
+            itemBtnClose.addEventListener('click', (e) => {
               for (let popup of popups) {
                 if (popup.classList.contains('popup--active')) {
                   togglePopup(popup);
+                  resetForm(qs('form', popup));
                 }
               }
-              event.preventDefault()
+              e.preventDefault();
             });
           }
         }
@@ -816,14 +852,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
         if (showPopup.length) {
           for (let itemBtn of showPopup) {
             let btnData = itemBtn.dataset.action;
-            itemBtn.addEventListener('click', (event) => {
+            itemBtn.addEventListener('click', (e) => {
               for (let popup of popups) {
                 let popupData = popup.dataset.popup;
                 if (btnData == popupData) {
                   togglePopup(popup);
                 }
               }
-              event.preventDefault();
+              e.preventDefault();
             })
           }
         }
@@ -841,7 +877,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             if (!this.classList.contains('added-to-basket')) {
               this.classList.add('added-to-basket');
               qs('.product__item-buy-text', this).innerText = 'Добавлено';
-              basket.dataset.count = parseInt(basket.dataset.count)+1;
+              basket.dataset.count = parseInt(basket.dataset.count) + 1;
               basket.classList.add('active');
               e.preventDefault();
             }
@@ -904,4 +940,3 @@ document.addEventListener("DOMContentLoaded", function (event) {
   }.init();
 
 });
-
