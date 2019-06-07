@@ -270,5 +270,15 @@
             .product__item-buy
               opacity 1
               transform translateY(0)
+    &-wall
+      position absolute
+      top 0
+      width calc(50vw - 50% - 32px)
+      height 100%
+      z-index 3
+      &--left
+        left calc(50% - 50vw)
+      &--right
+        right calc(50% - 50vw)
   .href-wrap
     margin-top 47px

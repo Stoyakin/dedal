@@ -7,11 +7,9 @@ mixin ipubl(data)
             if (item.last)
               +e('span').more Смотреть все
             else
-              +e.cover(style="background-image: url('"+tmpsrc+item.cover+"');")
+              +e('div').cover(style="background-image: url('"+tmpsrc+item.cover+"');")
                 +e('p').type(class=item.typeColor ? item.typeColor : '') #{item.type}
-              +e.info(class=item.classIco ? item.classIco : '')
+              +e('div').info(class=item.classIco ? item.classIco : '')
                 +e('time').date #{item.date}
                 +e('p').title #{item.title}
-                +e.text !{item.text}
-
-
+                +e('div').text !{item.text}

@@ -87,6 +87,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
           submitBtn = qs('[type="submit"]', parents),
           checkValidate = false;
 
+        const re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+
         function checkValidateFiled() {
           let countCheck = 0;
           if (erorFeilds.length) {
@@ -101,6 +103,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }
 
         checkValidateFiled();
+
+        if (event.target.dataset.type === 'email' ){
+          !re.test(event.target.value.trim()) ? event.target.classList.add('error') : event.target.classList.remove('error');
+        }
 
         if (event.target.value.trim() === '') {
           event.target.classList.remove('no-empty')
@@ -444,6 +450,16 @@ document.addEventListener("DOMContentLoaded", function (event) {
         },
       });
 
+      for(let itemSLide of qsAll('.iprod .swiper-slide')) {
+        itemSLide.addEventListener('click', function(e) {
+          if (!this.classList.contains('swiper-slide-active')) {
+            if (this.classList.contains('swiper-slide-next')) iprodSwiper.slideNext(1500)
+            if (this.classList.contains('swiper-slide-prev')) iprodSwiper.slidePrev(1500)
+            e.preventDefault();
+          }
+        });
+      }
+
     },
 
     swiperInews: function () {
@@ -580,8 +596,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     swiperTabsProduct: () => {
 
+      let swiperArr = [];
+
       for (let swiperItem of qsAll('.js-swiper-product-vertical')) {
-        new Swiper(swiperItem, {
+        swiperArr.push(new Swiper(swiperItem, {
           spaceBetween: 32,
           slidesPerView: 3,
           simulateTouch: true,
@@ -613,7 +631,16 @@ document.addEventListener("DOMContentLoaded", function (event) {
               slidesPerView: 2,
             },
           },
-        });
+        }));
+      }
+
+      for (let swiperItem of swiperArr) {
+        for (let wallItem of qsAll('.swiper-wall', swiperItem.$el[0])) {
+          wallItem.addEventListener('click', function () {
+            if (this.classList.contains('swiper-wall--left')) swiperItem.slideNext(1500);
+            if (this.classList.contains('swiper-wall--right')) swiperItem.slidePrev(1500);
+          });
+        }
       }
 
     },

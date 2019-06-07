@@ -5,11 +5,11 @@
       +e('p').text Новинки, акции, важные изменения
       +b('form').form.--white.--subscr(data-answer="subsribe")
         +e('fieldset').field
-          +e('input')(type="text" placeholder="Адрес электронной почты" data-req="req").field-input
+          +e('input')(type="text" placeholder="Адрес электронной почты" data-req="req" data-type="email").field-input
           +e('button')(type="submit" disabled='disabled').field-submit
             include ../../../svg/envelope.svg
             | Подписаться
-          +e('p').field-warning Поле обязательно для заполнения
+          +e('p').field-warning Пожалуйста, проверьте введенный адрес
     +e.content.validate-row.--answer-server.--hidden
       +e('h3').title.title.--white.js-title
       +e('p').text.js-text
