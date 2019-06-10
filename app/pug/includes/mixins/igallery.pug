@@ -2,13 +2,18 @@ mixin igallery(data)
   .swiper-container.js-swiper-igallery
     .swiper-wrapper
       each item in data
+        - var poster = item.poster ? "static/video/"+item.poster : ""
         .swiper-slide
           +e.slide
             +e.slide-video.--hide-controls
-              +e('video')(poster="static/video/"+item.poster).slide-video-item.js-player
+              +e('video')(poster=poster).slide-video-item.js-player
                 source(src="static/video/"+item.videoSrc type="video/mp4")
               +e.slide-content
-                +e.slide-cover(style="background-image: url('static/video/"+item.poster+"');")
+                if (item.videoCover)
+                  +e('video')(muted="muted" playsinline="" loop="loop" autoplay="autoplay").slide-cover.--video
+                    source(src="static/video/"+item.videoCover type="video/mp4")
+                else
+                  +e.slide-cover(style="background-image: url('static/video/"+item.poster+"');")
                 +e.slide-play
                   include ../../../svg/play.svg
             .container

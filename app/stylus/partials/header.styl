@@ -13,12 +13,17 @@
         display none
       .header__action-item
         margin-right 0
+  @media (max-width: 767px)
+    padding 7px 0 9px
   &--show-tabs
     .header__tabs
       max-height calc(100vh - 100%)
       &-close
         opacity 1
         transform translateY(0)
+        &:hover
+          opacity .7
+          transition-delay 0s
       @media (max-width: 1160px)
         max-height calc(100% - 58px)
         left 0
@@ -30,8 +35,8 @@
     .logo
       .i-logo
         height 42px
-    .header__submenu-list
-      max-height calc(100vh - 470px)
+    .header__submenu-scroll-wrap
+      max-height calc(100vh - 400px)
   &:hover, &--sticky, &--show-tabs
     background-color #fff
     .logo-text
@@ -79,6 +84,8 @@
     border none
     outline none
     z-index 2
+    @media (max-width: 767px)
+      left -8px
     span
       display block
       position relative
@@ -171,6 +178,9 @@
           transform translateY(5px)
           transition opacity .3s ease-in-out,transform .3s ease-in-out,color .3s ease-in-out
           z-index 1
+          @media (max-width: 1160px)
+            right calc(100% + 6px)
+            left auto
         &.active
           .i-basket
             display none
@@ -311,6 +321,8 @@
       &-content
         padding-top 40px
         padding-bottom 80px
+        @media (max-height: 700px)
+          padding-bottom 40px
         @media (max-width: 1160px)
           padding 24px 32px 0
         @media (max-width: 480px)
@@ -320,6 +332,8 @@
           transform translateY(100px)
           opacity 0
           transition transform .5s ease-in-out, opacity .5s ease-in-out
+          @media (max-height: 700px)
+            margin-top 40px
           @media (max-width: 1160px)
             display none
       &-row
@@ -408,6 +422,8 @@
       padding-right 20px
       max-height calc(100vh - 508px)
       transition max-height .3s ease-in-out
+      @media (max-height: 700px)
+        max-height calc(100vh - 460px)
       @media (max-width: 1160px)
         max-height 0 !important
         padding 0

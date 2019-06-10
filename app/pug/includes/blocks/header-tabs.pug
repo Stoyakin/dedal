@@ -208,7 +208,8 @@
         +e.tabs-item-content
           +b('form').form.--search
             +e.field
-              +e('input')(type="text" placeholder="Введите название прицела или артикул").field-input
+              +e('input')(type="text" placeholder="Введите название прицела или артикул" autocomplete="off" data-length).field-input
               +e('button')(type="submit" disabled="disabled").field-submit
                 include ../../../svg/search.svg
                 |  Найти
+              +e('p').field-warning Введите не менее 3 символов

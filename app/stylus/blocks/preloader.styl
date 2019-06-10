@@ -1,0 +1,147 @@
+.box {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform translate(-50%, -50%)
+  width: 78px;
+  height: 78px;
+  -webkit-transition: opacity .35s ease-in-out, visibility .35s ease-in-out;
+  transition: opacity .35s ease-in-out, visibility .35s ease-in-out;
+}
+
+.loading:before {
+  content: '';
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  top: 50%;
+  margin-top: -18px;
+  left: 50%;
+  margin-left: -18px;
+  border-width: 2px 1px;
+  border-style: solid;
+  border-color: rgba(0,114,46,0.96) rgba(0,114,46,0.3);
+  border-radius: 50%;
+  box-sizing: border-box;
+  animation: spin 3.45s infinite;
+}
+
+.loading:after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  top: 50%;
+  margin-top: -3px;
+  left: 50%;
+  margin-left: -3px;
+  background-color: rgb(0,114,46);
+  border-radius: 50%;
+  box-sizing: border-box;
+  animation: pulse 6.9s infinite, borderPulse 6.9s infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(1080deg);
+  }
+}
+
+@-o-keyframes spin {
+  0% {
+    -o-transform: rotate(0deg);
+  }
+  50% {
+    -o-transform: rotate(360deg);
+  }
+  100% {
+    -o-transform: rotate(1080deg);
+  }
+}
+
+@-ms-keyframes spin {
+  0% {
+    -ms-transform: rotate(0deg);
+  }
+  50% {
+    -ms-transform: rotate(360deg);
+  }
+  100% {
+    -ms-transform: rotate(1080deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(360deg);
+  }
+  100% {
+    -webkit-transform: rotate(1080deg);
+  }
+}
+
+@-moz-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+  }
+  50% {
+    -moz-transform: rotate(360deg);
+  }
+  100% {
+    -moz-transform: rotate(1080deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    background-color: rgba(0,114,46,0.2);
+  }
+  13% {
+    background-color: rgba(0,114,46,0.2);
+  }
+  15% {
+    background-color: rgba(50,194,77,0.9);
+  }
+  28% {
+    background-color: rgba(50,194,77,0.9);
+  }
+  30% {
+    background-color: rgba(0,114,46,0.21);
+  }
+  43% {
+    background-color: rgba(0,114,46,0.2);
+  }
+  45% {
+    background-color: rgba(50,194,77,0.9);
+  }
+  70% {
+    background-color: rgba(50,194,77,0.89);
+  }
+  74% {
+    background-color: rgba(0,114,46,0.2);
+  }
+  100% {
+    background-color: rgba(50,194,77,0.9);
+  }
+}
+
+@keyframes borderPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgb(255,255,255), 0 0 0 1px rgba(0,114,46,0.8);
+  }
+  40% {
+    box-shadow: 0 0 0 1px rgb(255,255,255), 0 0 0 2px rgba(50,194,77, 0.8);
+  }
+  80% {
+    box-shadow: 0 0 0 3px #FFF, 0 0 1px 3px rgba(50,194,77, 0.8);
+  }
+}

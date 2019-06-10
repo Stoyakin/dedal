@@ -9,15 +9,15 @@
       +e('h2').title.title Заказать звонок
       +b('form').form.--feed.--popup(data-answer="question")
         +e('fieldset').field
-          +e('input')(type="text" data-req="req" id="inpP_01").field-input
+          +e('input')(type="text" data-req="req" id="inpP_01" autocomplete="off").field-input
           +e('label')(for="inpP_01").field-label Имя
           +e('p').field-warning Поле обязательно для заполнения
         +e('fieldset').field
-          +e('input')(type="text" data-req="req" data-type="tel" id="inpP_02").field-input.js-digits
+          +e('input')(type="text" data-req="req" data-type="tel" id="inpP_02" autocomplete="off").field-input.js-digits
           +e('label')(for="inpP_02").field-label Телефон
           +e('p').field-warning Поле обязательно для заполнения
         +e('fieldset').field
-          +e('textarea')(id="textP_01").field-textarea
+          +e('textarea')(id="textP_01" autocomplete="off").field-textarea
           +e('label')(for="textP_01").field-label Комментарий
             span необязательно
         +e('fieldset').field

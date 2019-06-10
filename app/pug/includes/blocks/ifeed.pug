@@ -1,8 +1,8 @@
 +b('section').ifeed.js-paralax
   +e.decor.js-decor-async
-    +e.decor-item.--back(data-ratio="2.5" data-dir="up")
+    +e.decor-item.--back
       +e('img')(src=tmpsrc+"decor.jpg" alt="").decor-item-img
-    +e.decor-item.--front(data-ratio="0.85" data-dir="down")
+    +e.decor-item.--front
       +e('img')(src=tmpsrc+"decor2.png" alt="").decor-item-img
   .container.validate-wrap
     +e.content.validate-row
@@ -12,15 +12,15 @@
         |  или&nbsp;задайте их нашим специалистам через форму обратной связи
       +b('form').form.--feed(data-answer="question")
         +e('fieldset').field
-          +e('input')(type="text" data-req="req" id="inp_01").field-input
+          +e('input')(type="text" data-req="req" id="inp_01" autocomplete="off").field-input
           +e('label')(for="inp_01").field-label Имя
           +e('p').field-warning Поле обязательно для заполнения
         +e('fieldset').field
-          +e('input')(type="text" data-req="req" data-type="email" id="inp_02").field-input
+          +e('input')(type="text" data-req="req" data-type="email" id="inp_02" autocomplete="off").field-input
           +e('label')(for="inp_02").field-label Адрес электронной почты
-          +e('p').field-warning Поле обязательно для заполнения
+          +e('p').field-warning Пожалуйста, проверьте введенный адрес
         +e('fieldset').field
-          +e('textarea')(data-req="req" id="text_01").field-textarea
+          +e('textarea')(data-req="req" id="text_01" autocomplete="off").field-textarea
           +e('label')(for="text_01").field-label Вопрос
           +e('p').field-warning Поле обязательно для заполнения
         +e('fieldset').field

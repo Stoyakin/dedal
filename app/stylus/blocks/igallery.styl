@@ -5,6 +5,15 @@
   opacity 0
   transition opacity .8s ease-in-out
   transition-delay .5s
+  &.video-plays
+    .igallery__all-href
+      opacity 0
+  &.video-paused
+    .igallery__all-href
+      opacity 1
+    .container
+      opacity 1
+      visibility visible
   @media (max-width: 1024px)
     min-height 400px
     height 400px
@@ -39,6 +48,10 @@
     .swiper
       &-container
         height 100%
+  .container
+    opacity 0
+    visibility hidden
+    transition opacity .5s ease-in-out, visibility .5s ease-in-out
   &__slide
     position relative
     height 100%
@@ -63,7 +76,9 @@
       opacity 0
       visibility hidden
       transition opacity .5s ease-in-out, visibility .5s ease-in-out
+      overflow hidden
     &-top
+      max-width 400px
       @media (max-width: 767px)
         max-width 53%
     &-cover
@@ -74,6 +89,11 @@
       height 100%
       background no-repeat 50%/cover
       z-index 2
+      &--video
+        width auto
+        height 100%
+        left 50%
+        transform translateX(-50%)
     &-video
       position absolute
       left 0
@@ -87,8 +107,13 @@
         .igallery__slide-content
           opacity 1
           visibility visible
+        &+.container
+          opacity 1
+          visibility visible
       &-item
         width 100%
+      video::-webkit-media-controls
+        display none
     &-play
       position absolute
       left 50%
@@ -126,3 +151,13 @@
       margin-top 26px
       @media (max-width: 767px)
         display none
+
+  video::-webkit-media-controls
+    display none
+
+  /* Could Use thise as well for Individual Controls */
+  // video::-webkit-media-controls-play-button
+  // video::-webkit-media-controls-volume-slider
+  // video::-webkit-media-controls-mute-button
+  // video::-webkit-media-controls-timeline
+  // video::-webkit-media-controls-current-time-display

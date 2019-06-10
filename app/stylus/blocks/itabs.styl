@@ -37,11 +37,12 @@
         transition: opacity 1s ease-in-out .4s,transform 1s ease-in-out .6s
       @media (max-width: 1160px)
         padding 30px
+        margin 0 8px
       @media (max-width: 1023px)
         flex-shrink 0
         width 298px
         height 298px
-        margin 0 20px 0 0
+        margin 0 16px 0 0
         &:last-child
           margin-right 0
       &:after
@@ -81,6 +82,10 @@
               opacity 1
               transform translateY(0)
               pointer-events auto
+            &-href, &-title
+              pointer-events auto
+              &:hover
+                opacity .7
       &-cover
         display block
         position absolute
@@ -97,8 +102,9 @@
         position relative
         z-index 3
       &-title
-        transition text-shadow .6s ease-in-out,color .6s ease-in-out,opacity .3s ease-in-out
-        @media (max-width: 1023px)
+        transition opacity .3s ease-in-out
+        pointer-events none
+        @media (max-width: 1160px)
           font-size 24px
           line-height 30px
       &-text
@@ -108,8 +114,9 @@
         transition-property text-shadow,color
         transition-duration .6s
         transition-timing-function ease-in-out
-        @media (max-width: 1023px)
+        @media (max-width: 1160px)
           margin-top 15px
+          max-width 80%
       &-circle
         position absolute
         top calc(50% - 84px)
@@ -145,7 +152,7 @@
             right -35px
             width 490px
             height 398px
-          @media (max-width: 1023px)
+          @media (max-width: 1160px)
             background none
             left 0
             top 0
@@ -211,6 +218,9 @@
         height 10px
         background url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAKCAMAAAD1sTxfAAAAM1BMVEUAAAAAcyIAcyIAcyIAcyIAcyIAcyIAcyIAcyIAcyIAcyIAcyIAcyIAcyIAcyIAcyIAcyLsYydVAAAAEHRSTlMAaZHt+PJjUUE07lSJdnVVpmv5yQAAAFxJREFUGNONkTkOwDAIBPF9xc7+/7WBRCmQLItpWIkpOEhog46M9qea3Fl1qX6hRGjVh+61ilikZkCrHsylVSATLSi4EaQGDlAsmlZ12gfYr9X3a9mPZXrB/b7gAcEDBuAycS5rAAAAAElFTkSuQmCC') no-repeat center
         z-index 1
+    @media (max-width: 767px)
+      &:before
+        right 20px
     &.start-animate
       .itabs__list-item--active
         .swiper-slide
@@ -261,6 +271,16 @@
         transition-delay .75s
       &:nth-child(5)
         transition-delay 1s
+      &:nth-child(6)
+        transition-delay 1.25s
+      &:nth-child(7)
+        transition-delay 1.5s
+      &:nth-child(8)
+        transition-delay 1.75s
+      &:nth-child(9)
+        transition-delay 2s
+      &:nth-child(10)
+        transition-delay 2.25s
       .product
         opacity .3
       &-active, &-next, &-next + .swiper-slide
@@ -270,12 +290,18 @@
             .product__item-buy
               opacity 1
               transform translateY(0)
+      @media (max-width 600px)
+        &-next, &-next + .swiper-slide, .swiper-slide
+          .product
+            opacity 0
     &-wall
       position absolute
       top 0
       width calc(50vw - 50% - 32px)
       height 100%
       z-index 3
+      @media (max-width 600px)
+        display none
       &--left
         left calc(50% - 50vw)
       &--right

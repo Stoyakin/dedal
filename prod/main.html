@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="static/css/styles.pack.css">
   </head>
   <body>
+    <div class="box loading"></div>
     <div class="wrapper">
       <header class="header">
         <div class="container">
@@ -506,7 +507,7 @@
               <div class="container">
                 <div class="header__tabs-item-content">
                   <form class="form form--search">
-                    <div class="form__field"><input class="form__field-input" type="text" placeholder="Введите название прицела или артикул"/>
+                    <div class="form__field"><input class="form__field-input" type="text" placeholder="Введите название прицела или артикул" autocomplete="off" data-length="data-length"/>
                       <button class="form__field-submit" type="submit" disabled="disabled">
                         <svg id="search" class="i-search" viewBox="0 0 18 18" width="100%" height="100%">
     <g fill="none">
@@ -516,6 +517,8 @@
 </svg>
                          Найти
                       </button>
+                      <p class="form__field-warning">Введите не менее 3 символов
+                      </p>
                     </div>
                   </form>
                 </div>
@@ -612,7 +615,7 @@
         <section class="iprod js-scroll-anim">
           <div class="swiper-container js-swiper-iprod">
             <div class="swiper-wrapper">
-              <div class="swiper-slide"><a class="product" href="https://ya.ru" target="_blank">
+              <div class="swiper-slide"><a class="product" href="#" target="_blank">
                 <div class="product__item-img" style="background-image: url(static/img/prod.png);">
                 </div>
                 <div class="product__item-content">
@@ -624,7 +627,7 @@
                   </p><span class="product__item-more">Подробнее</span>
                 </div></a>
               </div>
-              <div class="swiper-slide"><a class="product" href="https://ya.ru" target="_blank">
+              <div class="swiper-slide"><a class="product" href="#" target="_blank">
                 <div class="product__item-img" style="background-image: url(static/img/prod2.png);">
                 </div>
                 <div class="product__item-content">
@@ -636,7 +639,7 @@
                   </p><span class="product__item-more">Подробнее</span>
                 </div></a>
               </div>
-              <div class="swiper-slide"><a class="product" href="https://ya.ru" target="_blank">
+              <div class="swiper-slide"><a class="product" href="#" target="_blank">
                 <div class="product__item-img" style="background-image: url(static/img/prod3.png);">
                 </div>
                 <div class="product__item-content">
@@ -648,7 +651,7 @@
                   </p><span class="product__item-more">Подробнее</span>
                 </div></a>
               </div>
-              <div class="swiper-slide"><a class="product" href="https://ya.ru" target="_blank">
+              <div class="swiper-slide"><a class="product" href="#" target="_blank">
                 <div class="product__item-img" style="background-image: url(static/img/prod4.png);">
                 </div>
                 <div class="product__item-content">
@@ -1480,12 +1483,13 @@
                 <div class="swiper-slide">
                   <div class="igallery__slide">
                     <div class="igallery__slide-video igallery__slide-video--hide-controls">
-                      <video class="igallery__slide-video-item js-player" poster="static/video/gallery-cover3.jpg">
+                      <video class="igallery__slide-video-item js-player" poster="">
                         <source src="static/video/gallery-video3.mp4" type="video/mp4"/>
                       </video>
                       <div class="igallery__slide-content">
-                        <div class="igallery__slide-cover" style="background-image: url('static/video/gallery-cover3.jpg');">
-                        </div>
+                        <video class="igallery__slide-cover igallery__slide-cover--video" muted="muted" playsinline="" loop="loop" autoplay="autoplay">
+                          <source src="static/video/gallery-video-cover3.mp4" type="video/mp4"/>
+                        </video>
                         <div class="igallery__slide-play"><svg class="play-ico" viewBox="0 0 104 104" width="100%" height="100%">
   <g>
     <circle fill="none" cx="52" cy="52" r="51.5" fill-opacity="0.01" stroke="white" stroke-linecap="round" stroke-linejoin="round"></circle>
@@ -1538,12 +1542,13 @@
                 <div class="swiper-slide">
                   <div class="igallery__slide">
                     <div class="igallery__slide-video igallery__slide-video--hide-controls">
-                      <video class="igallery__slide-video-item js-player" poster="static/video/gallery-cover5.jpg">
+                      <video class="igallery__slide-video-item js-player" poster="">
                         <source src="static/video/gallery-video5.mp4" type="video/mp4"/>
                       </video>
                       <div class="igallery__slide-content">
-                        <div class="igallery__slide-cover" style="background-image: url('static/video/gallery-cover5.jpg');">
-                        </div>
+                        <video class="igallery__slide-cover igallery__slide-cover--video" muted="muted" playsinline="" loop="loop" autoplay="autoplay">
+                          <source src="static/video/gallery-video-cover5.mp4" type="video/mp4"/>
+                        </video>
                         <div class="igallery__slide-play"><svg class="play-ico" viewBox="0 0 104 104" width="100%" height="100%">
   <g>
     <circle fill="none" cx="52" cy="52" r="51.5" fill-opacity="0.01" stroke="white" stroke-linecap="round" stroke-linejoin="round"></circle>
@@ -1729,6 +1734,8 @@
                   <div class="swiper-slide"><a class="publ publ--more" href=""><span class="publ__more">Смотреть все</span></a>
                   </div>
                 </div>
+                <div class="swiper-wall swiper-wall--left"></div>
+                <div class="swiper-wall swiper-wall--right"></div>
               </div>
             </div>
           </div>
@@ -1741,7 +1748,7 @@
               <p class="isubscr__text">Новинки, акции, важные изменения
               </p>
               <form class="form form--white form--subscr" data-answer="subsribe">
-                <fieldset class="form__field"><input class="form__field-input" type="text" placeholder="Адрес электронной почты" data-req="req" data-type="email"/>
+                <fieldset class="form__field"><input class="form__field-input" type="text" placeholder="Адрес электронной почты" data-req="req" data-type="email" autocomplete="off"/>
                   <button class="form__field-submit" type="submit" disabled="disabled">
                     <svg class="envelope-ico" viewBox="0 0 22 16" width="100%" height="100%">
   <g fill="none">
@@ -1770,9 +1777,9 @@
         </section>
         <section class="ifeed js-paralax">
           <div class="ifeed__decor js-decor-async">
-            <div class="ifeed__decor-item ifeed__decor-item--back" data-ratio="2.5" data-dir="up"><img class="ifeed__decor-item-img" src="static/img/decor.jpg" alt="" role="presentation"/>
+            <div class="ifeed__decor-item ifeed__decor-item--back"><img class="ifeed__decor-item-img" src="static/img/decor.jpg" alt="" role="presentation"/>
             </div>
-            <div class="ifeed__decor-item ifeed__decor-item--front" data-ratio="0.85" data-dir="down"><img class="ifeed__decor-item-img" src="static/img/decor2.png" alt="" role="presentation"/>
+            <div class="ifeed__decor-item ifeed__decor-item--front"><img class="ifeed__decor-item-img" src="static/img/decor2.png" alt="" role="presentation"/>
             </div>
           </div>
           <div class="container validate-wrap">
@@ -1782,19 +1789,19 @@
               <p class="ifeed__text">Позвоните по номеру <a href="tel:+74955893101">+7 495 589-31-01</a> или&nbsp;задайте их нашим специалистам через форму обратной связи
               </p>
               <form class="form form--feed" data-answer="question">
-                <fieldset class="form__field"><input class="form__field-input" type="text" data-req="req" id="inp_01"/>
+                <fieldset class="form__field"><input class="form__field-input" type="text" data-req="req" id="inp_01" autocomplete="off"/>
                   <label class="form__field-label" for="inp_01">Имя
                   </label>
                   <p class="form__field-warning">Поле обязательно для заполнения
                   </p>
                 </fieldset>
-                <fieldset class="form__field"><input class="form__field-input" type="text" data-req="req" data-type="email" id="inp_02"/>
+                <fieldset class="form__field"><input class="form__field-input" type="text" data-req="req" data-type="email" id="inp_02" autocomplete="off"/>
                   <label class="form__field-label" for="inp_02">Адрес электронной почты
                   </label>
-                  <p class="form__field-warning">Поле обязательно для заполнения
+                  <p class="form__field-warning">Пожалуйста, проверьте введенный адрес
                   </p>
                 </fieldset>
-                <fieldset class="form__field"><textarea class="form__field-textarea" data-req="req" id="text_01"></textarea>
+                <fieldset class="form__field"><textarea class="form__field-textarea" data-req="req" id="text_01" autocomplete="off"></textarea>
                   <label class="form__field-label" for="text_01">Вопрос
                   </label>
                   <p class="form__field-warning">Поле обязательно для заполнения
@@ -1833,7 +1840,7 @@
             <div class="footer__row row">
               <div class="footer__col col col--x2">
                 <ul class="footer__list">
-                  <li class="footer__list-item footer__list-item--head"><a class="footer__list-item-href footer__list-item-href--active" href="#">Каталог</a>
+                  <li class="footer__list-item footer__list-item--head"><a class="footer__list-item-href" href="#">Каталог</a>
                   </li>
                   <li class="footer__list-item"><a class="footer__list-item-href" href="#">Дневная оптика</a>
                   </li>
@@ -1948,6 +1955,17 @@
           </div>
         </div>
       </footer>
+      <button class="button-scroll-top js-scroll-top" type="button"></button>
+      <div class="cookie-popup">
+        <div class="container">
+          <form>
+            <p class="cookie-popup__text">Мы хотим, чтобы сайт «Дедал-НВ» был для Вас удобным и интересным. Чтобы стать лучше, мы работаем с веб-аналитикой. Для сбора аналитических данных используются файлы «cookie». Вся информация анонимна, конфиденциальна и не передается третьим лицам. Продолжая использовать сайт «Дедал-НВ», Вы подтверждаете свое согласие с <a href="#">Политикой в отношении «cookie»</a>
+            </p>
+            <button class="cookie-popup__btn btn js-cookie" type="submit">Подтверждаю
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
     <div class="hidden-block">
       <div class="popup popup--feedback" data-popup="feedback">
@@ -2005,19 +2023,19 @@
             <h2 class="popup__title title">Заказать звонок
             </h2>
             <form class="form form--feed form--popup" data-answer="question">
-              <fieldset class="form__field"><input class="form__field-input" type="text" data-req="req" id="inpP_01"/>
+              <fieldset class="form__field"><input class="form__field-input" type="text" data-req="req" id="inpP_01" autocomplete="off"/>
                 <label class="form__field-label" for="inpP_01">Имя
                 </label>
                 <p class="form__field-warning">Поле обязательно для заполнения
                 </p>
               </fieldset>
-              <fieldset class="form__field"><input class="form__field-input js-digits" type="text" data-req="req" data-type="tel" id="inpP_02"/>
+              <fieldset class="form__field"><input class="form__field-input js-digits" type="text" data-req="req" data-type="tel" id="inpP_02" autocomplete="off"/>
                 <label class="form__field-label" for="inpP_02">Телефон
                 </label>
                 <p class="form__field-warning">Поле обязательно для заполнения
                 </p>
               </fieldset>
-              <fieldset class="form__field"><textarea class="form__field-textarea" id="textP_01"></textarea>
+              <fieldset class="form__field"><textarea class="form__field-textarea" id="textP_01" autocomplete="off"></textarea>
                 <label class="form__field-label" for="textP_01">Комментарий<span>необязательно</span>
                 </label>
               </fieldset>

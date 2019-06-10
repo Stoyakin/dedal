@@ -1,0 +1,48 @@
+.cookie-popup
+  display block
+  position fixed
+  width 100%
+  bottom 0
+  left 0
+  background rgba(255,255,255,.85)
+  box-shadow 0 6px 16px rgba(0,0,0,.08)
+  z-index 99999
+  display none
+  opacity 0
+  &.show
+    display block
+    opacity 1
+  .container
+    position relative
+    padding 18px 170px 18px 20px
+    @media (max-width: 767px)
+      padding 20px 0
+  &__text
+    width 100%
+    text-align justify
+    font-weight 500
+    font-size 14px
+    line-height 22px
+    a
+      display inline-block
+      color inherit
+      border-bottom 1px solid #7c7d80
+      transition border-color .3s ease-in-out
+      &:hover
+        border-color transparent
+  &__btn
+    position absolute
+    background none
+    border none
+    outline none
+    padding 0
+    border none
+    outline none
+    right 0
+    top 50%
+    transform translateY(-50%)
+    @media (max-width: 767px)
+      display block
+      position static
+      margin 20px auto 0
+      transform none

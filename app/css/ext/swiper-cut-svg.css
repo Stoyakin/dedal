@@ -166,6 +166,18 @@
   z-index: 1;
 }
 
+@media (max-width: 1440px) {
+  .swiper-buttons-area {
+    width: 10%;
+  }
+}
+
+@media (max-width: 1239px) {
+  .swiper-buttons-area {
+    display: none;
+  }
+}
+
 .swiper-buttons-area .swiper-button-prev,
 .swiper-buttons-area .swiper-button-next {
   opacity: 0;

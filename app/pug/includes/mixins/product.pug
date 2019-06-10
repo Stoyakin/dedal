@@ -1,6 +1,6 @@
 mixin product(data)
   each item in data
-    +b('a')(href="https://ya.ru" target="_blank").product
+    +b('a')(href="#" target="_blank").product
       +e('div').item-img(style="background-image: url("+item.img+");")
       +e('div').item-content
         +e('p').item-art #{item.art}

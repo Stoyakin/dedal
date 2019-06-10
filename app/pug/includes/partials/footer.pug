@@ -5,7 +5,7 @@
         +e.col.col.--x2
           +e('ul').list
             +e('li').list-item.--head
-              +e('a')(href="#").list-item-href.--active Каталог
+              +e('a')(href="#").list-item-href Каталог
             +e('li').list-item
               +e('a')(href="#").list-item-href Дневная оптика
             +e('li').list-item
@@ -83,3 +83,12 @@
           +e('a')(href="#").bottom-list-href Правила использования «cookie»
         +e('li').bottom-list-item
           +e('a')(href="#").bottom-list-href Карта сайта
+
+button(type="button").button-scroll-top.js-scroll-top
+
++b.cookie-popup
+  .container
+    form
+      +e('p').text Мы хотим, чтобы сайт «Дедал-НВ» был для Вас удобным и интересным. Чтобы стать лучше, мы работаем с веб-аналитикой. Для сбора аналитических данных используются файлы «cookie». Вся информация анонимна, конфиденциальна и не передается третьим лицам. Продолжая использовать сайт «Дедал-НВ», Вы подтверждаете свое согласие с 
+        a(href="#") Политикой в отношении «cookie»
+      +e('button')(type="submit").btn.btn.js-cookie Подтверждаю

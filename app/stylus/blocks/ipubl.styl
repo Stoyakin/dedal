@@ -6,7 +6,7 @@
     padding-left 30px
     padding-right 30px
   @media  (max-width: 767px)
-    padding 64px 0 32px
+    padding 42px 0 32px
   &.start-animate
     .swiper-slide
       opacity 1
@@ -48,6 +48,10 @@
       transition-timing-function cubic-bezier(.215,.61,.355,1)
       opacity 0
       transform translateX(100px)
+      .publ
+        opacity .3
+        transition box-shadow .3s ease-in-out, background .3s ease-in-out, opacity .6s ease-in-out
+        pointer-events none
       &:first-child
         transition-delay .7s
       &:nth-child(2)
@@ -56,3 +60,36 @@
         transition-delay .80s
       &:nth-child(4)
         transition-delay .85s
+      &:nth-child(5)
+        transition-delay .90s
+      &:nth-child(6)
+        transition-delay .95s
+      &:nth-child(7)
+        transition-delay 1s
+      &:nth-child(8)
+        transition-delay 1.05s
+      &:nth-child(9)
+        transition-delay 1.10s
+      &:nth-child(10)
+        transition-delay 1.15s
+      &-active, &-next, &-next+.swiper-slide
+        .publ
+          opacity 1
+          pointer-events auto
+      @media (max-width 600px)
+        opacity 0
+        &-next, &-next+.swiper-slide
+          .publ
+            opacity 0
+    &-wall
+      position absolute
+      top 0
+      width calc(50vw - 50% - 32px)
+      height 100%
+      z-index 3
+      @media (max-width 600px)
+        display none
+      &--left
+        left calc(50% - 50vw)
+      &--right
+        right calc(50% - 50vw)
