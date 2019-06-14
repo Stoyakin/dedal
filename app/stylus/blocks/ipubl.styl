@@ -10,7 +10,7 @@
   &.start-animate
     .swiper-slide
       opacity 1
-      transform translateX(0)
+      left 0
   &__top
     display flex
     flex-wrap wrap
@@ -43,11 +43,11 @@
       display flex
       flex-direction: column
       height auto
-      transition-property transform, opacity
+      transition-property left, opacity
       transition-duration 3s
       transition-timing-function cubic-bezier(.215,.61,.355,1)
       opacity 0
-      transform translateX(100px)
+      left 100px
       .publ
         opacity .3
         transition box-shadow .3s ease-in-out, background .3s ease-in-out, opacity .6s ease-in-out

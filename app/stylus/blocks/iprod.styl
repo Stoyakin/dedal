@@ -8,13 +8,13 @@
       &.start-anim
         .swiper-slide
           opacity 1
-          transform translateX(0)
+          left 0
     &-slide
       width 1008px
-      transition-property transform, opacity
+      transition-property left, opacity
       transition-duration 3s
       transition-timing-function cubic-bezier(.215,.61,.355,1)
-      transform translateX(200px)
+      left 200px
       opacity 0
       &.swiper-slide-active
         transition-delay .35s
@@ -24,7 +24,7 @@
         opacity .3
       &-active
         opacity 1
-        transform translateX(0)
+        left 0
         .product
           opacity 1 !important
           &__item-img
@@ -32,7 +32,7 @@
         &:hover
           .product__item-more
             opacity 1
-            transform translateY(0)
+            left 0
       @media (max-width: 1160px)
         width 800px
       @media (max-width: 940px)

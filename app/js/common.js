@@ -23,6 +23,7 @@ const pauseVideos = (activeSlide, allVideos, sliderSpeed) => {
   const activeVideo = activeSlide.querySelector('video');
   if (arrVideos && arrVideos.length) {
     arrVideos.forEach((video) => {
+      video.onerror = function() {console.log("Error with media: " + video.error.code);}
       if (video.hasAttribute('data-stid')) {
         clearTimeout(video.getAttribute('data-stid'));
         video.removeAttribute('data-stid');
@@ -47,7 +48,10 @@ const resetForm = (itemForm) => {
   itemForm.reset();
 };
 
-window.onload = () => qs('body').classList.add('page-loaded');
+//window.onload = () => qs('body').classList.add('page-loaded');
+setTimeout(()=>{
+  qs('body').classList.add('page-loaded');
+},500)
 
 if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) qs('body').classList.add('ios');
 
@@ -1035,3 +1039,4 @@ document.addEventListener("DOMContentLoaded", function (event) {
   }.init();
 
 });
+

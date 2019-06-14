@@ -225,7 +225,7 @@
       .itabs__list-item--active
         .swiper-slide
           opacity 1
-          transform translateX(0)
+          left 0
     &-item
       position absolute
       width 100%
@@ -259,8 +259,8 @@
       overflow visible
     &-slide
       opacity 0
-      transform translateX(200px)
-      transition-property transform, opacity
+      left 200px
+      transition-property left, opacity
       &:first-child
         transition-delay 0s
       &:nth-child(2)

@@ -2411,14 +2411,14 @@ body.popup-open .popup__container {
 }
 .iprod .swiper-container.start-anim .swiper-slide {
   opacity: 1;
-  transform: translateX(0);
+  left: 0;
 }
 .iprod .swiper-slide {
   width: 1008px;
-  transition-property: transform, opacity;
+  transition-property: left, opacity;
   transition-duration: 3s;
   transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-  transform: translateX(200px);
+  left: 200px;
   opacity: 0;
 }
 .iprod .swiper-slide.swiper-slide-active {
@@ -2432,7 +2432,7 @@ body.popup-open .popup__container {
 }
 .iprod .swiper-slide-active {
   opacity: 1;
-  transform: translateX(0);
+  left: 0;
 }
 .iprod .swiper-slide-active .product {
   opacity: 1 !important;
@@ -2442,7 +2442,7 @@ body.popup-open .popup__container {
 }
 .iprod .swiper-slide-active:hover .product__item-more {
   opacity: 1;
-  transform: translateY(0);
+  left: 0;
 }
 @media (max-width: 1160px) {
   .iprod .swiper-slide {
@@ -2993,7 +2993,7 @@ body.popup-open .popup__container {
 }
 .itabs__list.start-animate .itabs__list-item--active .swiper-slide {
   opacity: 1;
-  transform: translateX(0);
+  left: 0;
 }
 .itabs__list-item {
   position: absolute;
@@ -3039,8 +3039,8 @@ body.popup-open .popup__container {
 }
 .itabs .swiper-slide {
   opacity: 0;
-  transform: translateX(200px);
-  transition-property: transform, opacity;
+  left: 200px;
+  transition-property: left, opacity;
 }
 .itabs .swiper-slide:first-child {
   transition-delay: 0s;
@@ -3617,7 +3617,7 @@ body.popup-open .popup__container {
 }
 .ipubl.start-animate .swiper-slide {
   opacity: 1;
-  transform: translateX(0);
+  left: 0;
 }
 .ipubl__top {
   display: flex;
@@ -3661,11 +3661,11 @@ body.popup-open .popup__container {
   display: flex;
   flex-direction: column;
   height: auto;
-  transition-property: transform, opacity;
+  transition-property: left, opacity;
   transition-duration: 3s;
   transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   opacity: 0;
-  transform: translateX(100px);
+  left: 100px;
 }
 .ipubl .swiper-slide .publ {
   opacity: 0.3;

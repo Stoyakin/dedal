@@ -5533,24 +5533,18 @@ body.popup-open .popup__container {
 
 .iprod .swiper-container.start-anim .swiper-slide {
   opacity: 1;
-  -webkit-transform: translateX(0);
-      -ms-transform: translateX(0);
-          transform: translateX(0);
+  left: 0;
 }
 
 .iprod .swiper-slide {
   width: 1008px;
-  -webkit-transition-property: opacity, -webkit-transform;
-  transition-property: opacity, -webkit-transform;
-  transition-property: transform, opacity;
-  transition-property: transform, opacity, -webkit-transform;
+  -webkit-transition-property: left, opacity;
+  transition-property: left, opacity;
   -webkit-transition-duration: 3s;
           transition-duration: 3s;
   -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
           transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-  -webkit-transform: translateX(200px);
-      -ms-transform: translateX(200px);
-          transform: translateX(200px);
+  left: 200px;
   opacity: 0;
 }
 
@@ -5570,9 +5564,7 @@ body.popup-open .popup__container {
 
 .iprod .swiper-slide-active {
   opacity: 1;
-  -webkit-transform: translateX(0);
-      -ms-transform: translateX(0);
-          transform: translateX(0);
+  left: 0;
 }
 
 .iprod .swiper-slide-active .product {
@@ -5585,9 +5577,7 @@ body.popup-open .popup__container {
 
 .iprod .swiper-slide-active:hover .product__item-more {
   opacity: 1;
-  -webkit-transform: translateY(0);
-      -ms-transform: translateY(0);
-          transform: translateY(0);
+  left: 0;
 }
 
 @media (max-width: 1160px) {
@@ -6300,9 +6290,7 @@ body.popup-open .popup__container {
 
 .itabs__list.start-animate .itabs__list-item--active .swiper-slide {
   opacity: 1;
-  -webkit-transform: translateX(0);
-      -ms-transform: translateX(0);
-          transform: translateX(0);
+  left: 0;
 }
 
 .itabs__list-item {
@@ -6368,13 +6356,9 @@ body.popup-open .popup__container {
 
 .itabs .swiper-slide {
   opacity: 0;
-  -webkit-transform: translateX(200px);
-      -ms-transform: translateX(200px);
-          transform: translateX(200px);
-  -webkit-transition-property: opacity, -webkit-transform;
-  transition-property: opacity, -webkit-transform;
-  transition-property: transform, opacity;
-  transition-property: transform, opacity, -webkit-transform;
+  left: 200px;
+  -webkit-transition-property: left, opacity;
+  transition-property: left, opacity;
 }
 
 .itabs .swiper-slide:first-child {
@@ -7131,9 +7115,7 @@ body.popup-open .popup__container {
 
 .ipubl.start-animate .swiper-slide {
   opacity: 1;
-  -webkit-transform: translateX(0);
-      -ms-transform: translateX(0);
-          transform: translateX(0);
+  left: 0;
 }
 
 .ipubl__top {
@@ -7204,18 +7186,14 @@ body.popup-open .popup__container {
       -ms-flex-direction: column;
           flex-direction: column;
   height: auto;
-  -webkit-transition-property: opacity, -webkit-transform;
-  transition-property: opacity, -webkit-transform;
-  transition-property: transform, opacity;
-  transition-property: transform, opacity, -webkit-transform;
+  -webkit-transition-property: left, opacity;
+  transition-property: left, opacity;
   -webkit-transition-duration: 3s;
           transition-duration: 3s;
   -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
           transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   opacity: 0;
-  -webkit-transform: translateX(100px);
-      -ms-transform: translateX(100px);
-          transform: translateX(100px);
+  left: 100px;
 }
 
 .ipubl .swiper-slide .publ {
